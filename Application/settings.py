@@ -13,11 +13,11 @@ class Settings:
         self.flask_port = 5000
 
        # DataBase
-        self.database_host = 'localhost'
+        self.database_host = 'ec2-79-125-12-27.eu-west-1.compute.amazonaws.com'
         self.database_port = 5432
-        self.database_user = "flaskUser"
-        self.database_password = "password"
-        self.database_name = "flask"
+        self.database_user = "oqnmljapoeesnr"
+        self.database_password = "acdcc3cba4925a8d0b73a2e52f77c895151224f622c262b6f90cb812f7a96f1f"
+        self.database_name = "d7obcs4tg1rc0l"
         self.database_schema = "public"
 
         self.database_rebuilt = True
