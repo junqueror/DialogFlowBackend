@@ -1,9 +1,8 @@
-import logging
 from flask import Flask, Blueprint
-from flask_cors import CORS
-from Application.settings import Settings
-from flask_restplus import Api
 from flask_assistant import Assistant
+from flask_assistant import tell
+from flask_cors import CORS
+from flask_restplus import Api
 from flask_restplus.namespace import Namespace
 
 
@@ -41,7 +40,6 @@ class FlaskWrapper:
     # API blueprint definition
     def _GetApiBlueprint(self):
 
-        from API.Resources.DialogFlow.webHook import WebHookResource
         FlaskWrapper.Api.add_namespace(FlaskWrapper.Namespaces.dialogflow, path='/dialogflow')
 
         # Register blueprints and namespaces in the api
@@ -54,8 +52,6 @@ class FlaskWrapper:
 
     # Assistant blueprint definition
     def _GetDialogFlowBlueprint(self):
-        from API.Resources.DialogFlow.test import TestResource
-
         # Register blueprints and namespaces in the api
         bluePrint = Blueprint('Dialogflow', __name__, url_prefix='/dialogflow/assistant')
 
@@ -64,7 +60,20 @@ class FlaskWrapper:
 
         return bluePrint  # The API bluePrint
 
-
     # Return a Flask client for testing
     def getTestClient(self):
         return self.app.test_client()
+
+
+@FlaskWrapper.Assistant.action('test')
+def test(testParam):
+    print('In test resource')
+
+    if testParam == 'test':
+        msg = 'Escribiste "test"'
+    elif testParam == 'prueba':
+        msg = 'Escribiste "prueba"'
+    else:
+        msg = 'Escribiste otra cosa'
+
+    return tell(msg)
