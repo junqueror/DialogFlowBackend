@@ -32,6 +32,9 @@ class Settings:
         SQLALCHEMY_DATABASE_URI = None
         LDAP_USE_TLS = False
 
+        # DialogFlow
+        DEV_ACCES_TOKEN = 'c87709891561448daca17fda76f1e491'
+
         def __init__(self):
             Settings.instance().FlaskBaseConfig.DEBUG = Settings.instance().FLASK_DEBUG
             Settings.instance().FlaskBaseConfig.SQLALCHEMY_TRACK_MODIFICATIONS = False

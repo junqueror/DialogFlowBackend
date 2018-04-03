@@ -12,7 +12,7 @@ class FlaskWrapper:
     Api = Api(version='1.0', title='Flask API', description='API with basic structure')
 
     # Create assistant
-    Assistant = Assistant(route=None)
+    Assistant = Assistant(route='/')
 
     # API namespaces
     class Namespaces:
@@ -25,13 +25,15 @@ class FlaskWrapper:
         # Set the Flask configuration
         self.app.config.from_object(config_class)
 
+        FlaskWrapper.Assistant.init_app(self.app)
+
         # Api configuration
         apiBlueprint = self._GetApiBlueprint()
         self.app.register_blueprint(apiBlueprint)
 
-        # DialogFlow Assistant configuration
-        assistantBlueprint = self._GetDialogFlowBlueprint()
-        self.app.register_blueprint(assistantBlueprint)
+        # # DialogFlow Assistant configuration
+        # assistantBlueprint = self._GetDialogFlowBlueprint()
+        # self.app.register_blueprint(assistantBlueprint)
 
         # CORS
         CORS(self.app)  # Initialize CORS on the application
@@ -50,15 +52,15 @@ class FlaskWrapper:
 
         return bluePrint  # The API bluePrint
 
-    # Assistant blueprint definition
-    def _GetDialogFlowBlueprint(self):
-        # Register blueprints and namespaces in the api
-        bluePrint = Blueprint('Dialogflow', __name__, url_prefix='/dialogflow/assistant')
-
-        # Register blueprint in the assistant
-        FlaskWrapper.Assistant.init_blueprint(bluePrint)
-
-        return bluePrint  # The API bluePrint
+    # # Assistant blueprint definition
+    # def _GetDialogFlowBlueprint(self):
+    #     # Register blueprints and namespaces in the api
+    #     bluePrint = Blueprint('Dialogflow', __name__, url_prefix='/dialogflow/assistant')
+    #
+    #     # Register blueprint in the assistant
+    #     FlaskWrapper.Assistant.init_blueprint(bluePrint)
+    #
+    #     return bluePrint  # The API bluePrint
 
     # Return a Flask client for testing
     def getTestClient(self):
