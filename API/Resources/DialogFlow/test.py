@@ -2,11 +2,12 @@ from pprint import pprint
 
 from flask import request
 from flask_assistant import tell
+from flask_restplus import Resource
 
 from API.flaskWrapper import FlaskWrapper
 
 
-class TestResource():
+class TestResource(Resource):
 
     @FlaskWrapper.Assistant.action('test')
     def test(self, testParam):
@@ -14,11 +15,11 @@ class TestResource():
         print('In test resource')
 
         if testParam == 'test':
-            msg = 'Escribiste "test"'
+            msg = 'Has escrito "test"'
         elif testParam == 'prueba':
-            msg = 'Escribiste "prueba"'
+            msg = 'Has escrito "prueba"'
         else:
-            msg = 'Escribiste otra cosa'
+            msg = 'Has escrito  otra cosa'
 
         pprint(request)
 

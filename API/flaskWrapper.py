@@ -1,6 +1,5 @@
 from flask import Flask, Blueprint
 from flask_assistant import Assistant
-from flask_assistant import tell
 from flask_cors import CORS
 from flask_restplus import Api
 from flask_restplus.namespace import Namespace
@@ -66,16 +65,3 @@ class FlaskWrapper:
     def getTestClient(self):
         return self.app.test_client()
 
-
-@FlaskWrapper.Assistant.action('test')
-def test(testParam):
-    print('In test resource')
-
-    if testParam == 'test':
-        msg = 'Escribiste "test"'
-    elif testParam == 'prueba':
-        msg = 'Escribiste "prueba"'
-    else:
-        msg = 'Escribiste otra cosa'
-
-    return tell('test response')
