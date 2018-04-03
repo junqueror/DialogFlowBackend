@@ -60,6 +60,7 @@ assist = Assistant(app, route='/')
 @assist.action('test')
 def hello_world():
     speech = 'Microphone check 1, 2 what is this?'
+    print(speech)
     return ask(speech)
 
 
