@@ -48,6 +48,8 @@
 #     Application.run(Settings.instance().FLASK_HOST, Settings.instance().FLASK_PORT)
 #
 
+import os
+
 from flask import Flask
 from flask_assistant import Assistant, ask
 
@@ -62,4 +64,4 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run('0.0.0.0', int(os.getenv('PORT', 5000)), debug=True)
