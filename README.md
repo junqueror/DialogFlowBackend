@@ -1,2 +1,2 @@
-# FlaskBaseStructure
-A basic structure for new flask projects
+# DialogFlow Backend
+A Python backend for DialoFlow
