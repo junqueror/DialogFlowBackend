@@ -1,3 +1,4 @@
+import os
 from Utils.singleton import Singleton
 
 @Singleton
@@ -10,7 +11,7 @@ class Settings:
         # Flask
         self.flask_debug = True
         self.flask_host = '0.0.0.0'
-        self.flask_port = 5000
+        self.flask_port = int(os.getenv('PORT', 5000))
 
        # DataBase
         self.database_host = 'ec2-79-125-12-27.eu-west-1.compute.amazonaws.com'

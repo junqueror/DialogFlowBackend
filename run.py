@@ -45,5 +45,5 @@ if __name__ == "__main__":
     Application = App()
 
     # Run the application
-    Application.run(Settings.instance().FLASK_HOST, int(os.getenv('PORT', 5000)))
+    Application.run(Settings.instance().FLASK_HOST, Settings.instance().FLASK_PORT)
 

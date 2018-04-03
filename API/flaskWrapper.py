@@ -13,6 +13,7 @@ class FlaskWrapper:
     # API namespaces
     class Namespaces:
         articles = Namespace(name='/articles', description='Operations related to articles')
+        dialogflow = Namespace(name='/dialogflow', description='Operations related with dialogflow')
 
     # Initialize the instance of App
     def __init__(self, config_class):
@@ -35,6 +36,7 @@ class FlaskWrapper:
         from API.Resources.articlesResource import ArticlesResource
         from API.Resources.articleResource import ArticleResource
         FlaskWrapper.Api.add_namespace(FlaskWrapper.Namespaces.articles, path='/articles')
+        FlaskWrapper.Api.add_namespace(FlaskWrapper.Namespaces.dialogflow, path='/dialogflow')
 
         # Register blueprints and namespaces in the api
         bluePrint = Blueprint('API', __name__, url_prefix='/api')

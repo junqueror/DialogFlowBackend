@@ -25,4 +25,4 @@ class App:
             DbController.instance().createTestData(self.flask.app)  # Add test data into de DataBase
 
         # Flask
-        self.flask.app.run(flaskHost, port=flaskPort, threaded=True)
+        self.flask.app.run(flaskHost, port=flaskPort, threaded=True, debug=True)
