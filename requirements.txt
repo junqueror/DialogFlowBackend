@@ -5,3 +5,4 @@ flask-restplus==0.10.1
 Flask-Cors==3.0.3
 Flask-SQLAlchemy==2.3.0
 psycopg2==2.7.4
+Flask-Assistant==0.2.94
