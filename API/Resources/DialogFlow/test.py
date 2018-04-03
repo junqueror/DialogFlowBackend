@@ -5,7 +5,7 @@ from flask_assistant import tell
 from API.flaskWrapper import FlaskWrapper
 
 
-class testResource(Resource):
+class TestResource(Resource):
 
     @FlaskWrapper.Assistant.action('test')
     def test(self, testParam):

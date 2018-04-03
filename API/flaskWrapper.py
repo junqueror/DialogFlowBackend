@@ -11,13 +11,12 @@ from flask_restplus.namespace import Namespace
 class FlaskWrapper:
     # Create api
     Api = Api(version='1.0', title='Flask API', description='API with basic structure')
-    Assistant = Assistant(route=None)
 
-    # Create Assisntat
+    # Create assistant
+    Assistant = Assistant(route=None)
 
     # API namespaces
     class Namespaces:
-        # articles = Namespace(name='Articles', description='Operations related to articles')
         dialogflow = Namespace(name='DialogFlow', description='Operations related with DialogFlow system')
 
     # Initialize the instance of App
@@ -32,7 +31,7 @@ class FlaskWrapper:
         self.app.register_blueprint(apiBlueprint)
 
         # DialogFlow Assistant configuration
-        assistantBlueprint = self._GetAssistantBlueprint()
+        assistantBlueprint = self._GetDialogFlowBlueprint()
         self.app.register_blueprint(assistantBlueprint)
 
         # CORS
@@ -42,27 +41,23 @@ class FlaskWrapper:
     # API blueprint definition
     def _GetApiBlueprint(self):
 
-        # from API.Resources.articlesResource import ArticlesResource
-        # from API.Resources.articleResource import ArticleResource
-        # FlaskWrapper.Api.add_namespace(FlaskWrapper.Namespaces.articles, path='/articles')
-
         from API.Resources.DialogFlow.webHook import WebHookResource
         FlaskWrapper.Api.add_namespace(FlaskWrapper.Namespaces.dialogflow, path='/dialogflow')
 
         # Register blueprints and namespaces in the api
-        bluePrint = Blueprint('API', __name__, url_prefix='/api')
+        bluePrint = Blueprint('Api', __name__, url_prefix='/api')
 
         # Register namespaces in the api
-        FlaskWrapper.Api.init_app(self.app)
+        FlaskWrapper.Api.init_app(bluePrint)
 
         return bluePrint  # The API bluePrint
 
     # Assistant blueprint definition
-    def _GetAssistantBlueprint(self):
-        logging.getLogger('flask_assistant').setLevel(logging.DEBUG)
+    def _GetDialogFlowBlueprint(self):
+        from API.Resources.DialogFlow.test import TestResource
 
         # Register blueprints and namespaces in the api
-        bluePrint = Blueprint('Assistant', __name__, url_prefix='/assistant')
+        bluePrint = Blueprint('Dialogflow', __name__, url_prefix='/dialogflow/assistant')
 
         # Register blueprint in the assistant
         FlaskWrapper.Assistant.init_blueprint(bluePrint)
