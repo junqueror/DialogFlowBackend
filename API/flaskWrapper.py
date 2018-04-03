@@ -68,14 +68,14 @@ class FlaskWrapper:
 
 
 @FlaskWrapper.Assistant.action('test')
-def test():
+def test(testParam):
     print('In test resource')
-    #
-    # if testParam == 'test':
-    #     msg = 'Escribiste "test"'
-    # elif testParam == 'prueba':
-    #     msg = 'Escribiste "prueba"'
-    # else:
-    #     msg = 'Escribiste otra cosa'
+
+    if testParam == 'test':
+        msg = 'Escribiste "test"'
+    elif testParam == 'prueba':
+        msg = 'Escribiste "prueba"'
+    else:
+        msg = 'Escribiste otra cosa'
 
     return tell('test response')
