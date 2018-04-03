@@ -56,6 +56,8 @@ from flask_assistant import Assistant, ask
 app = Flask(__name__)
 assist = Assistant(app, route='/')
 
+logging.getLogger('flask_assistant').setLevel(logging.DEBUG)
+
 
 @assist.action('test')
 def hello_world():
