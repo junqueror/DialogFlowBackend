@@ -52,10 +52,10 @@ from flask import Flask
 from flask_assistant import Assistant, ask
 
 app = Flask(__name__)
-assist = Assistant(app)
+assist = Assistant(app, route='/')
 
 
-@assist.action('Demo')
+@assist.action('test')
 def hello_world():
     speech = 'Microphone check 1, 2 what is this?'
     return ask(speech)
