@@ -48,6 +48,7 @@
 #     Application.run(Settings.instance().FLASK_HOST, Settings.instance().FLASK_PORT)
 #
 
+import logging
 import os
 
 from flask import Flask
@@ -59,7 +60,7 @@ assist = Assistant(app, route='/')
 logging.getLogger('flask_assistant').setLevel(logging.DEBUG)
 
 
-@assist.action('test')
+@assist.action('prueba')
 def hello_world():
     speech = 'Microphone check 1, 2 what is this?'
     print(speech)
