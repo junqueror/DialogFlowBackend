@@ -8,11 +8,11 @@ from API.apiModels import ApiModels
 from DataBase.dbController import DbController
 
 
-@FlaskWrapper.Namespaces.dialogflow.route('/')
+@FlaskWrapper.Namespaces.dialogflow.route('/webhook')
 class WebHookResource(Resource):
 
     # POST
-    @FlaskWrapper.Api.doc('POST for creating a new article')
+    @FlaskWrapper.Api.doc('POST for DialogFlow requests')
     # @FlaskWrapper.Api.expect(ApiModels.NewArticleModel)
     # @FlaskWrapper.Api.marshal_with(ApiModels.ArticleResponseModel)
     @FlaskWrapper.Api.response(200, 'Success')
@@ -40,4 +40,4 @@ class WebHookResource(Resource):
             # Response parameters
             errorMessage = 'There was an issue on DialogFlow WebHook'
 
-        return requestData
+        return succeed
