@@ -1,3 +1,5 @@
+import logging
+
 from flask import Flask, Blueprint
 from flask_assistant import Assistant
 from flask_cors import CORS
@@ -24,6 +26,7 @@ class FlaskWrapper:
         # Set the Flask configuration
         self.app.config.from_object(config_class)
 
+        logging.getLogger('flask_assistant').setLevel(logging.DEBUG)
         FlaskWrapper.Assistant.init_app(self.app)
 
         # Api configuration
@@ -56,3 +59,16 @@ class FlaskWrapper:
     def getTestClient(self):
         return self.app.test_client()
 
+
+@FlaskWrapper.Assistant.action('test')
+def test(testParam):
+    print('In test resource')
+
+    if testParam == 'test':
+        msg = 'Has escrito "test"'
+    elif testParam == 'prueba':
+        msg = 'Has escrito "prueba"'
+    else:
+        msg = 'Has escrito  otra cosa'
+
+    return ask(msg)
