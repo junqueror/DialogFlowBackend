@@ -34,6 +34,7 @@ class Settings:
 
         # DialogFlow
         DEV_ACCES_TOKEN = 'c87709891561448daca17fda76f1e491'
+        ASSIST_ACTIONS_ON_GOOGLE = True
 
         def __init__(self):
             Settings.instance().FlaskBaseConfig.DEBUG = Settings.instance().FLASK_DEBUG

@@ -11,7 +11,7 @@ class FlaskWrapper:
     Api = Api(version='1.0', title='Flask API', description='API with basic structure')
 
     # Create assistant
-    Assistant = Assistant(route='/')
+    Assistant = Assistant(route='/assistant')
 
     # API namespaces
     class Namespaces:
@@ -51,15 +51,6 @@ class FlaskWrapper:
 
         return bluePrint  # The API bluePrint
 
-    # # Assistant blueprint definition
-    # def _GetDialogFlowBlueprint(self):
-    #     # Register blueprints and namespaces in the api
-    #     bluePrint = Blueprint('Dialogflow', __name__, url_prefix='/dialogflow/assistant')
-    #
-    #     # Register blueprint in the assistant
-    #     FlaskWrapper.Assistant.init_blueprint(bluePrint)
-    #
-    #     return bluePrint  # The API bluePrint
 
     # Return a Flask client for testing
     def getTestClient(self):
