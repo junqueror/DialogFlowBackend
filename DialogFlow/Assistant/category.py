@@ -1,13 +1,12 @@
 from flask_assistant import ask
-
-from API.flaskWrapper import FlaskWrapper
+from DialogFlow.dialogflowWrapper import DialogFlowWrapper
 
 
 class Category():
 
     # Intents
 
-    @FlaskWrapper.Assistant.action('sp.category>range')
+    @DialogFlowWrapper.Assistant.action('sp.category>range')
     def test(testParam):
         response = ask(
             'Lo primero es elegir la gama de smartphone que buscamos. Ten encuenta que de esta decisión depende bastante el precio, por lo que te recomiendo que elijas de acuerdo a tus necesidades reales. No queremos gastar dinero en algo que no necesitamos!').build_carousel()

@@ -1,12 +1,10 @@
 from flask_assistant import ask
-from flask_restplus import Resource
-
-from API.flaskWrapper import FlaskWrapper
+from DialogFlow.dialogflowWrapper import DialogFlowWrapper
 
 
-class TestResource(Resource):
+class TestResource():
 
-    @FlaskWrapper.Assistant.action('test')
+    @DialogFlowWrapper.Assistant.action('test')
     def test(testParam):
         print('In test resource')
 

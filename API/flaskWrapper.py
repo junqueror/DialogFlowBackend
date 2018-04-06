@@ -1,9 +1,9 @@
 import logging
 from flask import Flask, Blueprint
-from flask_assistant import Assistant
 from flask_cors import CORS
 from flask_restplus import Api
 from flask_restplus.namespace import Namespace
+from DialogFlow.dialogflowWrapper import DialogFlowWrapper
 from DialogFlow.Assistant.test import TestResource
 from DialogFlow.Assistant.category import Category
 
@@ -12,9 +12,6 @@ from DialogFlow.Assistant.category import Category
 class FlaskWrapper:
     # Create api
     Api = Api(version='1.0', title='Flask API', description='API with basic structure')
-
-    # Create assistant
-    Assistant = Assistant(route='/assistant')
 
     # API namespaces
     class Namespaces:
@@ -39,7 +36,7 @@ class FlaskWrapper:
 
     def _initAssistant(self):
         logging.getLogger('flask_assistant').setLevel(logging.DEBUG)
-        FlaskWrapper.Assistant.init_app(self.app)
+        DialogFlowWrapper.Assistant.init_app(self.app)
 
     # API blueprint definition
     def _getApiBlueprint(self):
