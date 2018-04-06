@@ -1,7 +1,7 @@
 import logging
 
 from flask import Flask, Blueprint
-from flask_assistant import Assistant, ask
+from flask_assistant import Assistant
 from flask_cors import CORS
 from flask_restplus import Api
 from flask_restplus.namespace import Namespace
@@ -26,20 +26,19 @@ class FlaskWrapper:
         # Set the Flask configuration
         self.app.config.from_object(config_class)
 
-        logging.getLogger('flask_assistant').setLevel(logging.DEBUG)
-        FlaskWrapper.Assistant.init_app(self.app)
+        # DialogFlow Assistant configuration
+        self._initAssistant()
 
         # Api configuration
         apiBlueprint = self._GetApiBlueprint()
         self.app.register_blueprint(apiBlueprint)
 
-        # # DialogFlow Assistant configuration
-        # assistantBlueprint = self._GetDialogFlowBlueprint()
-        # self.app.register_blueprint(assistantBlueprint)
-
         # CORS
         CORS(self.app)  # Initialize CORS on the application
 
+    def _initAssistant(self):
+        logging.getLogger('flask_assistant').setLevel(logging.DEBUG)
+        FlaskWrapper.Assistant.init_app(self.app)
 
     # API blueprint definition
     def _GetApiBlueprint(self):
@@ -54,21 +53,7 @@ class FlaskWrapper:
 
         return bluePrint  # The API bluePrint
 
-
     # Return a Flask client for testing
     def getTestClient(self):
         return self.app.test_client()
 
-
-@FlaskWrapper.Assistant.action('test')
-def test(testParam):
-    print('In test resource')
-
-    if testParam == 'test':
-        msg = 'Has escrito "test"'
-    elif testParam == 'prueba':
-        msg = 'Has escrito "prueba"'
-    else:
-        msg = 'Has escrito  otra cosa'
-
-    return ask(msg)

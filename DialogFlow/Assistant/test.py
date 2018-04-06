@@ -7,8 +7,7 @@ from API.flaskWrapper import FlaskWrapper
 class TestResource(Resource):
 
     @FlaskWrapper.Assistant.action('test')
-    def test(self, testParam):
-
+    def test(testParam):
         print('In test resource')
 
         if testParam == 'test':
@@ -16,6 +15,6 @@ class TestResource(Resource):
         elif testParam == 'prueba':
             msg = 'Has escrito "prueba"'
         else:
-            msg = 'Has escrito  otra cosa'
+            msg = 'Has escrito otra cosa'
 
         return ask(msg)
