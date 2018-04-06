@@ -30,7 +30,7 @@ class FlaskWrapper:
         self._initAssistant()
 
         # Api configuration
-        apiBlueprint = self._GetApiBlueprint()
+        apiBlueprint = self._getApiBlueprint()
         self.app.register_blueprint(apiBlueprint)
 
         # CORS
@@ -41,7 +41,7 @@ class FlaskWrapper:
         FlaskWrapper.Assistant.init_app(self.app)
 
     # API blueprint definition
-    def _GetApiBlueprint(self):
+    def _getApiBlueprint(self):
 
         FlaskWrapper.Api.add_namespace(FlaskWrapper.Namespaces.dialogflow, path='/dialogflow')
 
