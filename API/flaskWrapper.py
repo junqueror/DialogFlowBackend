@@ -1,10 +1,11 @@
 import logging
-
 from flask import Flask, Blueprint
 from flask_assistant import Assistant
 from flask_cors import CORS
 from flask_restplus import Api
 from flask_restplus.namespace import Namespace
+from DialogFlow.Assistant.test import TestResource
+from DialogFlow.Assistant.category import Category
 
 
 # Class to instantiate the api and its models
