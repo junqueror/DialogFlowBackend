@@ -1,7 +1,7 @@
 import logging
 
 from flask import Flask, Blueprint
-from flask_assistant import Assistant
+from flask_assistant import Assistant, ask
 from flask_cors import CORS
 from flask_restplus import Api
 from flask_restplus.namespace import Namespace
