@@ -1,6 +1,5 @@
 import logging
 from DataBase.DataModels import *
-from DataBase.Enums import *
 
 
 # Class to insert test data in the database
