@@ -13,17 +13,31 @@
 #  Events:
 #    - event1              # adds a triggerable event named 'event1' to the intent
 
-
-
 sp.category>range:
   UserSays:
-  - 
-  - 
+  - Gama baja
+  - Gama media
+  - Gama alta
+  - Gama premium
   Annotations:
-  - 
-  - 
+  - smartphoneCategory: Gama baja
+  - smartphoneCategory: Gama media
+  - smartphoneCategory: Gama alta
+  - smartphoneCategory: Gama premium
   Events:
-  - 
+  - askRange
+sp.range>screen:
+  UserSays:
+  - gama baja
+  - gama media
+  - gama alta
+  - gama premium
+  Annotations:
+  - smartphoneScreen: pantalla pequeña
+  - smartphoneScreen: pantalla mediana
+  - smartphoneScreen: pantalla grande
+  Events:
+  - askScreen
 smartphone:
   UserSays:
   - "Muéstrame el Samsung S9"

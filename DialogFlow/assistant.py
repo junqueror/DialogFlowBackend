@@ -1,4 +1,5 @@
 import logging
+import random
 from flask_assistant import Assistant, ask
 from Application.flaskWrapper import FlaskWrapper
 from DataBase.dbController import DbController
@@ -13,37 +14,35 @@ Assistant = Assistant(app=FlaskWrapper.App, route='/assistant')
 
 @Assistant.action('sp.category>range')
 def askRange():
-    response = ask(
-        'Lo primero es elegir la gama de smartphone que buscamos. Ten encuenta que de esta decisión depende bastante el precio, por lo que te recomiendo que elijas de acuerdo a tus necesidades reales. No queremos gastar dinero en algo que no necesitamos!').build_carousel()
-    response.add_item(title='Gama baja', key='Gama baja',
-                      description='Estos smartphones se centran en tener un precio muy reducido, a costa de ofrecer solo funcionalidades básicas. Si buscas un móvil solo para hablar por teléfono, chatear, navegación web, con una pantalla y dimensiones contenidas y sencillez de uso, ésta es tu opción.')
-    response.add_item(title='Gama media', key='Gama media',
-                      description='Smartphones con un buen rendimiento en la mayoría de las funciones habituales. Mejoran en cámara, pantalla y fluidez a los terminales de gama baja. Si buscas calidad-precio en términos generales es la mejor opción, pero si quieres utilizar muchas aplicacciones simultáneamente y jugar de vez en cuando tal vez debas elegir una gama superior.')
-    response.add_item(title='Gama alta', key='Gama alta',
-                      description='Smartphones con un buen rendimiento en todos los aspectos. Cuentan con mejores procesadores y mayor cantidad de memoria, lo que les permite utilizar varias aplicaciones simultáneamente y ejecutar juegos con buena fluidez. Suelen contar con cámara de altas prestaciones y una pantalla de mejor calidad y resolución. Por contra, elevan su precio respecto a las gamas previas.')
-    response.add_item(title='Gama premium', key='Gama premium',
-                      description='Los mejores smartphones del mercado. Los buques insignia de cada una de las marcas. Cuentan con las últimas tecnologías y destacan en prácticamente todos los aspectos. La mejor opción si haces un uso intensivo del móvil, juegas, utilizas todas las funcionalidades que puede ofrecerte, siempre que quieras y puedas pagar un precio más elevado.')
+    basicResponses = ['¿Qué categoría de móvil estás buscando?',
+                      '¿Qué rango de SmartPhones te interesa?',
+                      'Elije una de las siguientes gamas para poder empezar',
+                      'Lo primero es elegir la gama de SmartPhones que buscamos. Ten encuenta que de esta decisión depende bastante el precio, por lo que te recomiendo que elijas de acuerdo a tus necesidades reales. No queremos gastar dinero en algo que no necesitamos!']
+    ranges = DbController.instance().getAll(Range)
+    response = ask(random.choice(basicResponses)).build_carousel()
 
+    for range in ranges:
+        response.add_item(title=range.name, key=range.name, description=range.description)
     return response
 
-# @Assistant.action(intent_name='test')
-# def test(testParam=''):
-#     print('In test resource')
-#
-#     if testParam == 'test':
-#         msg = 'Has escrito "test"'
-#     elif testParam == 'prueba':
-#         msg = 'Has escrito "prueba"'
-#     else:
-#         msg = 'Has escrito otra cosa'
-#
-#     return ask(msg)
 
+@Assistant.action('sp.range>screen')
+def askScreen(smartphoneRange):
+    basicResponses = [
+        'Vamos a empezar por las dimensiones del SmartPhone, que dependen principalmente del tamaño de pantalla.',
+        'Las dimensiones del SmartPhone determinan su tamaño. ¿Qué tamaño de pantalla estás buscando?']
+    range = DbController.instance().getOneByName(Range, smartphoneRange)
+
+    response = ask(random.choice(basicResponses)).build_carousel()
+    for screen in range.screens:
+        response.add_item(title=screen.name, key=screen.name, description=screen.description)
+    return response
 
 @Assistant.action('smartphone')
 def showSmartphoneCard(smartphoneBrand, smartphoneName):
-    smartphone = DbController.instance().getOneByBrandAndName(SmartPhone, smartphoneBrand, smartphoneName)
-    response = ask('Aquí lo tienes:').build_carousel()
+    smartphone = DbController.instance().getOneByCompanyAndName(SmartPhone, smartphoneBrand, smartphoneName)
+
+    response = ask('Aquí lo tienes:')
     response.card(title="{0} {1}".format(smartphone.company, smartphone.name),
                   link=smartphone.officialURL,
                   linkTitle='Web oficial',
@@ -51,13 +50,15 @@ def showSmartphoneCard(smartphoneBrand, smartphoneName):
     return response
 
 
+# Prompts
+
 @Assistant.prompt_for('smartphoneName', intent_name='smartphone')
-def prompt_smartphoneName(smartphoneName):
+def promptSmartphoneName(smartphoneName):
     response = "¿Podrías decirme el nombre del teléfono que estás buscando?"
     return ask(response)
 
 
 @Assistant.prompt_for('smartphoneBrand', intent_name='smartphone')
-def prompt_smartphoneRange(smartphoneBrand):
-    response = "¿Podrías decirme la marca del smartphone que estás buscando?"
+def promptSmartphoneRange(smartphoneBrand):
+    response = "¿Cuál la marca del smartphone que estás buscando?"
     return ask(response)

@@ -14,7 +14,15 @@
 #  - soda: ['pop', 'coke']
 
 
-
+smartphoneCategory:
+ - Gama baja: ['gama baja', 'baja']
+ - Gama media: ['gama media', 'media']
+ - Gama alta: ['gama alta', 'alta']
+ - Gama premium: ['gama premium', 'premium']
+# smartphoneScreen:
+#  - Pantalla pequeña: ['pantalla pequeña', 'pequeña']
+#  - Pantalla mediana: ['pantalla mediana', 'mediana']
+#  - Pantalla grande: ['pantalla grande', 'grande', 'phablet']
 smartphoneBrand:
  - Samsung: ['samsung']
  - LG: ['lg']
@@ -26,3 +34,4 @@ smartphoneName:
  - Pixel 2: ['pixel 2']
  - Xperia XZ1 Compact: ['xperia xz1 compact']
  - Pixel 2: ['pixel 2']
+

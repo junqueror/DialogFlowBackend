@@ -1,5 +1,40 @@
 [
     {
+      "name": "smartphoneCategory",
+      "entries": [
+        {
+          "value": "Gama baja",
+          "synonyms": [
+            "gama baja",
+            "baja"
+          ]
+        },
+        {
+          "value": "Gama media",
+          "synonyms": [
+            "gama media",
+            "media"
+          ]
+        },
+        {
+          "value": "Gama alta",
+          "synonyms": [
+            "gama alta",
+            "alta"
+          ]
+        },
+        {
+          "value": "Gama premium",
+          "synonyms": [
+            "gama premium",
+            "premium"
+          ]
+        }
+      ],
+      "isEnum": null,
+      "id": "f2311443-4d0c-4112-9451-153303b56199"
+    },
+  {
         "name": "smartphoneBrand",
         "entries": [
             {

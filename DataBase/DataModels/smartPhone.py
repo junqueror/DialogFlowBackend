@@ -16,11 +16,6 @@ class SmartPhone(DbController.instance().db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String, nullable=False)
     company = Column(String, nullable=False)
-    range = Column(String, ENUM('Baja', 'Media', 'Alta', 'Premium',
-                                name='range',
-                                schema=Settings.instance().DATABASE_SCHEMA,
-                                create_type=True),
-                   nullable=False)
     size = Column(String)
     weight = Column(String)
     screenSize = Column(String)
@@ -38,6 +33,8 @@ class SmartPhone(DbController.instance().db.Model):
     image = Column(String)
 
     # Relationships
+    rangeId = Column(Integer, ForeignKey(Settings.instance().DATABASE_SCHEMA + '.ranges.id', ondelete='CASCADE'),
+                     nullable=False)
 
     # Children
     affiliateLinks = relationship("AffiliateLink", uselist=True, lazy=True, passive_deletes=True)
