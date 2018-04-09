@@ -42,9 +42,15 @@ def askRange():
 
 @Assistant.action('smartphone')
 def showSmartphoneCard(smartphoneBrand, smartphoneName):
-    smartphone = DbController.getOneByBrandAndName(SmartPhone, smartphoneBrand, smartphoneName)
+    smartphone = DbController.instance().getOneByBrandAndName(SmartPhone, smartphoneBrand, smartphoneName)
 
     response = ask('Aquí lo tienes:').build_carousel()
     response.card(smartphone.getCard())
 
     return response
+
+
+@Assistant.prompt_for('smartphoneRange', intent_name='smartphone')
+def prompt_smartphoneRange(smartphoneRange):
+    response = "¿Podrías decirme el nombre del teéfono que estás buscando?"
+    return ask(response)
