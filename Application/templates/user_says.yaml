@@ -20,10 +20,10 @@ sp.category>range:
   - Gama alta
   - Gama premium
   Annotations:
-  - smartphoneCategory: Gama baja
-  - smartphoneCategory: Gama media
-  - smartphoneCategory: Gama alta
-  - smartphoneCategory: Gama premium
+  - smartphoneRange: Gama baja
+  - smartphoneRange: Gama media
+  - smartphoneRange: Gama alta
+  - smartphoneRange: Gama premium
   Events:
   - askRange
 sp.range>screen:

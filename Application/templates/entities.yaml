@@ -14,7 +14,7 @@
 #  - soda: ['pop', 'coke']
 
 
-smartphoneCategory:
+smartphoneRange:
  - Gama baja: ['gama baja', 'baja']
  - Gama media: ['gama media', 'media']
  - Gama alta: ['gama alta', 'alta']

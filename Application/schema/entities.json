@@ -1,6 +1,6 @@
 [
     {
-      "name": "smartphoneCategory",
+      "name": "smartphoneRange",
       "entries": [
         {
           "value": "Gama baja",
@@ -32,7 +32,7 @@
         }
       ],
       "isEnum": null,
-      "id": "f2311443-4d0c-4112-9451-153303b56199"
+      "id": "3ae20b5d-e6c0-400a-ba8d-ed6b4eb1f62a"
     },
   {
         "name": "smartphoneBrand",
