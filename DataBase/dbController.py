@@ -19,7 +19,7 @@ class DbController(DbWrapper):
         return article
 
     def getOneByBrandAndName(self, model, company, name):
-        article = self._db.session.query(model).filter(model.brand.like(company)).filter(model.name.like(name)).one()
+        article = self._db.session.query(model).filter(model.company.like(company)).filter(model.name.like(name)).one()
         return article
 
     def getAll(self, model):
