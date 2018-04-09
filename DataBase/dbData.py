@@ -143,4 +143,8 @@ class DbData:
             db.session.add(smartphone3)
             db.session.add(smartphone4)
             db.session.add(smartphone5)
+            db.session.add(eCommerce1)
+            db.session.add(eCommerce2)
+            db.session.add(affiliateLink1)
+            db.session.add(affiliateLink2)
             db.session.commit()
