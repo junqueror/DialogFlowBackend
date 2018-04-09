@@ -50,7 +50,13 @@ def showSmartphoneCard(smartphoneBrand, smartphoneName):
     return response
 
 
-@Assistant.prompt_for('smartphoneRange', intent_name='smartphone')
-def prompt_smartphoneRange(smartphoneRange):
+@Assistant.prompt_for('smartphoneName', intent_name='smartphone')
+def prompt_smartphoneName(smartphoneName):
     response = "¿Podrías decirme el nombre del teléfono que estás buscando?"
+    return ask(response)
+
+
+@Assistant.prompt_for('smartphoneBrand', intent_name='smartphone')
+def prompt_smartphoneRange(smartphoneBrand):
+    response = "¿Podrías decirme la marca del smartphone que estás buscando?"
     return ask(response)
