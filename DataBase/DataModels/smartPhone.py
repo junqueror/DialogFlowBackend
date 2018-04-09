@@ -43,8 +43,8 @@ class SmartPhone(DbController.instance().db.Model):
     affiliateLinks = relationship("AffiliateLink", uselist=True, lazy=True, passive_deletes=True)
 
     # Properties
-    avgPrice = column_property(cast(select([func.avg(AffiliateLink.price)]).where(AffiliateLink.smartphoneId == id)
-                                    .correlate_except(AffiliateLink), Integer))
+    avgPrice = column_property(cast([func.avg(AffiliateLink.price)]).where(AffiliateLink.smartphoneId == id)
+                               .correlate_except(AffiliateLink), Integer)
 
     # Methods
 
