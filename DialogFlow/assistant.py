@@ -44,10 +44,10 @@ def askRange():
 def showSmartphoneCard(smartphoneBrand, smartphoneName):
     smartphone = DbController.instance().getOneByBrandAndName(SmartPhone, smartphoneBrand, smartphoneName)
     response = ask('Aquí lo tienes:').build_carousel()
-    response.card(title=smartphone.name,
+    response.card(title="{0} {1}".format(smartphone.company, smartphone.name),
                   link=smartphone.officialURL,
                   linkTitle='Web oficial',
-                  text="Precio medio: s{0}".format(smartphone.avgPrice))
+                  text="Precio medio: {0!s}€".format(smartphone.avgPrice))
     return response
 
 
