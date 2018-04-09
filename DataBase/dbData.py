@@ -37,7 +37,7 @@ class DbData:
                                      OS='Android 8.0',
                                      extras='''micro-SD, NFC, carga rápida, carga inalámbrica, lector de huellas, escáner facial seguro, USB tipo C''',
                                      officialURL='http://www.samsung.com/es/smartphones/galaxy-s9/camera/?cid=es_ppc_ds_S9warm_GOOGLE_ES_IM_S9_Brand_Awareness_Exact_RLSA_Warm_AO%20Samsung%20IM%20Smartphones_Brand_kw=samsung%20s9$$',
-                                     imgURL='http://stg-images.samsung.com/is/image/samsung/p5/es/smartphones/galaxy-s9/gallery/s9plus_purple.png?$ORIGIN_PNG$'
+                                     image='http://stg-images.samsung.com/is/image/samsung/p5/es/smartphones/galaxy-s9/gallery/s9plus_purple.png?$ORIGIN_PNG$'
                                      )
 
             smartphone2 = SmartPhone(name='G6',
@@ -57,7 +57,7 @@ class DbData:
                                      OS='Android 7.1',
                                      extras='''micro-SD, NFC, carga rápida, lector de huellas, USB tipo C''',
                                      officialURL='http://www.lg.com/es/telefonos-moviles/lg-LGH870-black',
-                                     imgURL='https://images-na.ssl-images-amazon.com/images/I/81JyNh4wWuL._SL1500_.jpg'
+                                     image='https://images-na.ssl-images-amazon.com/images/I/81JyNh4wWuL._SL1500_.jpg'
                                      )
 
             smartphone3 = SmartPhone(name='Pixel 2',
@@ -77,7 +77,7 @@ class DbData:
                                      OS='Android 8.0',
                                      extras='''NFC, carga rápida, lector de huellas, USB tipo C''',
                                      officialURL='https://www.android.com/phones/google-pixel-2/',
-                                     imgURL='https://i.blogs.es/36d8db/pixel-2-black-_-white-front-and-back/450_1000.jpg'
+                                     image='https://i.blogs.es/36d8db/pixel-2-black-_-white-front-and-back/450_1000.jpg'
                                      )
 
             smartphone4 = SmartPhone(name='Xperia XZ1 Compact',
@@ -97,7 +97,7 @@ class DbData:
                                      OS='Android 8.0',
                                      extras='''micro-SD, NFC, carga rápida, lector de huellas, USB tipo C''',
                                      officialURL='',
-                                     imgURL='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdnslSefmaiohOgESwQC-jaJvXrKF4XIpXcx_qCZOfDF_SQAhm'
+                                     image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdnslSefmaiohOgESwQC-jaJvXrKF4XIpXcx_qCZOfDF_SQAhm'
                                      )
 
             smartphone5 = SmartPhone(name='S8',
@@ -117,7 +117,7 @@ class DbData:
                                      OS='Android 7.0',
                                      extras='''micro-SD, NFC, carga rápida, lector de huellas, USB tipo C''',
                                      officialURL='',
-                                     imgURL='https://d243u7pon29hni.cloudfront.net/imagesOnDemand/get?imagePath=/images/products/samsung-gals8-5-8p4g8n64gb-negro-1360792_l.png&width=480&height=480&quality=65&imgType=product'
+                                     image='https://d243u7pon29hni.cloudfront.net/imagesOnDemand/get?imagePath=/images/products/samsung-gals8-5-8p4g8n64gb-negro-1360792_l.png&width=480&height=480&quality=65&imgType=product'
                                      )
 
             eCommerce1 = Ecommerce(name='Amazon',

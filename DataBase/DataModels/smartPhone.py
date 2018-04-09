@@ -35,7 +35,7 @@ class SmartPhone(DbController.instance().db.Model):
     OS = Column(String)
     extras = Column(String)
     officialURL = Column(String)
-    imgURL = Column(String)
+    image = Column(String)
 
     # Relationships
 
@@ -54,7 +54,7 @@ class SmartPhone(DbController.instance().db.Model):
         return SmartPhone.name
 
     def getCard(self):
-        return Card(title=self.title, link=self.officialURL, linkTitle='Web oficial', text=self.extras)
+        return Card(title=self.name, link=self.officialURL, linkTitle='Web oficial', text=self.extras)
 
     def __repr__(self):
         return '<SmartPhone: {0}>'.format(self.id)
