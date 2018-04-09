@@ -52,5 +52,5 @@ def showSmartphoneCard(smartphoneBrand, smartphoneName):
 
 @Assistant.prompt_for('smartphoneRange', intent_name='smartphone')
 def prompt_smartphoneRange(smartphoneRange):
-    response = "¿Podrías decirme el nombre del teéfono que estás buscando?"
+    response = "¿Podrías decirme el nombre del teléfono que estás buscando?"
     return ask(response)
