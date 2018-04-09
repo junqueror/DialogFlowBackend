@@ -1,4 +1,4 @@
-from API.flaskWrapper import FlaskWrapper
+from Application.flaskWrapper import FlaskWrapper
 from flask_restplus import fields
 
 class ApiModels:

@@ -3,15 +3,16 @@ from flask import Flask, Blueprint
 from flask_cors import CORS
 from flask_restplus import Api
 from flask_restplus.namespace import Namespace
-from DialogFlow.dialogflowWrapper import DialogFlowWrapper
-from DialogFlow.Assistant.test import TestResource
-from DialogFlow.Assistant.category import Category
+from Utils.singleton import Singleton
 
 
 # Class to instantiate the api and its models
 class FlaskWrapper:
+
     # Create api
     Api = Api(version='1.0', title='Flask API', description='API with basic structure')
+    # Create a Flask WSGI application
+    App = Flask(__name__)
 
     # API namespaces
     class Namespaces:
@@ -19,24 +20,17 @@ class FlaskWrapper:
 
     # Initialize the instance of App
     def __init__(self, config_class):
-        # Create a Flask WSGI application
-        self.app = Flask(__name__)
-        # Set the Flask configuration
-        self.app.config.from_object(config_class)
 
-        # DialogFlow Assistant configuration
-        self._initAssistant()
+        # Set the Flask configuration
+        FlaskWrapper.App.config.from_object(config_class)
 
         # Api configuration
         apiBlueprint = self._getApiBlueprint()
-        self.app.register_blueprint(apiBlueprint)
+        FlaskWrapper.App.register_blueprint(apiBlueprint)
 
         # CORS
-        CORS(self.app)  # Initialize CORS on the application
+        CORS(FlaskWrapper.App)  # Initialize CORS on the application
 
-    def _initAssistant(self):
-        logging.getLogger('flask_assistant').setLevel(logging.DEBUG)
-        DialogFlowWrapper.Assistant.init_app(self.app)
 
     # API blueprint definition
     def _getApiBlueprint(self):
@@ -53,5 +47,5 @@ class FlaskWrapper:
 
     # Return a Flask client for testing
     def getTestClient(self):
-        return self.app.test_client()
+        return FlaskWrapper.App.test_client()
 

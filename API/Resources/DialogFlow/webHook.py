@@ -3,9 +3,7 @@ import traceback
 from pprint import pprint
 from flask import request
 from flask_restplus import Resource
-from API.flaskWrapper import FlaskWrapper
-from API.apiModels import ApiModels
-from DataBase.dbController import DbController
+from Application.flaskWrapper import FlaskWrapper
 
 
 @FlaskWrapper.Namespaces.dialogflow.route('/webhook')

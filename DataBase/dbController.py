@@ -1,3 +1,4 @@
+from sqlalchemy import and_
 from DataBase.dbWrapper import DbWrapper
 from Utils.singleton import Singleton
 
@@ -15,6 +16,10 @@ class DbController(DbWrapper):
 
     def getOne(self, model, ID):
         article = self._db.session.query(model).filter_by(id=ID).one()
+        return article
+
+    def getOneByBrandAndName(self, model, brand, name):
+        article = self._db.session.query(model).filter(model.brand.like(brand)).filter(model.name.like(name)).one()
         return article
 
     def getAll(self, model):

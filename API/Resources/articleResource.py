@@ -2,7 +2,7 @@ import logging
 import traceback
 from flask import request
 from flask_restplus import Resource
-from API.flaskWrapper import FlaskWrapper
+from Application.flaskWrapper import FlaskWrapper
 from API.apiModels import ApiModels
 from DataBase.dbController import DbController
 from DataBase.DataModels.article import Article

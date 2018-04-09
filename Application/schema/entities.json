@@ -1,0 +1,70 @@
+[
+    {
+        "name": "smartphoneBrand",
+        "entries": [
+            {
+                "value": "Samsung",
+                "synonyms": [
+                    "samsung"
+                ]
+            },
+            {
+                "value": "LG",
+                "synonyms": [
+                    "lg"
+                ]
+            },
+            {
+                "value": "Sony",
+                "synonyms": [
+                    "sony"
+                ]
+            },
+            {
+                "value": "Google",
+                "synonyms": [
+                    "google"
+                ]
+            }
+        ],
+        "isEnum": null,
+        "id": "41242370-50bd-4349-b861-25d6d4f4b0c5"
+    },
+    {
+        "name": "smartphoneName",
+        "entries": [
+            {
+                "value": "S9",
+                "synonyms": [
+                    "s9"
+                ]
+            },
+            {
+                "value": "S8",
+                "synonyms": [
+                    "s8"
+                ]
+            },
+            {
+                "value": "Pixel 2",
+                "synonyms": [
+                    "pixel 2"
+                ]
+            },
+            {
+                "value": "Xperia XZ1 Compact",
+                "synonyms": [
+                    "xperia xz1 compact"
+                ]
+            },
+            {
+                "value": "Pixel 2",
+                "synonyms": [
+                    "pixel 2"
+                ]
+            }
+        ],
+        "isEnum": null,
+        "id": "703fec72-dd57-4ba9-9dbe-3542c2841297"
+    }
+]

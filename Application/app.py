@@ -1,5 +1,5 @@
 from Application.settings import Settings
-from API.flaskWrapper import FlaskWrapper
+from Application.flaskWrapper import FlaskWrapper
 from DataBase.dbController import DbController
 
 
@@ -17,12 +17,12 @@ class App:
             print("The Flask application is running on {0} (Press CTRL+C to quit)".format(url))
 
         # DataBase
-        DbController.instance().initApp(self.flask.app)  # Initialize DB on the application
+        DbController.instance().initApp(self.flask.App)  # Initialize DB on the application
 
         if Settings.instance().DATABASE_REBUILT:
-            DbController.instance().createTables(self.flask.app)
+            DbController.instance().createTables(self.flask.App)
         if Settings.instance().DATABASE_TEST_DATA:
-            DbController.instance().createTestData(self.flask.app)  # Add test data into de DataBase
+            DbController.instance().createTestData(self.flask.App)  # Add test data into de DataBase
 
         # Flask
-        self.flask.app.run(flaskHost, port=flaskPort, threaded=True)
+        self.flask.App.run(flaskHost, port=flaskPort, threaded=True)

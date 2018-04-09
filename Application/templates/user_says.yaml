@@ -1,0 +1,40 @@
+# Template for defining UserSays examples
+
+# give-color-intent:
+
+#  UserSays:
+#    - My color is blue
+#    - red is my favorite color
+
+#  Annotations:
+#    - blue: sys.color     # maps param value -> entity
+#    - red: sys.color
+
+#  Events:
+#    - event1              # adds a triggerable event named 'event1' to the intent
+
+
+
+sp.category>range:
+  UserSays:
+  - 
+  - 
+  Annotations:
+  - 
+  - 
+  Events:
+  - 
+smartphone:
+  UserSays:
+  - "Muéstrame el Samsung S9"
+  - "Quiero saber más sobre el lg g6"
+  - Hablame sobre el sony xperia zx1 compact
+  Annotations:
+  - S9: smartphoneName
+  - g6: smartphoneName
+  - lg: smartphoneBrand
+  - Samsung: smartphoneBrand
+  - Sony: smartphoneBrand
+  - xperia zx1 compact: smartphoneName
+  Events:
+  - 
