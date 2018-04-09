@@ -43,10 +43,11 @@ def askRange():
 @Assistant.action('smartphone')
 def showSmartphoneCard(smartphoneBrand, smartphoneName):
     smartphone = DbController.instance().getOneByBrandAndName(SmartPhone, smartphoneBrand, smartphoneName)
-
     response = ask('Aquí lo tienes:').build_carousel()
-    response.card(smartphone.getCard())
-
+    response.card(title=smartphone.name,
+                  link=smartphone.officialURL,
+                  linkTitle='Web oficial',
+                  text="Precio medio: s{0}".format(smartphone.avgPrice))
     return response
 
 

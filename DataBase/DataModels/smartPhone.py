@@ -53,8 +53,9 @@ class SmartPhone(DbController.instance().db.Model):
     def getMainField():
         return SmartPhone.name
 
-    def getCard(self):
-        return Card(title=self.name, link=self.officialURL, linkTitle='Web oficial', text=self.extras)
+    def getResponseCard(self):
+        return Card(title=self.name, link=self.officialURL, linkTitle='Web oficial',
+                    text="Precio medio: s{0}".format(self.avgPrice))
 
     def __repr__(self):
         return '<SmartPhone: {0}>'.format(self.id)
