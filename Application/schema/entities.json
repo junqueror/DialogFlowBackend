@@ -1,5 +1,22 @@
 [
     {
+      "name": "productCategory",
+      "entries": [
+        {
+          "value": "Smartphone",
+          "synonyms": [
+            "smartphone",
+            "phone",
+            "m\u00c3\u00b3vil",
+            "terminal m\u00c3\u00b3vil",
+            "tel\u00c3\u00a9fono"
+          ]
+        }
+      ],
+      "isEnum": null,
+      "id": "bbedc427-b382-42cf-ab39-b8abfd8b29fe"
+    },
+  {
         "name": "smartphoneBrand",
         "entries": [
             {

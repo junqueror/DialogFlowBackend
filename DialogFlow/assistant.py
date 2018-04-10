@@ -1,6 +1,6 @@
 import logging
 import random
-from flask_assistant import Assistant, ask
+from flask_assistant import Assistant, ask, event
 from Application.flaskWrapper import FlaskWrapper
 from DataBase.dbController import DbController
 from DataBase.DataModels import *
@@ -13,24 +13,40 @@ Assistant = Assistant(app=FlaskWrapper.App, route='/assistant')
 
 # Intents
 
-@Assistant.action('sp.category>range')
-def askRange():
-    basicResponses = ['¿Qué categoría de móvil estás buscando?',
-                      '¿Qué rango de SmartPhones te interesa?',
-                      'Elije una de las siguientes gamas para poder empezar',
-                      'Lo primero es elegir la gama de SmartPhones que buscamos. Ten encuenta que de esta decisión depende bastante el precio, por lo que te recomiendo que elijas de acuerdo a tus necesidades reales. No queremos gastar dinero en algo que no necesitamos!']
-    ranges = DbController.instance().getAll(Range)
+
+@Assistant.action('product.category')
+def askProductCategory():
+    basicResponses = ['¿Qué estás buscando?',
+                      '¿Qué te gustaría comprar?',
+                      '¿Qué tipo de producto te interesa?',
+                      'Dime una categoría de producto para empezar']
     response = ask(random.choice(basicResponses)).build_carousel()
 
-    for range in ranges:
-        response.add_item(title=range.name, key=range.name, description=range.description)
+    context_manager.add('smartphone')
+    return response
 
-    context_manager.add('sp.range')
+
+@Assistant.context('smartphone')
+@Assistant.action('product.category>sp.range')
+def askRange(productCategory):
+    if productCategory == 'smartphone':
+        basicResponses = ['¿Qué categoría de móvil estás buscando?',
+                          '¿Qué rango de SmartPhones te interesa?',
+                          'Elije una de las siguientes gamas para poder empezar',
+                          'Lo primero es elegir la gama de SmartPhones que buscamos. Ten encuenta que de esta decisión depende bastante el precio, por lo que te recomiendo que elijas de acuerdo a tus necesidades reales. No queremos gastar dinero en algo que no necesitamos!']
+        ranges = DbController.instance().getAll(Range)
+        response = event(event_name='askScreen', speech=random.choice(basicResponses)).build_carousel()
+
+        for range in ranges:
+            response.add_item(title=range.name, key=range.name, description=range.description)
+    else:
+        response = event(event_name='askProductCategory',
+                         speech='Lo siento, ahora mismo solo puedo ayudarte con la categoría de SmartPhones.')
 
     return response
 
 
-@Assistant.context('sp.range')
+@Assistant.context('smartphone')
 @Assistant.action('sp.range>screen')
 def askScreen(smartphoneRange):
     basicResponses = [
@@ -38,11 +54,9 @@ def askScreen(smartphoneRange):
         'Las dimensiones del SmartPhone determinan su tamaño. ¿Qué tamaño de pantalla estás buscando?']
     range = DbController.instance().getOneByName(Range, smartphoneRange)
 
-    response = ask(random.choice(basicResponses)).build_carousel()
+    response = event(event_name='askRAM', speech=random.choice(basicResponses)).build_carousel()
     for screen in range.screens:
         response.add_item(title=screen.name, key=screen.name, description=screen.description)
-
-    context_manager.add('sp.screen')
 
     return response
 

@@ -1,6 +1,6 @@
 [
     {
-        "name": "sp.category>range",
+        "name": "product.category",
         "auto": true,
         "contexts": [],
         "templates": [],
@@ -8,7 +8,8 @@
             {
                 "data": [
                     {
-                        "text": "Gama baja"
+                        "text": "Me gustar\u00c3\u00ada comprar",
+                        "userDefined": false
                     }
                 ],
                 "isTemplate": false,
@@ -17,7 +18,8 @@
             {
                 "data": [
                     {
-                        "text": "Gama media"
+                        "text": "Necesito informaci\u00c3\u00b3n",
+                        "userDefined": false
                     }
                 ],
                 "isTemplate": false,
@@ -26,16 +28,8 @@
             {
                 "data": [
                     {
-                        "text": "Gama alta"
-                    }
-                ],
-                "isTemplate": false,
-                "count": 0
-            },
-            {
-                "data": [
-                    {
-                        "text": "Gama premium"
+                        "text": "Buco informaci\u00c3\u00b3n sobre productos",
+                        "userDefined": false
                     }
                 ],
                 "isTemplate": false,
@@ -44,7 +38,7 @@
         ],
         "responses": [
             {
-                "action": "askRange",
+                "action": "askProductCategory",
                 "resetContexts": false,
                 "affectedContexts": [],
                 "parameters": [],
@@ -57,10 +51,42 @@
         "webhookForSlotFilling": true,
         "events": [
             {
-                "name": "askRange"
+                "name": "askCategory"
             }
         ],
-        "id": "9d6c297d-4a36-430e-b49d-2304020baa36"
+        "id": "d4ec9bff-8885-46d7-81d2-768bb5916b60"
+    },
+    {
+        "name": "product.category>sp.range",
+        "auto": true,
+        "contexts": [],
+        "templates": [],
+        "userSays": [],
+        "responses": [
+            {
+                "action": "askRange",
+                "resetContexts": false,
+                "affectedContexts": [],
+                "parameters": [
+                    {
+                        "name": "productCategory",
+                        "value": "$productCategory",
+                        "dataType": "@productCategory",
+                        "prompts": [],
+                        "required": true,
+                        "isList": false,
+                        "defaultValue": ""
+                    }
+                ],
+                "messages": []
+            }
+        ],
+        "priority": 500000,
+        "fallbackIntent": false,
+        "webhookUsed": true,
+        "webhookForSlotFilling": true,
+        "events": [],
+        "id": "ed51bad0-f5e0-487a-af9f-4a0047489c0f"
     },
     {
         "name": "sp.range>screen",

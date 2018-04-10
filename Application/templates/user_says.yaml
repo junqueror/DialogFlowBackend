@@ -15,6 +15,16 @@
 
 
 
+product.category:
+  UserSays:
+  - Me gustaría comprar
+  - Necesito información
+  - Buco información sobre productos
+  Annotations:
+  - 
+  - 
+  Events:
+  - askCategory
 sp.category>range:
   UserSays:
   - Gama baja
