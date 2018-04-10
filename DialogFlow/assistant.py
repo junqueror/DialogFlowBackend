@@ -11,25 +11,22 @@ logging.getLogger('flask_assistant').setLevel(logging.DEBUG)
 Assistant = Assistant(app=FlaskWrapper.App, route='/assistant')
 
 
-# Intents
-
-
-@Assistant.action('product.category')
+@Assistant.action('buy>product.category')
 def askProductCategory():
     basicResponses = ['¿Qué estás buscando?',
                       '¿Qué te gustaría comprar?',
                       '¿Qué tipo de producto te interesa?',
                       'Dime una categoría de producto para empezar']
-    response = ask(random.choice(basicResponses)).build_carousel()
+    response = event(event_name='askRange', speech=random.choice(basicResponses))
 
-    context_manager.add('smartphone')
     return response
 
-
-@Assistant.context('smartphone')
 @Assistant.action('product.category>sp.range')
 def askRange(productCategory):
+    context_manager.add(productCategory)
+
     if productCategory == 'smartphone':
+
         basicResponses = ['¿Qué categoría de móvil estás buscando?',
                           '¿Qué rango de SmartPhones te interesa?',
                           'Elije una de las siguientes gamas para poder empezar',

@@ -1,41 +1,10 @@
 [
     {
-        "name": "product.category",
+        "name": "buy>product.category",
         "auto": true,
         "contexts": [],
         "templates": [],
-        "userSays": [
-            {
-                "data": [
-                    {
-                        "text": "Me gustar\u00c3\u00ada comprar",
-                        "userDefined": false
-                    }
-                ],
-                "isTemplate": false,
-                "count": 0
-            },
-            {
-                "data": [
-                    {
-                        "text": "Necesito informaci\u00c3\u00b3n",
-                        "userDefined": false
-                    }
-                ],
-                "isTemplate": false,
-                "count": 0
-            },
-            {
-                "data": [
-                    {
-                        "text": "Buco informaci\u00c3\u00b3n sobre productos",
-                        "userDefined": false
-                    }
-                ],
-                "isTemplate": false,
-                "count": 0
-            }
-        ],
+        "userSays": [],
         "responses": [
             {
                 "action": "askProductCategory",
@@ -49,12 +18,8 @@
         "fallbackIntent": false,
         "webhookUsed": true,
         "webhookForSlotFilling": true,
-        "events": [
-            {
-                "name": "askCategory"
-            }
-        ],
-        "id": "d4ec9bff-8885-46d7-81d2-768bb5916b60"
+        "events": [],
+        "id": "02f81cdf-da40-4637-b252-049e56a10645"
     },
     {
         "name": "product.category>sp.range",
