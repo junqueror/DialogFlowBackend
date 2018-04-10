@@ -1,5 +1,115 @@
 [
     {
+        "name": "Default Welcome Intent",
+        "auto": true,
+        "contexts": [],
+        "templates": [],
+        "userSays": [
+            {
+                "data": [
+                    {
+                        "text": "Hola",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "holi",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "Buenos d\u00c3\u00adas",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "Buenas tardes",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "buenas",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "buenas noches",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "hey",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "hi",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            }
+        ],
+        "responses": [
+            {
+                "action": "sayHello",
+                "resetContexts": false,
+                "affectedContexts": [],
+                "parameters": [],
+                "messages": []
+            }
+        ],
+        "priority": 500000,
+        "fallbackIntent": false,
+        "webhookUsed": true,
+        "webhookForSlotFilling": true,
+        "events": [
+            {
+                "name": "sayHello"
+            },
+            {
+                "name": "askProductCategory"
+            }
+        ],
+        "id": "e24ca7a3-d7db-4d1c-af51-7faa0bdcce94"
+    },
+    {
         "name": "buy>product.category",
         "auto": true,
         "contexts": [],

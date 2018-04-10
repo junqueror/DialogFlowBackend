@@ -14,7 +14,22 @@
 #    - event1              # adds a triggerable event named 'event1' to the intent
 
 
-
+Default Welcome Intent:
+  UserSays:
+  - Hola
+  - holi
+  - Buenos días
+  - Buenas tardes
+  - buenas
+  - buenas noches
+  - hey
+  - hi
+  Annotations:
+  -
+  -
+  Events:
+  - sayHello
+  - askProductCategory
 product.category:
   UserSays:
   - Quiero hacer una compra
@@ -25,7 +40,7 @@ product.category:
   - 
   - 
   Events:
-  - askCategory
+  - askProductCategory
 sp.category>range:
   UserSays:
   - Gama baja
