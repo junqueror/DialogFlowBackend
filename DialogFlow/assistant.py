@@ -13,11 +13,13 @@ Assistant = Assistant(app=FlaskWrapper.App, route='/assistant')
 
 @Assistant.action('Default Welcome Intent')
 def sayHello():
+    print("inSayHello")
     basicResponses = ['¡Hola! 🤖 Mi nombre es Aleck y te voy a ayudar co tus compras!!',
                       '¡Hey! 🤖 Soy un asistente virtual y me encantaría ayudarte a elegir tus productos',
                       '¡Buenos días! 🤖 Soy Aleck, y soy  tu asistente virtual para compras online']
+    print("Before event")
     response = event(event_name='askProductCategory', speech=random.choice(basicResponses))
-
+    print("afterEvent")
     return response
 
 

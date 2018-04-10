@@ -99,11 +99,7 @@
         "fallbackIntent": false,
         "webhookUsed": true,
         "webhookForSlotFilling": true,
-        "events": [
-            {
-                "name": "sayHello"
-            }
-        ],
+        "events": [],
         "id": "e24ca7a3-d7db-4d1c-af51-7faa0bdcce94"
     },
     {
@@ -226,11 +222,7 @@
         "fallbackIntent": false,
         "webhookUsed": true,
         "webhookForSlotFilling": true,
-        "events": [
-            {
-                "name": "askScreen"
-            }
-        ],
+        "events": [],
         "id": "41e1f61d-e6af-4278-b22d-a9214ea4bdd7"
     },
     {

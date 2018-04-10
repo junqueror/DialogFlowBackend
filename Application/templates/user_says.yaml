@@ -28,7 +28,7 @@ Default Welcome Intent:
   -
   -
   Events:
-  - sayHello
+  -
 product.category:
   UserSays:
   - Quiero hacer una compra
@@ -39,7 +39,7 @@ product.category:
   - 
   - 
   Events:
-  - askProductCategory
+  -
 sp.category>range:
   UserSays:
   - Gama baja
@@ -52,7 +52,7 @@ sp.category>range:
   - smartphoneRange: Gama alta
   - smartphoneRange: Gama premium
   Events:
-  - askRange
+  -
 sp.range>screen:
   UserSays:
   - gama baja
@@ -64,7 +64,7 @@ sp.range>screen:
   - smartphoneScreen: pantalla mediana
   - smartphoneScreen: pantalla grande
   Events:
-  - askScreen
+  -
 smartphone:
   UserSays:
   - "Muéstrame el Samsung S9"
