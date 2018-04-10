@@ -28,7 +28,7 @@
             }
         ],
         "isEnum": null,
-        "id": "7185cc03-5479-4d2e-a3dd-3fb14f3a5bca"
+        "id": "41242370-50bd-4349-b861-25d6d4f4b0c5"
     },
     {
         "name": "smartphoneName",
@@ -65,41 +65,6 @@
             }
         ],
         "isEnum": null,
-        "id": "69471b0c-7f35-4167-baac-087a24f1cecb"
-    },
-    {
-        "name": "smartphoneRange",
-        "entries": [
-            {
-                "value": "Gama baja",
-                "synonyms": [
-                    "gama baja",
-                    "baja"
-                ]
-            },
-            {
-                "value": "Gama media",
-                "synonyms": [
-                    "gama media",
-                    "media"
-                ]
-            },
-            {
-                "value": "Gama alta",
-                "synonyms": [
-                    "gama alta",
-                    "alta"
-                ]
-            },
-            {
-                "value": "Gama premium",
-                "synonyms": [
-                    "gama premium",
-                    "premium"
-                ]
-            }
-        ],
-        "isEnum": null,
-        "id": "134958ad-6b95-4e32-bf8d-4fdc6f2ba0e5"
+        "id": "703fec72-dd57-4ba9-9dbe-3542c2841297"
     }
 ]

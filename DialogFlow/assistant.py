@@ -4,6 +4,7 @@ from flask_assistant import Assistant, ask
 from Application.flaskWrapper import FlaskWrapper
 from DataBase.dbController import DbController
 from DataBase.DataModels import *
+from flask_assistant import context_manager
 
 # Create assistant
 logging.getLogger('flask_assistant').setLevel(logging.DEBUG)
@@ -23,9 +24,13 @@ def askRange():
 
     for range in ranges:
         response.add_item(title=range.name, key=range.name, description=range.description)
+
+    context_manager.add('sp.range')
+
     return response
 
 
+@Assistant.context('sp.range')
 @Assistant.action('sp.range>screen')
 def askScreen(smartphoneRange):
     basicResponses = [
@@ -36,7 +41,11 @@ def askScreen(smartphoneRange):
     response = ask(random.choice(basicResponses)).build_carousel()
     for screen in range.screens:
         response.add_item(title=screen.name, key=screen.name, description=screen.description)
+
+    context_manager.add('sp.screen')
+
     return response
+
 
 @Assistant.action('smartphone')
 def showSmartphoneCard(smartphoneBrand, smartphoneName):
@@ -59,6 +68,12 @@ def promptSmartphoneName(smartphoneName):
 
 
 @Assistant.prompt_for('smartphoneBrand', intent_name='smartphone')
-def promptSmartphoneRange(smartphoneBrand):
+def promptSmartphoneBrand(smartphoneBrand):
     response = "¿Cuál la marca del smartphone que estás buscando?"
+    return ask(response)
+
+
+@Assistant.prompt_for('smartphoneRange', intent_name='sp.range>screen')
+def promptSmartphoneRange(smartphoneRange):
+    response = "¿Podrias decirme la gama de SmartPhone en la que estás interesado?"
     return ask(response)
