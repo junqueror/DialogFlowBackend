@@ -29,7 +29,6 @@ Default Welcome Intent:
   -
   Events:
   - sayHello
-  - askProductCategory
 product.category:
   UserSays:
   - Quiero hacer una compra

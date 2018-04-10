@@ -33,7 +33,6 @@ def askProductCategory():
 
 @Assistant.action('product.category>sp.range')
 def askRange(productCategory):
-    context_manager.add(productCategory)
 
     if productCategory == 'smartphone':
 
@@ -50,12 +49,15 @@ def askRange(productCategory):
         response = event(event_name='askProductCategory',
                          speech='Lo siento, ahora mismo solo puedo ayudarte con la categoría de SmartPhones.')
 
+    context_manager.add(productCategory)
+
     return response
 
 
 @Assistant.context('smartphone')
 @Assistant.action('sp.range>screen')
 def askScreen(smartphoneRange):
+
     basicResponses = [
         'Vamos a empezar por las dimensiones del SmartPhone, que dependen principalmente del tamaño de pantalla.',
         'Las dimensiones del SmartPhone determinan su tamaño. ¿Qué tamaño de pantalla estás buscando?']
@@ -64,6 +66,8 @@ def askScreen(smartphoneRange):
     response = event(event_name='askRAM', speech=random.choice(basicResponses)).build_carousel()
     for screen in range.screens:
         response.add_item(title=screen.name, key=screen.name, description=screen.description)
+
+    context_manager.add('smartphone')
 
     return response
 
@@ -77,6 +81,9 @@ def showSmartphoneCard(smartphoneBrand, smartphoneName):
                   link=smartphone.officialURL,
                   linkTitle='Web oficial',
                   text="Precio medio: {0!s}€".format(smartphone.avgPrice))
+
+    context_manager.add('smartphone')
+
     return response
 
 

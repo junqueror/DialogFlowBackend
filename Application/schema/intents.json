@@ -102,9 +102,6 @@
         "events": [
             {
                 "name": "sayHello"
-            },
-            {
-                "name": "askProductCategory"
             }
         ],
         "id": "e24ca7a3-d7db-4d1c-af51-7faa0bdcce94"
