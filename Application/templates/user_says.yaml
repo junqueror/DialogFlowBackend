@@ -29,7 +29,7 @@ Default Welcome Intent:
   -
   Events:
   -
-product.category:
+buy>product.category:
   UserSays:
   - Quiero hacer una compra
   - Me gustaría comprar
@@ -40,17 +40,15 @@ product.category:
   - 
   Events:
   -
-product.category>range:
+product.category>sp.range:
   UserSays:
-  - Gama baja
-  - Gama media
-  - Gama alta
-  - Gama premium
+  - un smartphone
+  - smartphones
+  - un móvil
   Annotations:
-  - smartphoneRange: Gama baja
-  - smartphoneRange: Gama media
-  - smartphoneRange: Gama alta
-  - smartphoneRange: Gama premium
+  - smartphone: productCategory
+  - smartphones: productCategory
+  - móvil: productCategory
   Events:
   -
 sp.range>screen:
@@ -60,9 +58,9 @@ sp.range>screen:
   - gama alta
   - gama premium
   Annotations:
-  - smartphoneScreen: pantalla pequeña
-  - smartphoneScreen: pantalla mediana
-  - smartphoneScreen: pantalla grande
+  - pantalla pequeña: smartphoneScreen
+  - pantalla mediana: smartphoneScreen
+  - antalla grande: smartphoneScreen
   Events:
   -
 smartphone:

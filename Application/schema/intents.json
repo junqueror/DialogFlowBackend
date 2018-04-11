@@ -107,7 +107,48 @@
         "auto": true,
         "contexts": [],
         "templates": [],
-        "userSays": [],
+        "userSays": [
+            {
+                "data": [
+                    {
+                        "text": "Quiero hacer una compra",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "Me gustar\u00c3\u00ada comprar",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "Necesito informaci\u00c3\u00b3n",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "Buco informaci\u00c3\u00b3n sobre productos",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            }
+        ],
         "responses": [
             {
                 "action": "askProductCategory",
@@ -129,7 +170,50 @@
         "auto": true,
         "contexts": [],
         "templates": [],
-        "userSays": [],
+        "userSays": [
+            {
+                "data": [
+                    {
+                        "text": "un "
+                    },
+                    {
+                        "text": "smartphone",
+                        "meta": "@productCategory",
+                        "alias": "productCategory",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "smartphones",
+                        "meta": "@productCategory",
+                        "alias": "productCategory",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "un "
+                    },
+                    {
+                        "text": "m\u00c3\u00b3vil",
+                        "meta": "@productCategory",
+                        "alias": "productCategory",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            }
+        ],
         "responses": [
             {
                 "action": "askRange",

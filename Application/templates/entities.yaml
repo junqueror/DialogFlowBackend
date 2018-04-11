@@ -16,7 +16,7 @@
 
 
 productCategory:
-- Smartphone: ['smartphone', 'phone', 'móvil', 'terminal móvil', 'teléfono']
+- Smartphone: ['smartphone', 'phone', 'móvil', 'terminal móvil', 'teléfono', 'smartphones']
 smartphoneBrand:
  - Samsung: ['samsung']
  - LG: ['lg']
