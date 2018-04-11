@@ -13,25 +13,28 @@ Assistant = Assistant(app=FlaskWrapper.App, route='/assistant')
 
 @Assistant.action('Default Welcome Intent')
 def sayHello():
-    print("inSayHello")
-    basicResponses = ['¡Hola! 🤖 Mi nombre es Aleck y te voy a ayudar con tus compras!!',
-                      '¡Hey! 🤖 Soy un asistente virtual y me encantaría ayudarte a elegir tus productos',
-                      '¡Buenos días! 🤖 Soy Aleck, y soy  tu asistente virtual para compras online']
-    print("Before event")
-    # response = ask(random.choice(basicResponses))
-    response = event(event_name='askProductCategory', speech=random.choice(basicResponses))
-    print("afterEvent")
-    return response
+    # print("inSayHello")
+    # basicResponses = ['¡Hola! 🤖 Mi nombre es Aleck y te voy a ayudar con tus compras!!',
+    #                   '¡Hey! 🤖 Soy un asistente virtual y me encantaría ayudarte a elegir tus productos',
+    #                   '¡Buenos días! 🤖 Soy Aleck, y soy tu asistente virtual para compras online']
+    # print("Before event")
+    # # response = ask(random.choice(basicResponses))
+    # response = event(event_name='askProductCategory', speech=random.choice(basicResponses))
+    # print("afterEvent")
+    # return response
+    return event("askProductCategory")
 
 
 @Assistant.action('buy>product.category')
 def askProductCategory():
+    print("inSayHello")
     basicResponses = ['¿Qué estás buscando?',
                       '¿Qué te gustaría comprar?',
                       '¿Qué tipo de producto te interesa?',
                       'Dime una categoría de producto para empezar']
+    print("Before event")
     response = event(event_name='askRange', speech=random.choice(basicResponses))
-
+    print("afterEvent")
     return response
 
 @Assistant.action('product.category>sp.range')
