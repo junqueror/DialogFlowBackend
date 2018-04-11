@@ -53,17 +53,19 @@ def askRange(productCategory):
 @Assistant.context('smartphone')
 @Assistant.action('sp.range>screen')
 def askScreen(smartphoneRange):
-
-    basicResponses = [
-        'Vamos a empezar por las dimensiones del SmartPhone, que dependen principalmente del tamaño de pantalla.',
-        'Las dimensiones del SmartPhone determinan su tamaño. ¿Qué tamaño de pantalla estás buscando?']
-    range = DbController.instance().getOneByName(Range, smartphoneRange)
-
-    response = ask(random.choice(basicResponses)).build_carousel()
-    for screen in range.screens:
-        response.add_item(title=screen.name, key=screen.name, description=screen.description)
-
     context_manager.add('smartphone')
+
+    if smartphoneRange:
+        basicResponses = [
+            'Vamos a empezar por las dimensiones del SmartPhone, que dependen principalmente del tamaño de pantalla.',
+            'Las dimensiones del SmartPhone determinan su tamaño. ¿Qué tamaño de pantalla estás buscando?']
+        range = DbController.instance().getOneByName(Range, smartphoneRange)
+
+        response = ask(random.choice(basicResponses)).build_carousel()
+        for screen in range.screens:
+            response.add_item(title=screen.name, key=screen.name, description=screen.description)
+    else:
+        response = promptSmartphoneRange(smartphoneRange)
 
     return response
 
@@ -99,5 +101,6 @@ def promptSmartphoneBrand(smartphoneBrand):
 
 @Assistant.prompt_for('smartphoneRange', intent_name='sp.range>screen')
 def promptSmartphoneRange(smartphoneRange):
-    response = "¿Podrias decirme la gama de SmartPhone en la que estás interesado?"
+    response = "No entendí {0}, ¿Podrías decirme la gama de SmartPhone en la que estás interesado?".format(
+        smartphoneRange)
     return ask(response)

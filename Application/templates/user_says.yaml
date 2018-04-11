@@ -45,6 +45,7 @@ product.category>sp.range:
   - un smartphone
   - smartphones
   - un móvil
+  - quiero comprar un smartphone
   Annotations:
   - smartphone: productCategory
   - smartphones: productCategory
