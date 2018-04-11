@@ -31,7 +31,7 @@ class DbController(DbWrapper):
 
     def getAll(self, model):
         results = self._db.session.query(model).all()
-        return results, len(results)
+        return results
 
     def getAllFilterBy(self, model, fields, search, order=None, orderDir=None):
 
