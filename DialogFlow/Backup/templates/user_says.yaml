@@ -13,7 +13,7 @@
 #  Events:
 #    - event1              # adds a triggerable event named 'event1' to the intent
 
-sp.category>range:
+product.category>range:
   UserSays:
   - Gama baja
   - Gama media

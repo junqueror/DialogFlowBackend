@@ -22,18 +22,18 @@ def sayHello():
     # response = event(event_name='askProductCategory', speech=random.choice(basicResponses))
     # print("afterEvent")
     # return response
-    return event("askProductCategory")
+    return event("buy>product.category")
 
 
 @Assistant.action('buy>product.category')
 def askProductCategory():
-    print("inSayHello")
+    print("inAskProductCategory")
     basicResponses = ['¿Qué estás buscando?',
                       '¿Qué te gustaría comprar?',
                       '¿Qué tipo de producto te interesa?',
                       'Dime una categoría de producto para empezar']
     print("Before event")
-    response = event(event_name='askRange', speech=random.choice(basicResponses))
+    response = ask(random.choice(basicResponses))
     print("afterEvent")
     return response
 
@@ -47,7 +47,7 @@ def askRange(productCategory):
                           'Elije una de las siguientes gamas para poder empezar',
                           'Lo primero es elegir la gama de SmartPhones que buscamos. Ten encuenta que de esta decisión depende bastante el precio, por lo que te recomiendo que elijas de acuerdo a tus necesidades reales. No queremos gastar dinero en algo que no necesitamos!']
         ranges = DbController.instance().getAll(Range)
-        response = event(event_name='askScreen', speech=random.choice(basicResponses)).build_carousel()
+        response = ask(random.choice(basicResponses)).build_carousel()
 
         for range in ranges:
             response.add_item(title=range.name, key=range.name, description=range.description)
@@ -69,7 +69,7 @@ def askScreen(smartphoneRange):
         'Las dimensiones del SmartPhone determinan su tamaño. ¿Qué tamaño de pantalla estás buscando?']
     range = DbController.instance().getOneByName(Range, smartphoneRange)
 
-    response = event(event_name='askRAM', speech=random.choice(basicResponses)).build_carousel()
+    response = ask(random.choice(basicResponses)).build_carousel()
     for screen in range.screens:
         response.add_item(title=screen.name, key=screen.name, description=screen.description)
 

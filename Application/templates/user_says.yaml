@@ -40,7 +40,7 @@ product.category:
   - 
   Events:
   -
-sp.category>range:
+product.category>range:
   UserSays:
   - Gama baja
   - Gama media
