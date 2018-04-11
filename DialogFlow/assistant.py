@@ -18,7 +18,8 @@ def sayHello():
                       '¡Hey! 🤖 Soy un asistente virtual y me encantaría ayudarte a elegir tus productos',
                       '¡Buenos días! 🤖 Soy Aleck, y soy  tu asistente virtual para compras online']
     print("Before event")
-    response = event(event_name='askProductCategory', speech=random.choice(basicResponses))
+    response = ask(random.choice(basicResponses))
+    # response = event(event_name='askProductCategory', speech=random.choice(basicResponses))
     print("afterEvent")
     return response
 
