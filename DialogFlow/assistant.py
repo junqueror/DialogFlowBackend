@@ -1,6 +1,6 @@
 import logging
 import random
-from flask_assistant import Assistant, ask, event
+from flask_assistant import Assistant, ask
 from Application.flaskWrapper import FlaskWrapper
 from DataBase.dbController import DbController
 from DataBase.DataModels import *
@@ -13,32 +13,25 @@ Assistant = Assistant(app=FlaskWrapper.App, route='/assistant')
 
 @Assistant.action('Default Welcome Intent')
 def sayHello():
-    # print("inSayHello")
-    # basicResponses = ['¡Hola! 🤖 Mi nombre es Aleck y te voy a ayudar con tus compras!!',
-    #                   '¡Hey! 🤖 Soy un asistente virtual y me encantaría ayudarte a elegir tus productos',
-    #                   '¡Buenos días! 🤖 Soy Aleck, y soy tu asistente virtual para compras online']
-    # print("Before event")
-    # # response = ask(random.choice(basicResponses))
-    # response = event(event_name='askProductCategory', speech=random.choice(basicResponses))
-    # print("afterEvent")
-    # return response
-    return event("buy>product.category")
+    basicResponses = ['¡Hola! 🤖 Mi nombre es Aleck y te voy a ayudar con tus compras!!',
+                      '¡Hey! 🤖 Soy un asistente virtual y me encantaría ayudarte a elegir tus productos',
+                      '¡Buenos días! 🤖 Soy Aleck, y soy tu asistente virtual para compras online']
+    response = ask(random.choice(basicResponses))
+    return response
 
 
 @Assistant.action('buy>product.category')
 def askProductCategory():
-    print("inAskProductCategory")
     basicResponses = ['¿Qué estás buscando?',
                       '¿Qué te gustaría comprar?',
                       '¿Qué tipo de producto te interesa?',
                       'Dime una categoría de producto para empezar']
-    print("Before event")
     response = ask(random.choice(basicResponses))
-    print("afterEvent")
     return response
 
 @Assistant.action('product.category>sp.range')
 def askRange(productCategory):
+    context_manager.add(productCategory)
 
     if productCategory == 'smartphone':
 
@@ -52,10 +45,7 @@ def askRange(productCategory):
         for range in ranges:
             response.add_item(title=range.name, key=range.name, description=range.description)
     else:
-        response = event(event_name='askProductCategory',
-                         speech='Lo siento, ahora mismo solo puedo ayudarte con la categoría de SmartPhones.')
-
-    context_manager.add(productCategory)
+        response = ask('Lo siento, pero ahora mismo solo puedo ayudarte con la categoría de SmartPhones.')
 
     return response
 
