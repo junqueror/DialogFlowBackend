@@ -32,8 +32,8 @@ def askProductCategory():
 @Assistant.action('product.category>sp.range')
 def askRange(productCategory):
     context_manager.add(productCategory)
-
-    if productCategory == 'smartphone':
+    print("productCategory:" + productCategory)
+    if productCategory == 'Smartphone':
 
         basicResponses = ['¿Qué categoría de móvil estás buscando?',
                           '¿Qué rango de SmartPhones te interesa?',
