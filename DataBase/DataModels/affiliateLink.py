@@ -19,8 +19,8 @@ class AffiliateLink(DbController.instance().db.Model):
     ecommerceId = Column(Integer, ForeignKey(Settings.instance().DATABASE_SCHEMA + '.ecommerces.id', ondelete='CASCADE'), nullable=False)
 
     # Children
-    smartphone = relationship("SmartPhone", lazy=True, passive_deletes=True)
-    ecommerce = relationship("SmartPhone", lazy=True, passive_deletes=True)
+    smartphone = relationship("SmartPhone", lazy=True)
+    ecommerce = relationship("SmartPhone", lazy=True)
 
     # Methods
 
