@@ -13,19 +13,46 @@
 #  Events:
 #    - event1              # adds a triggerable event named 'event1' to the intent
 
-product.category>range:
+
+Default Welcome Intent:
   UserSays:
-  - Gama baja
-  - Gama media
-  - Gama alta
-  - Gama premium
+  - Hola
+  - holi
+  - Buenos días
+  - Buenas tardes
+  - buenas
+  - buenas noches
+  - hey
+  - hi
   Annotations:
-  - smartphoneRange: Gama baja
-  - smartphoneRange: Gama media
-  - smartphoneRange: Gama alta
-  - smartphoneRange: Gama premium
+  -
+  -
   Events:
-  - askRange
+  -
+buy>product.category:
+  UserSays:
+  - Quiero hacer una compra
+  - Me gustaría comprar
+  - Necesito información
+  - Buco información sobre productos
+  Annotations:
+  - 
+  - 
+  Events:
+  -
+product.category>sp.range:
+  UserSays:
+  - un smartphone
+  - smartphones
+  - un móvil
+  - quiero comprar un smartphone
+  - quiero un móvil
+  Annotations:
+  - smartphone: productCategory
+  - smartphones: productCategory
+  - móvil: productCategory
+  Events:
+  -
 sp.range>screen:
   UserSays:
   - gama baja
@@ -33,12 +60,13 @@ sp.range>screen:
   - gama alta
   - gama premium
   Annotations:
-  - smartphoneScreen: pantalla pequeña
-  - smartphoneScreen: pantalla mediana
-  - smartphoneScreen: pantalla grande
+  - gama baja: smartphoneRange
+  - gama media: smartphoneRange
+  - gama alta: smartphoneRange
+  - gama premium: smartphoneRange
   Events:
-  - askScreen
-smartphone:
+  -
+smartphoneCard:
   UserSays:
   - "Muéstrame el Samsung S9"
   - "Quiero saber más sobre el lg g6"
@@ -51,4 +79,4 @@ smartphone:
   - Sony: smartphoneBrand
   - xperia zx1 compact: smartphoneName
   Events:
-  - 
+  -

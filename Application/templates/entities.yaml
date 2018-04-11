@@ -33,3 +33,8 @@ smartphoneRange:
  - Gama media: ['gama media', 'media']
  - Gama alta: ['gama alta', 'alta']
  - Gama premium: ['gama premium', 'premium']
+smartphoneScreen:
+ - pantalla pequeña: ['Pantalla Pequeña', 'pequeña']
+ - pantalla mediana: ['Pantalla Mediana', 'mediana']
+ - pantalla grande: ['Pantalla Grande', 'grande']
+

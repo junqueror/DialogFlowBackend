@@ -14,10 +14,9 @@
 #  - soda: ['pop', 'coke']
 
 
-# smartphoneScreen:
-#  - Pantalla pequeña: ['pantalla pequeña', 'pequeña']
-#  - Pantalla mediana: ['pantalla mediana', 'mediana']
-#  - Pantalla grande: ['pantalla grande', 'grande', 'phablet']
+
+productCategory:
+- Smartphone: ['smartphone', 'phone', 'móvil', 'terminal móvil', 'teléfono', 'smartphones']
 smartphoneBrand:
  - Samsung: ['samsung']
  - LG: ['lg']
@@ -34,4 +33,3 @@ smartphoneRange:
  - Gama media: ['gama media', 'media']
  - Gama alta: ['gama alta', 'alta']
  - Gama premium: ['gama premium', 'premium']
-

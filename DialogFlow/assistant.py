@@ -55,23 +55,32 @@ def askRange(productCategory):
 def askScreen(smartphoneRange):
     context_manager.add('smartphone')
 
-    if smartphoneRange:
-        basicResponses = [
-            'Vamos a empezar por las dimensiones del SmartPhone, que dependen principalmente del tamaño de pantalla.',
-            'Las dimensiones del SmartPhone determinan su tamaño. ¿Qué tamaño de pantalla estás buscando?']
-        range = DbController.instance().getOneByName(Range, smartphoneRange)
+    basicResponses = [
+        'Vamos a empezar por las dimensiones del SmartPhone, que dependen principalmente del tamaño de pantalla.',
+        'Las dimensiones del SmartPhone determinan su tamaño. ¿Qué tamaño de pantalla estás buscando?']
+    range = DbController.instance().getOneByName(Range, smartphoneRange)
 
-        response = ask(random.choice(basicResponses)).build_carousel()
-        for screen in range.screens:
-            response.add_item(title=screen.name, key=screen.name, description=screen.description)
-    else:
-        response = promptSmartphoneRange(smartphoneRange)
+    response = ask(random.choice(basicResponses)).build_carousel()
+    for screen in range.screens:
+        response.add_item(title=screen.name, key=screen.name, description=screen.description)
 
     return response
 
 
-@Assistant.action('smartphone')
+@Assistant.action('sp.screen>RAM')
+def askRAM(smartphoneScreen):
+    print("IN sp.screen>RAM")
+    smartphoneRange = context_manager.get('smartphone', 'smartphoneRange')
+    print(smartphoneScreen)
+    print(smartphoneRange)
+
+    return ask('In sp.screen>RAM')
+
+
+@Assistant.action('smartphoneCard')
 def showSmartphoneCard(smartphoneBrand, smartphoneName):
+    smartphoneRange = context_manager.get('smartphone', 'smartphoneRange')
+
     smartphone = DbController.instance().getOneByCompanyAndName(SmartPhone, smartphoneBrand, smartphoneName)
 
     response = ask('Aquí lo tienes:')
@@ -101,6 +110,5 @@ def promptSmartphoneBrand(smartphoneBrand):
 
 @Assistant.prompt_for('smartphoneRange', intent_name='sp.range>screen')
 def promptSmartphoneRange(smartphoneRange):
-    response = "No entendí {0}, ¿Podrías decirme la gama de SmartPhone en la que estás interesado?".format(
-        smartphoneRange)
+    response = "¿Podrías decirme la gama de SmartPhone en la que estás interesado?"
     return ask(response)
