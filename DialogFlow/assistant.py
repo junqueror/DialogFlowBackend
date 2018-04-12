@@ -51,7 +51,7 @@ def askRange(productCategory):
     return response
 
 
-@Assistant.context('smartphone')
+@Assistant.context('Smartphone')
 @Assistant.action('sp.range>screen')
 def askScreen(smartphoneRange):
     context_manager.add('smartphone')
@@ -68,7 +68,7 @@ def askScreen(smartphoneRange):
     return response
 
 
-@Assistant.context('smartphone')
+@Assistant.context('Smartphone')
 @Assistant.action('sp.screen>RAM')
 def askRAM(smartphoneScreen):
     print("IN sp.screen>RAM")
