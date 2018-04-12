@@ -6,6 +6,7 @@ from DataBase.dbController import DbController
 from DataBase.DataModels import *
 from flask_assistant import context_manager
 
+
 # Create assistant
 logging.getLogger('flask_assistant').setLevel(logging.DEBUG)
 Assistant = Assistant(app=FlaskWrapper.App, route='/assistant')
@@ -67,6 +68,7 @@ def askScreen(smartphoneRange):
     return response
 
 
+@Assistant.context('smartphone')
 @Assistant.action('sp.screen>RAM')
 def askRAM(smartphoneScreen):
     print("IN sp.screen>RAM")
