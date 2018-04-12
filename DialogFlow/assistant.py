@@ -89,7 +89,8 @@ def showSmartphoneCard(smartphoneBrand, smartphoneName):
     response.card(title="{0} {1}".format(smartphone.company, smartphone.name),
                   link=smartphone.officialURL,
                   linkTitle='Web oficial',
-                  text="Precio medio: {0!s}€".format(smartphone.avgPrice))
+                  text="Precio medio: {0!s}€".format(smartphone.avgPrice),
+                  img_url=smartphone.image)
 
     context_manager.add('smartphone')
 
