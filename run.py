@@ -7,6 +7,7 @@ import traceback
 from Application.app import App
 from Application.settings import Settings
 from DialogFlow.dialogFlowWrapper import DialogFlowWrapper
+from Application.fileManager import FileManager
 
 def getArguments(argv):
     debug = False
@@ -56,9 +57,16 @@ if __name__ == "__main__":
     # Built DialogFlow Agent schema
     os.environ['DEV_ACCESS_TOKEN'] = Settings.instance().DIALOGFLOW_DEV_TOKEN
     os.environ['CLIENT_ACCESS_TOKEN'] = Settings.instance().DIALOGFLOW_CLIENT_TOKEN
+
+    templatesPath = os.path.join(parentdir, os.path.join('Application', 'templates'))
+    yamlPath = os.path.join(templatesPath, 'entities.yaml')
+    csvPath = os.path.join(templatesPath, 'entities.csv')
+    print(yamlPath)
+    print(csvPath)
+    FileManager.SaveTemplatesCSV()
     DialogFlowWrapper.buildSchema()
 
     # Run the application
     Application.run(Settings.instance().FLASK_HOST, Settings.instance().FLASK_PORT)
-    logging.DEBUG(
-        "Flask Application running on {0}:{1}".format(Settings.instance().FLASK_HOST, Settings.instance().FLASK_PORT))
+    # logging.DEBUG(
+    #     "Flask Application running on {0}:{1}".format(Settings.instance().FLASK_HOST, Settings.instance().FLASK_PORT))

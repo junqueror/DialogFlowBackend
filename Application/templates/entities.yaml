@@ -3,14 +3,14 @@
 #Format as below
 
 # entity_name:
-#  - entry1: list of synonyms 
-#  - entry2: list of synonyms 
+#  - entry1: list of synonyms
+#  - entry2: list of synonyms
 
 #For example:
 
 # drink:
-#  - water: ['aqua', 'h20'] 
-#  - coffee: ['joe', 'caffeine', 'espresso', 'late'] 
+#  - water: ['aqua', 'h20']
+#  - coffee: ['joe', 'caffeine', 'espresso', 'late']
 #  - soda: ['pop', 'coke']
 
 
@@ -33,8 +33,3 @@ smartphoneRange:
  - Gama media: ['gama media', 'media']
  - Gama alta: ['gama alta', 'alta']
  - Gama premium: ['gama premium', 'premium']
-smartphoneScreen:
- - pantalla pequeña: ['Pantalla Pequeña', 'pequeña']
- - pantalla mediana: ['Pantalla Mediana', 'mediana']
- - pantalla grande: ['Pantalla Grande', 'grande']
-
