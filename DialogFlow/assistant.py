@@ -13,12 +13,10 @@ Assistant = Assistant(app=FlaskWrapper.App, route='/assistant')
 
 @Assistant.action('Default Welcome Intent')
 def sayHello():
-    # basicResponses = ['¡Hola! 🤖 Soy un asistente virtual y te voy a ayudar con tus compras!!',
-    #                   '¡Hey! 🤖 Soy un asistente virtual y me encantaría ayudarte a elegir tus productos',
-    #                   '¡Buenos días! 🤖 Soy un asistente virtualk, y soy especialista en compras online']
-    # response = ask(random.choice(basicResponses))
-    response = ask(
-        'Hola Andrés! Creo que eres un marrano que sólo sabe hacer páginas web con programación no funcional, pero aun así me gustaría ayudarte con tus compras online. ¿Qué quieres comprar?')
+    basicResponses = ['¡Hola! 🤖 Soy un asistente virtual y te voy a ayudar con tus compras!!',
+                      '¡Hey! 🤖 Soy un asistente virtual y me encantaría ayudarte a elegir tus productos',
+                      '¡Buenos días! 🤖 Soy un asistente virtual, y soy especialista en compras online']
+    response = ask(random.choice(basicResponses))
     return response
 
 

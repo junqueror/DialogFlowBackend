@@ -60,3 +60,5 @@ if __name__ == "__main__":
 
     # Run the application
     Application.run(Settings.instance().FLASK_HOST, Settings.instance().FLASK_PORT)
+    logging.DEBUG(
+        "Flask Application running on {0}:{1}".format(Settings.instance().FLASK_HOST, Settings.instance().FLASK_PORT))

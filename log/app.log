@@ -451,3 +451,117 @@
 2018-04-12 10:12 werkzeug     WARNING   * Debugger is active!
 2018-04-12 10:12 werkzeug     INFO      * Debugger PIN: 256-281-647
 2018-04-12 10:12 werkzeug     INFO      * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-04-30 10:54 root         INFO     Rebuilding DataBase...
+2018-04-30 10:54 root         INFO     Filling the DataBase...
+2018-04-30 10:54 werkzeug     WARNING   * Debugger is active!
+2018-04-30 10:54 werkzeug     INFO      * Debugger PIN: 270-689-553
+2018-04-30 10:54 werkzeug     INFO      * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-04-30 10:56 root         INFO     Rebuilding DataBase...
+2018-04-30 10:56 root         INFO     Filling the DataBase...
+2018-04-30 10:56 werkzeug     WARNING   * Debugger is active!
+2018-04-30 10:56 werkzeug     INFO      * Debugger PIN: 270-689-553
+2018-04-30 10:56 werkzeug     INFO      * Running on http://0.0.0.0:3000/ (Press CTRL+C to quit)
+2018-04-30 10:58 root         INFO     Rebuilding DataBase...
+2018-04-30 10:58 root         INFO     Filling the DataBase...
+2018-04-30 10:58 werkzeug     WARNING   * Debugger is active!
+2018-04-30 10:58 werkzeug     INFO      * Debugger PIN: 270-689-553
+2018-04-30 10:58 werkzeug     INFO      * Running on http://0.0.0.0:3000/ (Press CTRL+C to quit)
+2018-04-30 12:09 root         INFO     Rebuilding DataBase...
+2018-04-30 12:09 root         INFO     Filling the DataBase...
+2018-04-30 12:09 werkzeug     WARNING   * Debugger is active!
+2018-04-30 12:09 werkzeug     INFO      * Debugger PIN: 270-689-553
+2018-04-30 12:09 werkzeug     INFO      * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+2018-04-30 12:09 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:09:38] "POST /assistant/ HTTP/1.1" 404 -
+2018-04-30 12:11 root         INFO     Rebuilding DataBase...
+2018-04-30 12:11 root         INFO     Filling the DataBase...
+2018-04-30 12:11 werkzeug     WARNING   * Debugger is active!
+2018-04-30 12:11 werkzeug     INFO      * Debugger PIN: 270-689-553
+2018-04-30 12:11 werkzeug     INFO      * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+2018-04-30 12:11 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:11:25] "POST /assistant/ HTTP/1.1" 404 -
+2018-04-30 12:16 root         INFO     Rebuilding DataBase...
+2018-04-30 12:16 root         INFO     Filling the DataBase...
+2018-04-30 12:16 werkzeug     WARNING   * Debugger is active!
+2018-04-30 12:16 werkzeug     INFO      * Debugger PIN: 270-689-553
+2018-04-30 12:16 werkzeug     INFO      * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+2018-04-30 12:16 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:16:19] "POST /dialogflow/assistant HTTP/1.1" 404 -
+2018-04-30 12:16 root         INFO     Rebuilding DataBase...
+2018-04-30 12:16 root         INFO     Filling the DataBase...
+2018-04-30 12:16 werkzeug     WARNING   * Debugger is active!
+2018-04-30 12:16 werkzeug     INFO      * Debugger PIN: 270-689-553
+2018-04-30 12:16 werkzeug     INFO      * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+2018-04-30 12:18 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:18:54] "GET /assistant HTTP/1.1" 405 -
+2018-04-30 12:18 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:18:55] "GET /favicon.ico HTTP/1.1" 404 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:24] "GET /ass HTTP/1.1" 404 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:25] "GET /favicon.ico HTTP/1.1" 404 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:29] "GET /assistant HTTP/1.1" 405 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:36] "GET /api HTTP/1.1" 301 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /api/ HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /swaggerui/bower/swagger-ui/dist/css/typography.css HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /swaggerui/bower/swagger-ui/dist/css/reset.css HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /swaggerui/bower/swagger-ui/dist/css/screen.css HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /swaggerui/bower/swagger-ui/dist/lib/object-assign-pollyfill.js HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /swaggerui/bower/swagger-ui/dist/lib/jquery.slideto.min.js HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /swaggerui/bower/swagger-ui/dist/lib/jquery-1.8.0.min.js HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /swaggerui/bower/swagger-ui/dist/lib/jquery.wiggle.min.js HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /swaggerui/bower/swagger-ui/dist/lib/jquery.ba-bbq.min.js HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /swaggerui/bower/swagger-ui/dist/lib/handlebars-4.0.5.js HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /swaggerui/bower/swagger-ui/dist/lib/lodash.min.js HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /swaggerui/bower/swagger-ui/dist/lib/backbone-min.js HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /swaggerui/bower/swagger-ui/dist/swagger-ui.js HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /swaggerui/bower/swagger-ui/dist/lib/highlight.9.1.0.pack.js HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /swaggerui/bower/swagger-ui/dist/lib/highlight.9.1.0.pack_extended.js HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /swaggerui/bower/swagger-ui/dist/lib/jsoneditor.min.js HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /swaggerui/bower/swagger-ui/dist/lib/marked.js HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /swaggerui/bower/swagger-ui/dist/lib/swagger-oauth.js HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /swaggerui/bower/swagger-ui/dist/fonts/DroidSans.ttf HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:37] "GET /api/swagger.json HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:38] "GET /swaggerui/bower/swagger-ui/dist/fonts/DroidSans-Bold.ttf HTTP/1.1" 200 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:43] "GET /api/assistant HTTP/1.1" 404 -
+2018-04-30 12:19 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:19:47] "GET /assistant HTTP/1.1" 405 -
+2018-04-30 12:20 flask_assistant DEBUG    {
+  "action": "sayHello",
+  "actionIncomplete": false,
+  "contexts": [],
+  "fulfillment": {
+    "messages": [],
+    "speech": ""
+  },
+  "metadata": {
+    "intentId": "e24ca7a3-d7db-4d1c-af51-7faa0bdcce94",
+    "intentName": "Default Welcome Intent",
+    "webhookForSlotFillingUsed": "true",
+    "webhookUsed": "true"
+  },
+  "parameters": {},
+  "resolvedQuery": "hola",
+  "score": 1.0,
+  "source": "agent",
+  "speech": ""
+}
+2018-04-30 12:20 flask_assistant DEBUG    "Matched view func - Default Welcome Intent"
+2018-04-30 12:20 flask_assistant DEBUG    {
+  "contextOut": [],
+  "data": {
+    "google": {
+      "expect_user_response": true,
+      "is_ssml": true,
+      "permissions_request": null
+    }
+  },
+  "displayText": null,
+  "messages": [
+    {
+      "speech": "\u00a1Buenos d\u00edas! \ud83e\udd16 Soy un asistente virtualk, y soy especialista en compras online",
+      "type": 0
+    },
+    {
+      "displayText": null,
+      "platform": "google",
+      "textToSpeech": "\u00a1Buenos d\u00edas! \ud83e\udd16 Soy un asistente virtualk, y soy especialista en compras online",
+      "type": "simple_response"
+    }
+  ],
+  "source": "webhook",
+  "speech": "\u00a1Buenos d\u00edas! \ud83e\udd16 Soy un asistente virtualk, y soy especialista en compras online"
+}
+2018-04-30 12:20 werkzeug     INFO     127.0.0.1 - - [30/Apr/2018 12:20:00] "POST /assistant HTTP/1.1" 200 -

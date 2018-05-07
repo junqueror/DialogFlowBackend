@@ -11,7 +11,7 @@ class Settings:
         # Flask
         self.flask_debug = True
         self.flask_host = '0.0.0.0'
-        self.flask_port = int(os.getenv('PORT', 5000))
+        self.flask_port = int(os.getenv('PORT', 80))
 
         # Local DataBase
         self.database_host = "localhost"
