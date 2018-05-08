@@ -14,21 +14,7 @@
 #    - event1              # adds a triggerable event named 'event1' to the intent
 
 
-Default Welcome Intent:
-  UserSays:
-  - Hola
-  - holi
-  - Buenos días
-  - Buenas tardes
-  - buenas
-  - buenas noches
-  - hey
-  - hi
-  Annotations:
-  -
-  -
-  Events:
-  -
+
 buy>product.category:
   UserSays:
   - Quiero hacer una compra
@@ -78,5 +64,12 @@ smartphoneCard:
   - Samsung: smartphoneBrand
   - Sony: smartphoneBrand
   - xperia zx1 compact: smartphoneName
+  Events:
+  -
+sp.question.cheapest:
+  UserSays:
+  -
+  Annotations:
+  -
   Events:
   -

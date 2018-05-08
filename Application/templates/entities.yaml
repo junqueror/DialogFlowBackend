@@ -1,35 +1,43 @@
-# Template file for entities
-
-#Format as below
-
-# entity_name:
-#  - entry1: list of synonyms
-#  - entry2: list of synonyms
-
-#For example:
-
-# drink:
-#  - water: ['aqua', 'h20']
-#  - coffee: ['joe', 'caffeine', 'espresso', 'late']
-#  - soda: ['pop', 'coke']
-
-
-
 productCategory:
-- Smartphone: ['smartphone', 'phone', 'móvil', 'terminal móvil', 'teléfono', 'smartphones']
+  Smartphone:
+  - smartphone
+  - phone
+  - "m\xF3vil"
+  - "terminal m\xF3vil"
+  - "tel\xE9fono"
+  - smartphones
 smartphoneBrand:
- - Samsung: ['samsung']
- - LG: ['lg']
- - Sony: ['sony']
- - Google: ['google']
+  Google:
+  - google
+  LG:
+  - lg
+  Samsung:
+  - samsung
+  Sony:
+  - sony
 smartphoneName:
- - S9: ['s9']
- - S8: ['s8']
- - Pixel 2: ['pixel 2']
- - Xperia XZ1 Compact: ['xperia xz1 compact']
- - Pixel 2: ['pixel 2']
+  Pixel 2:
+  - pixel 2
+  S8:
+  - s8
+  S9:
+  - s9
+  Xperia XZ1 Compact:
+  - xperia xz1 compact
 smartphoneRange:
- - Gama baja: ['gama baja', 'baja']
- - Gama media: ['gama media', 'media']
- - Gama alta: ['gama alta', 'alta']
- - Gama premium: ['gama premium', 'premium']
+  Gama alta:
+  - gama alta
+  - alta
+  Gama baja:
+  - gama baja
+  - baja
+  Gama media:
+  - gama media
+  - media
+  Gama premium:
+  - gama premium
+  - premium
+testParameter:
+  Test Value:
+  - test
+  - testing

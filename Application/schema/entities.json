@@ -5,147 +5,117 @@
         {
           "value": "Smartphone",
           "synonyms": [
-            "smartphone",
-            "phone",
-            "m\u00c3\u00b3vil",
-            "terminal m\u00c3\u00b3vil",
-            "tel\u00c3\u00a9fono",
-            "smartphones"
+            "Smartphone"
           ]
         }
       ],
-      "isEnum": null,
+      "isEnum": true,
       "id": "bbedc427-b382-42cf-ab39-b8abfd8b29fe"
     },
   {
         "name": "smartphoneBrand",
         "entries": [
             {
-                "value": "Samsung",
+              "value": "Google",
                 "synonyms": [
-                    "samsung"
+                  "Google"
                 ]
             },
             {
                 "value": "LG",
                 "synonyms": [
-                    "lg"
+                  "LG"
+                ]
+            },
+          {
+            "value": "Samsung",
+            "synonyms": [
+              "Samsung"
                 ]
             },
             {
                 "value": "Sony",
                 "synonyms": [
-                    "sony"
-                ]
-            },
-            {
-                "value": "Google",
-                "synonyms": [
-                    "google"
+                  "Sony"
                 ]
             }
         ],
-        "isEnum": null,
+    "isEnum": true,
         "id": "7185cc03-5479-4d2e-a3dd-3fb14f3a5bca"
     },
     {
         "name": "smartphoneName",
         "entries": [
             {
-                "value": "S9",
+              "value": "Pixel 2",
                 "synonyms": [
-                    "s9"
+                  "Pixel 2"
                 ]
             },
             {
                 "value": "S8",
                 "synonyms": [
-                    "s8"
+                  "S8"
                 ]
             },
             {
-                "value": "Pixel 2",
+              "value": "S9",
                 "synonyms": [
-                    "pixel 2"
+                  "S9"
                 ]
             },
             {
                 "value": "Xperia XZ1 Compact",
                 "synonyms": [
-                    "xperia xz1 compact"
-                ]
-            },
-            {
-                "value": "Pixel 2",
-                "synonyms": [
-                    "pixel 2"
+                  "Xperia XZ1 Compact"
                 ]
             }
         ],
-        "isEnum": null,
+      "isEnum": true,
         "id": "69471b0c-7f35-4167-baac-087a24f1cecb"
     },
     {
         "name": "smartphoneRange",
         "entries": [
             {
+              "value": "Gama alta",
+              "synonyms": [
+                "Gama alta"
+              ]
+            },
+          {
                 "value": "Gama baja",
                 "synonyms": [
-                    "gama baja",
-                    "baja"
+                  "Gama baja"
                 ]
             },
             {
                 "value": "Gama media",
                 "synonyms": [
-                    "gama media",
-                    "media"
-                ]
-            },
-            {
-                "value": "Gama alta",
-                "synonyms": [
-                    "gama alta",
-                    "alta"
+                  "Gama media"
                 ]
             },
             {
                 "value": "Gama premium",
                 "synonyms": [
-                    "gama premium",
-                    "premium"
+                  "Gama premium"
                 ]
             }
         ],
-        "isEnum": null,
+      "isEnum": true,
         "id": "134958ad-6b95-4e32-bf8d-4fdc6f2ba0e5"
     },
   {
-    "name": "smartphoneScreen",
+    "name": "testParameter",
     "entries": [
       {
-        "value": "pantalla peque\u00c3\u00b1a",
+        "value": "Test Value",
         "synonyms": [
-          "Pantalla Peque\u00c3\u00b1a",
-          "peque\u00c3\u00b1a"
-        ]
-      },
-      {
-        "value": "pantalla mediana",
-        "synonyms": [
-          "Pantalla Mediana",
-          "mediana"
-        ]
-      },
-      {
-        "value": "pantalla grande",
-        "synonyms": [
-          "Pantalla Grande",
-          "grande"
+          "Test Value"
         ]
       }
     ],
-    "isEnum": null,
-    "id": "c11afdff-2b30-4cea-bedc-3b7339ccf0d9"
+    "isEnum": true,
+    "id": "5a64e570-52a5-4240-9e6d-17ed6e360882"
     }
 ]

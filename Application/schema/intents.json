@@ -1,27 +1,5 @@
 [
     {
-        "name": "newAction",
-        "auto": true,
-        "contexts": [],
-        "templates": [],
-        "userSays": [],
-        "responses": [
-            {
-                "action": "askProductCategory",
-                "resetContexts": false,
-                "affectedContexts": [],
-                "parameters": [],
-                "messages": []
-            }
-        ],
-        "priority": 500000,
-        "fallbackIntent": false,
-        "webhookUsed": true,
-        "webhookForSlotFilling": true,
-        "events": [],
-        "id": "14d5246d-47e9-4da2-a2ba-f90d851452a7"
-    },
-    {
         "name": "buy>product.category",
         "auto": true,
         "contexts": [],
@@ -396,16 +374,7 @@
             {
                 "data": [
                     {
-                        "text": "Hablame sobre el "
-                    },
-                    {
-                        "text": "sony",
-                        "meta": "@smartphoneBrand",
-                        "alias": "smartphoneBrand",
-                        "userDefined": true
-                    },
-                    {
-                        "text": " "
+                        "text": "Hablame sobre el sony "
                     },
                     {
                         "text": "xperia zx1 compact",
@@ -452,5 +421,38 @@
         "webhookForSlotFilling": true,
         "events": [],
         "id": "7e760ddd-3a64-45ae-9309-e7e5a5c716c4"
+    },
+    {
+        "name": "sp.question.cheapest",
+        "auto": true,
+        "contexts": [],
+        "templates": [],
+        "userSays": [
+            {
+                "data": [
+                    {
+                        "text": "Cu\u00c3\u00a1les son los smartphones m\u00c3\u00a1s baratos?",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            }
+        ],
+        "responses": [
+            {
+                "action": "returnCheapestSmartphones",
+                "resetContexts": false,
+                "affectedContexts": [],
+                "parameters": [],
+                "messages": []
+            }
+        ],
+        "priority": 500000,
+        "fallbackIntent": false,
+        "webhookUsed": true,
+        "webhookForSlotFilling": true,
+        "events": [],
+        "id": "82eee25b-084e-4120-970a-57b1b9c14090"
     }
 ]

@@ -1,30 +1,15 @@
 import logging
 import random
-from flask_assistant import Assistant, ask
+from flask_assistant import Assistant, ask, context_manager
 from Application.flaskWrapper import FlaskWrapper
 from DataBase.dbController import DbController
 from DataBase.DataModels import *
-from flask_assistant import context_manager
-from pprint import pprint
-import json
+from DialogFlow.productManager import ProductManager
+
 
 # Create assistant
 logging.getLogger('flask_assistant').setLevel(logging.DEBUG)
 Assistant = Assistant(app=FlaskWrapper.App, route='/assistant')
-
-
-# @Assistant.action('Default Welcome Intent')
-# def sayHello():
-#     basicResponses = ['¡Hola! 🤖 Soy un asistente virtual y te voy a ayudar con tus compras!!',
-#                       '¡Hey! 🤖 Soy un asistente virtual y me encantaría ayudarte a elegir tus productos',
-#                       '¡Buenos días! 🤖 Soy un asistente virtual, y soy especialista en compras online']
-#     response = ask(random.choice(basicResponses))
-#     return response
-
-
-@Assistant.action('newAction')
-def askProductCategory():
-    return ask('action')
 
 @Assistant.action('buy>product.category')
 def askProductCategory():
@@ -99,11 +84,33 @@ def showSmartphoneCard(smartphoneBrand, smartphoneName):
                   img_url=smartphone.image)
 
     context_manager.add('smartphone')
-
-    pprint(response._res)
-
     return response
 
+
+@Assistant.action('sp.question.cheapest')
+def returnCheapestSmartphones():
+    sessionId = Assistant.request['sessionId']
+
+    context_manager.add('smartphone')
+    context_manager.add('cheapest')
+
+    basicResponses = [
+        'Estos son los smartphones más baratos',
+        'Aquí tienes los móviles con el precio más bajo']
+
+    smartphones = DbController.instance().getAllFilterBy(SmartPhone, order='avgPrice', orderDir='asc')
+
+    smartphones = smartphones[:2]
+    response = ask(random.choice(basicResponses)).build_list('Los 3 smartphones más baratos')
+
+    for sp in smartphones:
+        response.add_item(title=sp.name,
+                          key="{0} {1}".format(sp.company, sp.name),
+                          img_url=sp.image,
+                          description=sp.extras,
+                          synonyms=['one', 'number one', 'first option'])
+        ProductManager.updateProoductList(sessionId, [sp.id for sp in smartphones])
+    return response
 
 # Prompts
 
