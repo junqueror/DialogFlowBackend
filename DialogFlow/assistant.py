@@ -89,27 +89,36 @@ def showSmartphoneCard(smartphoneBrand, smartphoneName):
 
 @Assistant.action('sp.question.cheapest')
 def returnCheapestSmartphones():
+
+    # Get session ID
     sessionId = Assistant.request['sessionId']
 
-    context_manager.add('smartphone')
-    context_manager.add('cheapest')
+    # Get products
+    smartphones = DbController.instance().getAllFilterBy(SmartPhone, order='avgPrice', orderDir='asc')
+    smartphones = smartphones[:2]
 
+    # Build response
     basicResponses = [
         'Estos son los smartphones más baratos',
         'Aquí tienes los móviles con el precio más bajo']
 
-    smartphones = DbController.instance().getAllFilterBy(SmartPhone, order='avgPrice', orderDir='asc')
-
-    smartphones = smartphones[:2]
     response = ask(random.choice(basicResponses)).build_list('Los 3 smartphones más baratos')
 
-    for sp in smartphones:
-        response.add_item(title=sp.name,
-                          key="{0} {1}".format(sp.company, sp.name),
-                          img_url=sp.image,
-                          description=sp.extras,
-                          synonyms=['one', 'number one', 'first option'])
-        ProductManager.updateProoductList(sessionId, [sp.id for sp in smartphones])
+    # for sp in smartphones:
+    #     response.add_item(title=sp.name,
+    #                       key="{0} {1}".format(sp.company, sp.name),
+    #                       img_url=sp.image,
+    #                       description=sp.extras,
+    #                       synonyms=['one', 'number one', 'first option'])
+    products = ProductManager.updateProductList(sessionId, [sp.id for sp in smartphones])
+
+    for card in products.getBasicCards():
+        response.add_item(card.__dict__)
+
+    # Set contexts
+    context_manager.add('smartphone')
+    context_manager.add('cheapest')
+
     return response
 
 # Prompts

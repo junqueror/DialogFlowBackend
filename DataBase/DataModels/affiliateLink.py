@@ -2,10 +2,11 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from DataBase.dbController import DbController
 from Application.settings import Settings
+from DialogFlow.responseModel import ResponseModel
 
 
 # Data model class to represent the ecommerces database table
-class AffiliateLink(DbController.instance().db.Model):
+class AffiliateLink(DbController.instance().db.Model, ResponseModel):
     __tablename__ = 'affiliateLinks'
     __table_args__ = Settings.instance().DATABASE_TABLE_ARGS
 
@@ -23,6 +24,13 @@ class AffiliateLink(DbController.instance().db.Model):
     ecommerce = relationship("SmartPhone", lazy=True)
 
     # Methods
+
+    def __init__(self):
+        super(AffiliateLink).__init__(title=self.ecommerce.name,
+                                   link=self.link,
+                                   linkTitle=self.smartphone.name,
+                                   sortText="{0}€".format(self.avgPrice))
+
 
     @staticmethod
     def getMainField():

@@ -1,28 +1,32 @@
+from DialogFlow.productList import ProductList
+
 class ProductManager():
     productLists = {}
 
     @staticmethod
-    def _getProductList(sessionId):
+    def getProductList(sessionId):
         if not sessionId in ProductManager.productLists.keys():
-            ProductManager.productLists[sessionId] = []
+            ProductManager.productLists[sessionId] = ProductList()
         return ProductManager.productLists[sessionId]
 
     def _setProductList(sessionId, productIds):
         ProductManager.productLists[sessionId] = []
         for id in productIds:
-            ProductManager.productLists[sessionId].append(id)
+            ProductManager.productLists[sessionId].productIds.append(id)
         return ProductManager.productLists[sessionId]
 
     @staticmethod
-    def addProoduct(sessionId, productId):
-        productList = ProductManager._getProductList(sessionId)
-        productList.append(productId)
+    def addProducts(sessionId, productIds):
+        for productId in productIds:
+            productList = ProductManager.getProductList(sessionId)
+            productList.productIds.append(productId)
 
     @staticmethod
-    def removeProoduct(sessionId, productId):
-        productList = ProductManager._getProductList(sessionId)
-        productList.remove(productId)
+    def removeProducts(sessionId, productIds):
+        for productId in productIds:
+            productList = ProductManager.getProductList(sessionId)
+            productList.productIds.remove(productId)
 
     @staticmethod
-    def updateProoductList(sessionId, productIds):
+    def updateProductList(sessionId, productIds):
         return ProductManager._setProductList(sessionId, productIds)

@@ -1,7 +1,7 @@
 import traceback
 from DataBase.dbWrapper import DbWrapper
 from Utils.singleton import Singleton
-from sqlalchemy import desc, or_, and_, inspect
+from sqlalchemy import desc, or_, and_, inspect, asc
 from sqlalchemy.sql.expression import cast
 from sqlalchemy.dialects.mssql import VARCHAR
 
@@ -27,6 +27,24 @@ class DbController(DbWrapper):
 
     def getOneByCompanyAndName(self, model, company, name):
         result = self._db.session.query(model).filter(model.company.ilike(company)).filter(model.name.ilike(name)).one()
+        return result
+
+    def getCheapestOne(self, model):
+        result = self._db.session.query(model).order_by(asc(model.avgPrice)).limit(1)
+        return result
+
+    def getCheapestOneFilterBy(self, model, fields, search):
+
+        # Generate query on the model (model)
+        query = self._db.session.query(model)
+
+        # Filtering
+        filters = self._createFilters(search, fields, model, query)  # Build the appropriate filters for the query
+        query = query.filter(or_(*filters))  # Apply filters to the query
+
+        # Get the cheapest one
+        result = query.order_by(asc(model.avgPrice)).limit(1)
+
         return result
 
     def getAll(self, model):

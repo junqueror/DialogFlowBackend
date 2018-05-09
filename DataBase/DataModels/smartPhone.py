@@ -4,11 +4,11 @@ from sqlalchemy.dialects.postgresql import ENUM
 from DataBase.dbController import DbController
 from Application.settings import Settings
 from DataBase.DataModels.affiliateLink import AffiliateLink
-from DialogFlow.card import Card
+from DialogFlow.responseModel import ResponseModel
 
 
 # Data model class to represent the smarphones database table
-class SmartPhone(DbController.instance().db.Model):
+class SmartPhone(DbController.instance().db.Model, ResponseModel):
     __tablename__ = 'smartphones'
     __table_args__ = Settings.instance().DATABASE_TABLE_ARGS
 
@@ -46,13 +46,33 @@ class SmartPhone(DbController.instance().db.Model):
 
     # Methods
 
+    def __init__(self):
+        super(SmartPhone).__init__(title="{0} {1}".format(self.company, self.name),
+                                   subtitle="Precio medio: s{0}".format(self.avgPrice),
+                                   sortText="{0}, {1}, {2}, {3}/{4}".format(self.OS,
+                                                                            self.RAM,
+                                                                            self.processor,
+                                                                            self.frontCameraRes,
+                                                                            self.backCameraRes),
+                                   longText="{0}, {1}, {2}, {3} {4} {5}, {6}/{7}, {8}, {9} ".format(self.OS,
+                                                                                                    self.RAM,
+                                                                                                    self.processor,
+                                                                                                    self.screenSize,
+                                                                                                    self.screenSize,
+                                                                                                    self.screenType,
+                                                                                                    self.frontCameraRes,
+                                                                                                    self.backCameraRes,
+                                                                                                    self.battery,
+                                                                                                    self.extras),
+                                   imgUrl=self.image,
+                                   imgAlt=self.image,
+                                   link=self.officialURL,
+                                   linkTitle='Web oficial',
+                                   text="Precio medio: s{0}".format(self.avgPrice))
+
     @staticmethod
     def getMainField():
         return SmartPhone.name
-
-    def getResponseCard(self):
-        return Card(title=self.name, link=self.officialURL, linkTitle='Web oficial',
-                    text="Precio medio: s{0}".format(self.avgPrice))
 
     def __repr__(self):
         return '<SmartPhone: {0}>'.format(self.id)

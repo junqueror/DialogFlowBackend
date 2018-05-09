@@ -62,7 +62,7 @@ if __name__ == "__main__":
 
     # FileManager.SaveTemplatesCSV()
     FileManager.updateYAMLtemplatesFromCSV()
-    DialogFlowWrapper.buildSchema()
+    # DialogFlowWrapper.buildSchema()
 
     # Run the application
     Application.run(Settings.instance().FLASK_HOST, Settings.instance().FLASK_PORT)
