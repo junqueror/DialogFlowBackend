@@ -112,8 +112,8 @@ def returnCheapestSmartphones():
     #                       synonyms=['one', 'number one', 'first option'])
     products = ProductManager.updateProductList(sessionId, [sp.id for sp in smartphones])
 
-    for card in products.getBasicCards():
-        response.add_item(title=card.)
+    # for card in products.getBasicCards():
+    #      response.add_item(title=card.)
 
     # Set contexts
     context_manager.add('smartphone')
