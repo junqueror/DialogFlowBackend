@@ -5,6 +5,8 @@ from DataBase.dbController import DbController
 from Application.settings import Settings
 from DataBase.DataModels.affiliateLink import AffiliateLink
 from DialogFlow.responseModel import ResponseModel
+from DialogFlow.card import Card
+
 
 
 # Data model class to represent the smarphones database table
@@ -46,6 +48,25 @@ class SmartPhone(DbController.instance().db.Model, ResponseModel):
 
     # Methods
 
+    def getBasicCard(self):
+        return Card(title=self.title,
+                    link=self.link,
+                    linkTitle=self.linkTitle,
+                    text=self.sortText,
+                    )
+
+    def getCompleteCard(self):
+        return Card(title=self.title,
+                    subtitle=self.subtitle,
+                    link=self.link,
+                    linkTitle=self.linkTitle,
+                    img_url=self.imgUrl,
+                    img_alt=self.imgAlt,
+                    text=self.longText)
+
+    @property
+    def title(self):
+        return self.title
     def __init__(self):
         super(SmartPhone).__init__(title="{0} {1}".format(self.company, self.name),
                                    subtitle="Precio medio: s{0}".format(self.avgPrice),

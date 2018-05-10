@@ -1,0 +1,16 @@
+entity         ,value             ,synonyms
+productCategory,Smartphone        ,"['smartphone', 'phone', 'm�vil', 'terminal m�vil', 'tel�fono', 'smartphones']"
+smartphoneBrand,Samsung           ,['samsung']
+smartphoneBrand,LG                ,['lg']
+smartphoneBrand,Sony              ,['sony']
+smartphoneBrand,Google            ,['google']
+smartphoneName ,S9                ,['s9']
+smartphoneName ,S8                ,['s8']
+smartphoneName ,Pixel 2           ,['pixel 2']
+smartphoneName ,Xperia XZ1 Compact,['xperia xz1 compact']
+smartphoneName ,Pixel 2           ,['pixel 2']
+smartphoneRange,Gama baja         ,"['gama baja', 'baja']"
+smartphoneRange,Gama media        ,"['gama media', 'media']"
+smartphoneRange,Gama alta         ,"['gama alta', 'alta']"
+smartphoneRange,Gama premium      ,"['gama premium', 'premium']"
+testParameter  ,Test Value        ,"['test', 'testing']"

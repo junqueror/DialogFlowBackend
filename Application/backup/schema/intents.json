@@ -1,0 +1,458 @@
+[
+  {
+    "name": "buy>product.category",
+    "auto": true,
+    "contexts": [],
+    "templates": [],
+    "userSays": [
+      {
+        "data": [
+          {
+            "text": "Quiero hacer una compra",
+            "userDefined": false
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      },
+      {
+        "data": [
+          {
+            "text": "Me gustar\u00c3\u00ada comprar",
+            "userDefined": false
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      },
+      {
+        "data": [
+          {
+            "text": "Necesito informaci\u00c3\u00b3n",
+            "userDefined": false
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      },
+      {
+        "data": [
+          {
+            "text": "Buco informaci\u00c3\u00b3n sobre productos",
+            "userDefined": false
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      }
+    ],
+    "responses": [
+      {
+        "action": "askProductCategory",
+        "resetContexts": false,
+        "affectedContexts": [],
+        "parameters": [],
+        "messages": []
+      }
+    ],
+    "priority": 500000,
+    "fallbackIntent": false,
+    "webhookUsed": true,
+    "webhookForSlotFilling": true,
+    "events": [],
+    "id": "02f81cdf-da40-4637-b252-049e56a10645"
+  },
+  {
+    "name": "product.category>sp.range",
+    "auto": true,
+    "contexts": [],
+    "templates": [],
+    "userSays": [
+      {
+        "data": [
+          {
+            "text": "un "
+          },
+          {
+            "text": "smartphone",
+            "meta": "@productCategory",
+            "alias": "productCategory",
+            "userDefined": true
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      },
+      {
+        "data": [
+          {
+            "text": "smartphones",
+            "meta": "@productCategory",
+            "alias": "productCategory",
+            "userDefined": true
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      },
+      {
+        "data": [
+          {
+            "text": "un "
+          },
+          {
+            "text": "m\u00c3\u00b3vil",
+            "meta": "@productCategory",
+            "alias": "productCategory",
+            "userDefined": true
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      },
+      {
+        "data": [
+          {
+            "text": "quiero comprar un "
+          },
+          {
+            "text": "smartphone",
+            "meta": "@productCategory",
+            "alias": "productCategory",
+            "userDefined": true
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      },
+      {
+        "data": [
+          {
+            "text": "quiero un "
+          },
+          {
+            "text": "m\u00c3\u00b3vil",
+            "meta": "@productCategory",
+            "alias": "productCategory",
+            "userDefined": true
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      }
+    ],
+    "responses": [
+      {
+        "action": "askRange",
+        "resetContexts": false,
+        "affectedContexts": [],
+        "parameters": [
+          {
+            "name": "productCategory",
+            "value": "$productCategory",
+            "dataType": "@productCategory",
+            "prompts": [],
+            "required": true,
+            "isList": false,
+            "defaultValue": ""
+          }
+        ],
+        "messages": []
+      }
+    ],
+    "priority": 500000,
+    "fallbackIntent": false,
+    "webhookUsed": true,
+    "webhookForSlotFilling": true,
+    "events": [],
+    "id": "ed51bad0-f5e0-487a-af9f-4a0047489c0f"
+  },
+  {
+    "name": "sp.range>screen",
+    "auto": true,
+    "contexts": [],
+    "templates": [],
+    "userSays": [
+      {
+        "data": [
+          {
+            "text": "gama baja",
+            "meta": "@smartphoneRange",
+            "alias": "smartphoneRange",
+            "userDefined": true
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      },
+      {
+        "data": [
+          {
+            "text": "gama media",
+            "meta": "@smartphoneRange",
+            "alias": "smartphoneRange",
+            "userDefined": true
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      },
+      {
+        "data": [
+          {
+            "text": "gama alta",
+            "meta": "@smartphoneRange",
+            "alias": "smartphoneRange",
+            "userDefined": true
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      },
+      {
+        "data": [
+          {
+            "text": "gama premium",
+            "meta": "@smartphoneRange",
+            "alias": "smartphoneRange",
+            "userDefined": true
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      }
+    ],
+    "responses": [
+      {
+        "action": "askScreen",
+        "resetContexts": false,
+        "affectedContexts": [],
+        "parameters": [
+          {
+            "name": "smartphoneRange",
+            "value": "$smartphoneRange",
+            "dataType": "@smartphoneRange",
+            "prompts": [],
+            "required": true,
+            "isList": false,
+            "defaultValue": ""
+          }
+        ],
+        "messages": []
+      }
+    ],
+    "priority": 500000,
+    "fallbackIntent": false,
+    "webhookUsed": true,
+    "webhookForSlotFilling": true,
+    "events": [],
+    "id": "41e1f61d-e6af-4278-b22d-a9214ea4bdd7"
+  },
+  {
+    "name": "sp.screen>RAM",
+    "auto": true,
+    "contexts": [],
+    "templates": [],
+    "userSays": [
+      {
+        "data": [
+          {
+            "text": "pantalla peque\u00c3\u00b1a",
+            "meta": "@smartphoneScreen",
+            "alias": "smartphoneScreen",
+            "userDefined": true
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      },
+      {
+        "data": [
+          {
+            "text": "pantalla mediana",
+            "meta": "@smartphoneScreen",
+            "alias": "smartphoneScreen",
+            "userDefined": true
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      },
+      {
+        "data": [
+          {
+            "text": "pantalla grande",
+            "meta": "@smartphoneScreen",
+            "alias": "smartphoneScreen",
+            "userDefined": true
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      }
+    ],
+    "responses": [
+      {
+        "action": "askRAM",
+        "resetContexts": false,
+        "affectedContexts": [],
+        "parameters": [
+          {
+            "name": "smartphoneScreen",
+            "value": "$smartphoneScreen",
+            "dataType": "@smartphoneScreen",
+            "prompts": [],
+            "required": true,
+            "isList": false,
+            "defaultValue": ""
+          }
+        ],
+        "messages": []
+      }
+    ],
+    "priority": 500000,
+    "fallbackIntent": false,
+    "webhookUsed": true,
+    "webhookForSlotFilling": true,
+    "events": [],
+    "id": "c9431d90-9f8b-4b92-a753-5fb43d0806bb"
+  },
+  {
+    "name": "smartphoneCard",
+    "auto": true,
+    "contexts": [],
+    "templates": [],
+    "userSays": [
+      {
+        "data": [
+          {
+            "text": "Mu\u00c3\u00a9strame el "
+          },
+          {
+            "text": "Samsung",
+            "meta": "@smartphoneBrand",
+            "alias": "smartphoneBrand",
+            "userDefined": true
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": "S9",
+            "meta": "@smartphoneName",
+            "alias": "smartphoneName",
+            "userDefined": true
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      },
+      {
+        "data": [
+          {
+            "text": "Quiero saber m\u00c3\u00a1s sobre el "
+          },
+          {
+            "text": "lg",
+            "meta": "@smartphoneBrand",
+            "alias": "smartphoneBrand",
+            "userDefined": true
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": "g6",
+            "meta": "@smartphoneName",
+            "alias": "smartphoneName",
+            "userDefined": true
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      },
+      {
+        "data": [
+          {
+            "text": "Hablame sobre el sony "
+          },
+          {
+            "text": "xperia zx1 compact",
+            "meta": "@smartphoneName",
+            "alias": "smartphoneName",
+            "userDefined": true
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      }
+    ],
+    "responses": [
+      {
+        "action": "showSmartphoneCard",
+        "resetContexts": false,
+        "affectedContexts": [],
+        "parameters": [
+          {
+            "name": "smartphoneBrand",
+            "value": "$smartphoneBrand",
+            "dataType": "@smartphoneBrand",
+            "prompts": [],
+            "required": true,
+            "isList": false,
+            "defaultValue": ""
+          },
+          {
+            "name": "smartphoneName",
+            "value": "$smartphoneName",
+            "dataType": "@smartphoneName",
+            "prompts": [],
+            "required": true,
+            "isList": false,
+            "defaultValue": ""
+          }
+        ],
+        "messages": []
+      }
+    ],
+    "priority": 500000,
+    "fallbackIntent": false,
+    "webhookUsed": true,
+    "webhookForSlotFilling": true,
+    "events": [],
+    "id": "7e760ddd-3a64-45ae-9309-e7e5a5c716c4"
+  },
+  {
+    "name": "sp.question.cheapest",
+    "auto": true,
+    "contexts": [],
+    "templates": [],
+    "userSays": [
+      {
+        "data": [
+          {
+            "text": "Cu\u00c3\u00a1les son los smartphones m\u00c3\u00a1s baratos?",
+            "userDefined": false
+          }
+        ],
+        "isTemplate": false,
+        "count": 0
+      }
+    ],
+    "responses": [
+      {
+        "action": "returnCheapestSmartphones",
+        "resetContexts": false,
+        "affectedContexts": [],
+        "parameters": [],
+        "messages": []
+      }
+    ],
+    "priority": 500000,
+    "fallbackIntent": false,
+    "webhookUsed": true,
+    "webhookForSlotFilling": true,
+    "events": [],
+    "id": "82eee25b-084e-4120-970a-57b1b9c14090"
+  }
+]

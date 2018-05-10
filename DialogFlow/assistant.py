@@ -113,7 +113,7 @@ def returnCheapestSmartphones():
     products = ProductManager.updateProductList(sessionId, [sp.id for sp in smartphones])
 
     for card in products.getBasicCards():
-        response.add_item(card.__dict__)
+        response.add_item(title=card.)
 
     # Set contexts
     context_manager.add('smartphone')

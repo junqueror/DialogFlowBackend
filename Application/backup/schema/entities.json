@@ -1,0 +1,121 @@
+[
+  {
+    "name": "productCategory",
+    "entries": [
+      {
+        "value": "Smartphone",
+        "synonyms": [
+          "Smartphone"
+        ]
+      }
+    ],
+    "isEnum": true,
+    "id": "bbedc427-b382-42cf-ab39-b8abfd8b29fe"
+  },
+  {
+    "name": "smartphoneBrand",
+    "entries": [
+      {
+        "value": "Google",
+        "synonyms": [
+          "Google"
+        ]
+      },
+      {
+        "value": "LG",
+        "synonyms": [
+          "LG"
+        ]
+      },
+      {
+        "value": "Samsung",
+        "synonyms": [
+          "Samsung"
+        ]
+      },
+      {
+        "value": "Sony",
+        "synonyms": [
+          "Sony"
+        ]
+      }
+    ],
+    "isEnum": true,
+    "id": "7185cc03-5479-4d2e-a3dd-3fb14f3a5bca"
+  },
+  {
+    "name": "smartphoneName",
+    "entries": [
+      {
+        "value": "Pixel 2",
+        "synonyms": [
+          "Pixel 2"
+        ]
+      },
+      {
+        "value": "S8",
+        "synonyms": [
+          "S8"
+        ]
+      },
+      {
+        "value": "S9",
+        "synonyms": [
+          "S9"
+        ]
+      },
+      {
+        "value": "Xperia XZ1 Compact",
+        "synonyms": [
+          "Xperia XZ1 Compact"
+        ]
+      }
+    ],
+    "isEnum": true,
+    "id": "69471b0c-7f35-4167-baac-087a24f1cecb"
+  },
+  {
+    "name": "smartphoneRange",
+    "entries": [
+      {
+        "value": "Gama alta",
+        "synonyms": [
+          "Gama alta"
+        ]
+      },
+      {
+        "value": "Gama baja",
+        "synonyms": [
+          "Gama baja"
+        ]
+      },
+      {
+        "value": "Gama media",
+        "synonyms": [
+          "Gama media"
+        ]
+      },
+      {
+        "value": "Gama premium",
+        "synonyms": [
+          "Gama premium"
+        ]
+      }
+    ],
+    "isEnum": true,
+    "id": "134958ad-6b95-4e32-bf8d-4fdc6f2ba0e5"
+  },
+  {
+    "name": "testParameter",
+    "entries": [
+      {
+        "value": "Test Value",
+        "synonyms": [
+          "Test Value"
+        ]
+      }
+    ],
+    "isEnum": true,
+    "id": "5a64e570-52a5-4240-9e6d-17ed6e360882"
+  }
+]
