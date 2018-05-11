@@ -2,6 +2,7 @@ import os
 import yaml
 import csv
 import ast
+import pandas
 import logging
 from shutil import copyfile
 from pprint import pprint
@@ -21,6 +22,8 @@ class FileManager():
 
     entitiesCsvPath = os.path.join(templatesPath, 'entities.csv')
     userSaysCsvPath = os.path.join(templatesPath, 'user_says.csv')
+    entitiesXlsxPath = os.path.join(os.path.dirname(parentdir), 'Agent', 'entities.xlsx')
+    userSaysXlsxPath = os.path.join(os.path.dirname(parentdir), 'Agent', 'user_says.xlsx')
 
     newEntitiesJsonPath = os.path.join(backupSchemaPath, 'entities.json')
     newIntentsJsonPath = os.path.join(backupSchemaPath, 'intents.json')
@@ -34,6 +37,63 @@ class FileManager():
         copyfile(FileManager.intentsJsonPath, FileManager.newIntentsJsonPath)
         copyfile(FileManager.entitiesYamlPath, FileManager.newEntitiesYamlPath)
         copyfile(FileManager.userSaysYamlPath, FileManager.newUserSaysYamlPath)
+
+    @staticmethod
+    def updateYAMLtemplatesFromXLSX():
+        FileManager._intentsXLSXtoYAML(FileManager.entitiesXlsxPath, FileManager.entitiesYamlPath)
+        FileManager._userSaysXLSXtoYAML(FileManager.userSaysXlsxPath, FileManager.userSaysYamlPath)
+
+    @staticmethod
+    def _intentsXLSXtoYAML(xlsxPath, yamlPath):
+        newDict = FileManager._readIntentsXLSXasDict(xlsxPath)
+        FileManager._saveDictInYAML(newDict, yamlPath)
+
+    @staticmethod
+    def _userSaysXLSXtoYAML(xlsxPath, yamlPath):
+        newDict = FileManager._readUserSaysXLSXasDict(xlsxPath)
+        FileManager._saveDictInYAML(newDict, yamlPath)
+
+    @staticmethod
+    def _readIntentsXLSXasDict(xlsxPath):
+        data = pandas.read_excel(xlsxPath)
+        headers = list(data.to_dict())
+        data = data.fillna(method='pad')
+        data = data.applymap(lambda x: x.strip() if type(x) is str else x)
+        data = data.transpose()
+        excelDict = data.to_dict()
+
+        newDict = dict()
+        for key, value in excelDict.items():
+            if not value[headers[0]] in newDict:
+                newDict[value[headers[0]]] = dict()
+            if not value[headers[1]] in newDict[value[headers[0]]]:
+                newDict[value[headers[0]]][value[headers[1]]] = []
+            newDict[value[headers[0]]][value[headers[1]]] = ast.literal_eval(value[headers[2]])
+
+        return newDict
+
+    @staticmethod
+    def _readUserSaysXLSXasDict(xlsxPath):
+        data = pandas.read_excel(xlsxPath)
+        headers = list(data.to_dict())
+        data = data.fillna(method='pad')
+        data = data.applymap(lambda x: x.strip() if type(x) is str else x)
+        data = data.transpose()
+        excelDict = data.to_dict()
+
+        newDict = dict()
+        for key, row in excelDict.items():
+            intent = row[headers[0]]
+            if not intent in newDict:
+                newDict[intent] = dict(UserSays=[], Annotations=[], Events=[])
+            for phrase in ast.literal_eval(row['UserSays']):
+                newDict[intent]['UserSays'].append(phrase)
+            if not row['AnnotationValue'] in newDict[intent]['Annotations']:
+                newDict[intent]['Annotations'].append({row['AnnotationParam']: row['AnnotationValue']})
+            for event in ast.literal_eval(row['events']):
+                newDict[intent]['UserSays'].append(event)
+
+        return newDict
 
     @staticmethod
     def updateYAMLtemplatesFromCSV():
