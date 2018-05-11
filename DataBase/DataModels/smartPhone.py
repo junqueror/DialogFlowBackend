@@ -4,13 +4,11 @@ from sqlalchemy.dialects.postgresql import ENUM
 from DataBase.dbController import DbController
 from Application.settings import Settings
 from DataBase.DataModels.affiliateLink import AffiliateLink
-from DialogFlow.responseModel import ResponseModel
-from DialogFlow.card import Card
-
+from DialogFlow.product import Product
 
 
 # Data model class to represent the smarphones database table
-class SmartPhone(DbController.instance().db.Model, ResponseModel):
+class SmartPhone(DbController.instance().db.Model, Product):
     __tablename__ = 'smartphones'
     __table_args__ = Settings.instance().DATABASE_TABLE_ARGS
 
@@ -48,52 +46,63 @@ class SmartPhone(DbController.instance().db.Model, ResponseModel):
 
     # Methods
 
-    def getBasicCard(self):
-        return Card(title=self.title,
-                    link=self.link,
-                    linkTitle=self.linkTitle,
-                    text=self.sortText,
-                    )
-
-    def getCompleteCard(self):
-        return Card(title=self.title,
-                    subtitle=self.subtitle,
-                    link=self.link,
-                    linkTitle=self.linkTitle,
-                    img_url=self.imgUrl,
-                    img_alt=self.imgAlt,
-                    text=self.longText)
-
     @property
     def title(self):
-        return self.title
-    def __init__(self):
-        super(SmartPhone).__init__(title="{0} {1}".format(self.company, self.name),
-                                   subtitle="Precio medio: s{0}".format(self.avgPrice),
-                                   sortText="{0}, {1}, {2}, {3}/{4}".format(self.OS,
-                                                                            self.RAM,
-                                                                            self.processor,
-                                                                            self.frontCameraRes,
-                                                                            self.backCameraRes),
-                                   longText="{0}, {1}, {2}, {3} {4} {5}, {6}/{7}, {8}, {9} ".format(self.OS,
-                                                                                                    self.RAM,
-                                                                                                    self.processor,
-                                                                                                    self.screenSize,
-                                                                                                    self.screenSize,
-                                                                                                    self.screenType,
-                                                                                                    self.frontCameraRes,
-                                                                                                    self.backCameraRes,
-                                                                                                    self.battery,
-                                                                                                    self.extras),
-                                   imgUrl=self.image,
-                                   imgAlt=self.image,
-                                   link=self.officialURL,
-                                   linkTitle='Web oficial',
-                                   text="Precio medio: s{0}".format(self.avgPrice))
+        return "{0} {1}".format(self.company, self.name)
 
-    @staticmethod
-    def getMainField():
-        return SmartPhone.name
+    @property
+    def subtitle(self):
+        return "Precio medio: s{0}".format(self.avgPrice)
 
-    def __repr__(self):
-        return '<SmartPhone: {0}>'.format(self.id)
+    @property
+    def text(self):
+        return "{0}, \nRAM: {1}, {2}, {3}/{4}".format(self.OS,
+                                                      self.RAM,
+                                                      self.processor,
+                                                      self.frontCameraRes,
+                                                      self.backCameraRes)
+
+    @property
+    def description(self):
+        return "{0}, {1}, {2}, {3} {4} {5}, {6}/{7}, {8}, {9} ".format(self.OS,
+                                                                       self.RAM,
+                                                                       self.processor,
+                                                                       self.screenSize,
+                                                                       self.screenSize,
+                                                                       self.screenType,
+                                                                       self.frontCameraRes,
+                                                                       self.backCameraRes,
+                                                                       self.battery,
+                                                                       self.extras)
+
+    @property
+    def imgUrl(self):
+        return self.image
+
+    @property
+    def imgAlt(self):
+        return self.image
+
+    @property
+    def link(self):
+        return self.officialURL
+
+    @property
+    def linkTitle(self):
+        return 'Web oficial',
+
+    @property
+    def key(self):
+        return self.name,
+
+    @property
+    def synonyms(self):
+        return []
+
+
+def getMainField():
+    return SmartPhone.name
+
+
+def __repr__(self):
+    return '<SmartPhone: {0} {1}>'.format(self.company, self.name)

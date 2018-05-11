@@ -4,7 +4,8 @@ from flask_assistant import Assistant, ask, context_manager
 from Application.flaskWrapper import FlaskWrapper
 from DataBase.dbController import DbController
 from DataBase.DataModels import *
-from DialogFlow.productManager import ProductManager
+from DialogFlow.sessionManager import SessionManager
+from DialogFlow.message import Message
 
 
 # Create assistant
@@ -71,20 +72,21 @@ def askRAM(smartphoneScreen):
 
 
 @Assistant.action('smartphoneCard')
-def showSmartphoneCard(smartphoneBrand, smartphoneName):
-    smartphoneRange = context_manager.get('smartphone', 'smartphoneRange')
+def showSmartphoneCard(smartphoneName, smartphoneBrand=None):
+    # Get contexts
 
+    # Get products
     smartphone = DbController.instance().getOneByCompanyAndName(SmartPhone, smartphoneBrand, smartphoneName)
 
-    response = ask('Aquí lo tienes:')
-    response.card(title="{0} {1}".format(smartphone.company, smartphone.name),
-                  link=smartphone.officialURL,
-                  linkTitle='Web oficial',
-                  text="Precio medio: {0!s}€".format(smartphone.avgPrice),
-                  img_url=smartphone.image)
+    # Create response message
+    message = Message(['Aquí lo tienes'])
+    message.addCard(smartphone)
+    message.addSuggestions('Más detalles', 'Ver tiendas')
 
+    # Set contexts
     context_manager.add('smartphone')
-    return response
+
+    return message.response
 
 
 @Assistant.action('sp.question.cheapest')
@@ -94,32 +96,21 @@ def returnCheapestSmartphones():
     sessionId = Assistant.request['sessionId']
 
     # Get products
-    smartphones = DbController.instance().getAllFilterBy(SmartPhone, order='avgPrice', orderDir='asc')
-    smartphones = smartphones[:2]
+    smartphones = DbController.instance().getCheapests(SmartPhone, 3)
 
-    # Build response
-    basicResponses = [
-        'Estos son los smartphones más baratos',
-        'Aquí tienes los móviles con el precio más bajo']
+    # Create response message
+    message = Message(['Estos son los smartphones más baratos',
+                       'Aquí tienes los móviles con el precio más bajo'])
+    message.addList('Los 3 smartphones más baratos', smartphones)
 
-    response = ask(random.choice(basicResponses)).build_list('Los 3 smartphones más baratos')
-
-    # for sp in smartphones:
-    #     response.add_item(title=sp.name,
-    #                       key="{0} {1}".format(sp.company, sp.name),
-    #                       img_url=sp.image,
-    #                       description=sp.extras,
-    #                       synonyms=['one', 'number one', 'first option'])
-    products = ProductManager.updateProductList(sessionId, [sp.id for sp in smartphones])
-
-    # for card in products.getBasicCards():
-    #      response.add_item(title=card.)
+    # Update products list
+    # SessionManager.updateProductList(sessionId, [sp.id for sp in smartphones])
 
     # Set contexts
     context_manager.add('smartphone')
     context_manager.add('cheapest')
 
-    return response
+    return message.response
 
 # Prompts
 

@@ -26,11 +26,19 @@ class DbController(DbWrapper):
         return result
 
     def getOneByCompanyAndName(self, model, company, name):
-        result = self._db.session.query(model).filter(model.company.ilike(company)).filter(model.name.ilike(name)).one()
+        if company:
+            result = self._db.session.query(model).filter(model.company.ilike(company)).filter(
+                model.name.ilike(name)).one()
+        else:
+            result = self._db.session.query(model).filter(model.name.ilike(name)).one()
         return result
 
     def getCheapestOne(self, model):
-        result = self._db.session.query(model).order_by(asc(model.avgPrice)).limit(1)
+        result = self._db.session.query(model).order_by(asc(model.avgPrice)).limit(1).one()
+        return result
+
+    def getCheapests(self, model, number):
+        result = self._db.session.query(model).order_by(asc(model.avgPrice)).limit(number).all()
         return result
 
     def getCheapestOneFilterBy(self, model, fields, search):
@@ -43,7 +51,7 @@ class DbController(DbWrapper):
         query = query.filter(or_(*filters))  # Apply filters to the query
 
         # Get the cheapest one
-        result = query.order_by(asc(model.avgPrice)).limit(1)
+        result = query.order_by(asc(model.avgPrice)).limit(1).one()
 
         return result
 

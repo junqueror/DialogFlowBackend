@@ -15,6 +15,7 @@ class Ecommerce(DbController.instance().db.Model):
     URL = Column(String, nullable=False)
     image = Column(String, nullable=False)
     description = Column(String)
+    rate = Column(Integer)
 
     # Relationships
 

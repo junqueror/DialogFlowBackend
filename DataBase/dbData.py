@@ -177,12 +177,12 @@ class DbData:
             db.session.add(eCommerce1)
             db.session.add(eCommerce2)
 
-            affiliateLink1 = AffiliateLink(link='link1',
+            affiliateLink1 = AffiliateLink(linkUrl='link1',
                                            price=989,
                                            smartphoneId=1,
                                            ecommerceId=1)
 
-            affiliateLink2 = AffiliateLink(link='link2',
+            affiliateLink2 = AffiliateLink(linkUrl='link2',
                                            price=949,
                                            smartphoneId=1,
                                            ecommerceId=2)

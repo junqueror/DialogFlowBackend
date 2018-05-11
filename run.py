@@ -3,12 +3,11 @@ import logging
 import os
 import sys
 import traceback
-from threading import Thread
-
 from Application.app import App
 from Application.settings import Settings
-from DialogFlow.dialogFlowWrapper import DialogFlowWrapper
 from Application.fileManager import FileManager
+from DialogFlow.dialogFlowWrapper import DialogFlowWrapper
+from DialogFlow import assistant
 
 
 def getArguments(argv):
@@ -61,8 +60,9 @@ if __name__ == "__main__":
     os.environ['CLIENT_ACCESS_TOKEN'] = Settings.instance().DIALOGFLOW_CLIENT_TOKEN
 
     # FileManager.SaveTemplatesCSV()
-    FileManager.updateYAMLtemplatesFromCSV()
-    # DialogFlowWrapper.buildSchema()
+    # FileManager.updateYAMLtemplatesFromCSV()
+    FileManager.updateYAMLtemplatesFromXLSX()
+    DialogFlowWrapper.buildSchema()
 
     # Run the application
     Application.run(Settings.instance().FLASK_HOST, Settings.instance().FLASK_PORT)

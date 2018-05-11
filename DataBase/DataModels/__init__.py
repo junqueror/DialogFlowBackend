@@ -1,5 +1,4 @@
-__all__ = ['Article', 'SmartPhone', 'AffiliateLink', 'Ecommerce', 'Range', 'Screen']
-from .article import Article
+__all__ = ['SmartPhone', 'AffiliateLink', 'Ecommerce', 'Range', 'Screen']
 from .smartPhone import SmartPhone
 from .affiliateLink import AffiliateLink
 from .eCommerce import Ecommerce

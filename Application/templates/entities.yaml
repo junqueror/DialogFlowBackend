@@ -38,6 +38,8 @@ smartphoneRange:
   - gama premium
   - premium
 testParameter:
+  New value:
+  - value
   Test Value:
   - test
   - testing
