@@ -2,7 +2,6 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from DataBase.dbController import DbController
 from Application.settings import Settings
-from DialogFlow.product import Product
 
 
 # Data model class to represent the ecommerces database table

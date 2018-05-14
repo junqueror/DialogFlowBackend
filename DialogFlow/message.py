@@ -33,5 +33,11 @@ class Message():
                                    img_url=element.imgUrl,
                                    synonyms=element.synonyms)
 
+    def addListOrCarrousel(self, title, elements):
+        if len(elements) <= 5:
+            self.addCarrousel(elements)
+        else:
+            self.addList(title, elements)
+
     def addSuggestions(self, *args):
         self.response.suggest(*args)

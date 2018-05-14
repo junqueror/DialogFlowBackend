@@ -12,6 +12,13 @@ Assistant = Assistant(app=FlaskWrapper.App, route='/assistant')
 
 # ----------------------------------------------- -ROUTING ---------------------------------------------
 
+@Assistant.action('push.notification')
+def pushNotification():
+    print("PUSH")
+    response = ask("Ha llegado la notificación push?")
+    return response
+
+
 @Assistant.action('buy>product.category')
 def askProductCategory():
     basicResponses = ['¿Qué estás buscando?',

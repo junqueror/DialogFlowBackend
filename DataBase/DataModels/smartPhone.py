@@ -4,7 +4,6 @@ from sqlalchemy.dialects.postgresql import ENUM
 from DataBase.dbController import DbController
 from Application.settings import Settings
 from DataBase.DataModels.affiliateLink import AffiliateLink
-from DialogFlow.product import Product
 
 
 # Data model class to represent the smarphones database table

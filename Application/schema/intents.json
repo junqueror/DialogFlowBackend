@@ -1,5 +1,27 @@
 [
     {
+        "name": "push.notification",
+        "auto": true,
+        "contexts": [],
+        "templates": [],
+        "userSays": [],
+        "responses": [
+            {
+                "action": "pushNotification",
+                "resetContexts": false,
+                "affectedContexts": [],
+                "parameters": [],
+                "messages": []
+            }
+        ],
+        "priority": 500000,
+        "fallbackIntent": false,
+        "webhookUsed": true,
+        "webhookForSlotFilling": true,
+        "events": [],
+        "id": "f3d07736-f375-4549-a93d-4583b49409e1"
+    },
+    {
         "name": "buy>product.category",
         "auto": true,
         "contexts": [],

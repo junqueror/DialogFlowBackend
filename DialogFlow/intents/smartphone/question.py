@@ -16,7 +16,7 @@ def bestBattery(assistant, quantity):
     message = Message(['Listo! Estos son los móviles con batería de larga duración',
                        'Aquí los tienes',
                        'Estos son los que tienen batería de más capacidad'])
-    message.addCarrousel(products)
+    message.addListOrCarrousel(products)
     # Set contexts and lifespans
     context_manager.add('smartphone')
     context_manager.add('bestBattery').lifespan = 2
@@ -32,7 +32,7 @@ def cheapest(assistant, quantity):
     # Create response message
     message = Message(['Estos son los smartphones más baratos',
                        'Aquí tienes los móviles con el precio más bajo'])
-    message.addList('Los {0} smartphones más baratos'.format(len(products)), products)
+    message.addListOrCarrousel('Los {0} smartphones más baratos'.format(len(products)), products)
     # Set contexts and lifespans
     context_manager.add('smartphone')
     context_manager.add('cheapest')
@@ -50,7 +50,7 @@ def mostPowerful(assistant, quantity):
                        'Aquí los tienes',
                        'Los smartphones más potentes son los que tienen más cantidad de memoria RAM, y son los '
                        'siguientes'])
-    message.addList('Los {0} smartphones más potentes'.format(len(products)), products)
+    message.addListOrCarrousel('Los {0} smartphones más potentes'.format(len(products)), products)
     # Set contexts and lifespans
     context_manager.add('smartphone')
     context_manager.add('mostPowerful').lifespan = 2
