@@ -4,7 +4,6 @@ from DataBase.DataModels import *
 
 # Class to insert test data in the database
 class DbData:
-
     @staticmethod
     def createTables(db, app):
         with app.app_context():
@@ -169,13 +168,22 @@ class DbData:
 
             eCommerce1 = Ecommerce(name='Amazon',
                                    URL='www.amazon.es',
-                                   image='https://t2.uc.ltmcdn.com/images/5/2/0/img_como_comprar_en_amazon_desde_espana_24025_600.jpg')
+                                   image='https://t2.uc.ltmcdn.com/images/5/2/0/img_como_comprar_en_amazon_desde_espana_24025_600.jpg',
+                                   description='Mejor velocidad de envío y garantías de devolución',
+                                   rate=92)
             eCommerce2 = Ecommerce(name='Gearbest',
                                    URL='www.gearbest.es',
-                                   image='data:image/png;base64,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')
-
+                                   image='https://comprarchinobien.com/wp-content/uploads/2016/08/gearbest-espanol-ofertas.jpg',
+                                   description='Buena oferta de productos chinos. Bajos precios, per tiempos de envíos altos',
+                                   rate=84)
+            eCommerce3 = Ecommerce(name='AliExpress',
+                                   URL='https://es.aliexpress.com',
+                                   image='https://www.puntonegocio.com/images/easyblog_articles/500/maxresdefault.jpg',
+                                   description='Precios bajos en tecnología. Sin garantías de devolución',
+                                   rate=84)
             db.session.add(eCommerce1)
             db.session.add(eCommerce2)
+            db.session.add(eCommerce3)
 
             affiliateLink1 = AffiliateLink(linkUrl='link1',
                                            price=989,
@@ -187,8 +195,14 @@ class DbData:
                                            smartphoneId=1,
                                            ecommerceId=2)
 
+            affiliateLink3 = AffiliateLink(linkUrl='link3',
+                                           price=899,
+                                           smartphoneId=1,
+                                           ecommerceId=3)
+
             db.session.add(affiliateLink1)
             db.session.add(affiliateLink2)
+            db.session.add(affiliateLink3)
 
             # Add to Database
 

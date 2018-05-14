@@ -33,18 +33,43 @@ class DbController(DbWrapper):
             result = self._db.session.query(model).filter(model.name.ilike(name)).one()
         return result
 
-    def getCheapestOne(self, model):
-        result = self._db.session.query(model).order_by(asc(model.avgPrice)).limit(1).one()
-        return result
+    def getCheapestOne(self, model, query=None):
+        if not query:
+            # Generate query on the model (model)
+            query = self._db.session.query(model)
 
-    def getCheapests(self, model, number):
-        result = self._db.session.query(model).order_by(asc(model.avgPrice)).limit(number).all()
-        return result
+        result = query.order_by(asc(model.avgPrice)).limit(1).one()
+        return result, query
 
-    def getCheapestOneFilterBy(self, model, fields, search):
+    def getCheapests(self, model, number, query=None):
+        if not query:
+            # Generate query on the model (model)
+            query = self._db.session.query(model)
+        query = query.order_by(asc(model.avgPrice))
+        results = query.limit(number).all()
+        return results, query
 
-        # Generate query on the model (model)
-        query = self._db.session.query(model)
+    def getMostPowerful(self, model, number, query=None):
+        if not query:
+            # Generate query on the model (model)
+            query = self._db.session.query(model)
+        query = query.order_by(desc(model.RAM))
+        results = query.limit(number).all()
+        return results, query
+
+    def getBestBattery(self, model, number, query=None):
+        if not query:
+            # Generate query on the model (model)
+            query = self._db.session.query(model)
+        query = query.order_by(desc(model.battery))
+        results = query.limit(number).all()
+        return results, query
+
+    def getCheapestOneFilterBy(self, model, fields, search, query=None):
+
+        if not query:
+            # Generate query on the model (model)
+            query = self._db.session.query(model)
 
         # Filtering
         filters = self._createFilters(search, fields, model, query)  # Build the appropriate filters for the query
@@ -53,20 +78,21 @@ class DbController(DbWrapper):
         # Get the cheapest one
         result = query.order_by(asc(model.avgPrice)).limit(1).one()
 
-        return result
+        return result, query
 
     def getAll(self, model):
         results = self._db.session.query(model).all()
         return results
 
-    def getAllFilterBy(self, model, fields, search, order=None, orderDir=None):
+    def getAllFilterBy(self, model, fields, search, order=None, orderDir=None, query=None):
 
         results = None
         numResults = 0
 
         try:
-            # Generate query on the model (model)
-            query = self._db.session.query(model)
+            if not query:
+                # Generate query on the model (model)
+                query = self._db.session.query(model)
 
             # Filtering
             filters = self._createFilters(search, fields, model,

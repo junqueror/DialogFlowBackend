@@ -7,7 +7,6 @@ from Application.app import App
 from Application.settings import Settings
 from Application.fileManager import FileManager
 from DialogFlow.dialogFlowWrapper import DialogFlowWrapper
-from DialogFlow import assistant
 
 
 def getArguments(argv):
@@ -59,10 +58,11 @@ if __name__ == "__main__":
     os.environ['DEV_ACCESS_TOKEN'] = Settings.instance().DIALOGFLOW_DEV_TOKEN
     os.environ['CLIENT_ACCESS_TOKEN'] = Settings.instance().DIALOGFLOW_CLIENT_TOKEN
 
-    # FileManager.SaveTemplatesCSV()
-    # FileManager.updateYAMLtemplatesFromCSV()
+   # Update DialogFlow Agent schema
     FileManager.updateYAMLtemplatesFromXLSX()
     DialogFlowWrapper.buildSchema()
+    FileManager.saveBackupFiles()
 
     # Run the application
     Application.run(Settings.instance().FLASK_HOST, Settings.instance().FLASK_PORT)
+

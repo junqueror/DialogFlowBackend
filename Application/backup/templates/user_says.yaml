@@ -1,101 +1,56 @@
-# Template for defining UserSays examples
-
-# give-color-intent:
-
-#  UserSays:
-#    - My color is blue
-#    - red is my favorite color
-
-#  Annotations:
-#    - blue: sys.color     # maps param value -> entity
-#    - red: sys.color
-
-#  Events:
-#    - event1              # adds a triggerable event named 'event1' to the intent
-
-
-
-Default Welcome Intent:
-  UserSays:
-  - Hola
-  - holi
-  - Buenos días
-  - Buenas tardes
-  - buenas
-  - buenas noches
-  - hey
-  - hi
+Another Intent:
   Annotations:
-  -
-  -
-  Events:
-  -
-buy>product.category:
+  - prueba: testParameter
+  - probando: testParameter
+  - probanding: testParameter
+  Events: []
   UserSays:
-  - Quiero hacer una compra
-  - Me gustaría comprar
-  - Necesito información
-  - Buco información sobre productos
+  - quiero hacer una prueba
+  - probar another intent
+  - lanzar intent de prueba
+smartphone.selected.ecommerces:
   Annotations:
-  -
-  -
-  Events:
-  -
-product.category>sp.range:
+  - movil: productCategory
+  Events: []
   UserSays:
-  - un smartphone
-  - smartphones
-  - un móvil
-  - quiero comprar un smartphone
-  - quiero un móvil
+  - Ver tiendas
+  - "D\xF3nde lo puedo comprar?"
+  - Tiendas
+sp.question.bestBattery:
+  Annotations:
+  - '3': quantity
+  - cual: quantity
+  - "cu\xE1l": quantity
+  - el: quantity
+  - '5': quantity
+  Events: []
+  UserSays:
+  - "Cual tiene m\xE1s bater\xEDa"
+  - "Cu\xE1es son los que teienen mejor bater\xEDa"
+  - "Mu\xE9strame los 3 con m\xE1s bater\xEDa"
+  - "Dime los 5 con mejor bater\xEDa"
+  - "Mu\xE9strame el de mejor bater\xEDa"
+sp.question.mostPowerful:
   Annotations:
   - smartphone: productCategory
-  - smartphones: productCategory
-  - móvil: productCategory
-  Events:
-  -
-sp.range>screen:
+  - movil: productCategory
+  Events: []
   UserSays:
-  - gama baja
-  - gama media
-  - gama alta
-  - gama premium
+  - "Cu\xE1les son los smartphones m\xE1s potentes? "
+  - "qu\xE9 m\xF3viles tienen m\xE1s RAM?"
+testIntent:
   Annotations:
-  - gama baja: smartphoneRange
-  - gama media: smartphoneRange
-  - gama alta: smartphoneRange
-  - gama premium: smartphoneRange
-  Events:
-  -
-smartphoneCard:
+  - test: testParameter
+  - value: testParameter
+  Events: []
   UserSays:
-  - "Muéstrame el Samsung S9"
-  - "Quiero saber más sobre el lg g6"
-  - Hablame sobre el sony xperia zx1 compact
+  - test
+  - testing
+testIntent2:
   Annotations:
-  - S9: smartphoneName
-  - g6: smartphoneName
-  - lg: smartphoneBrand
-  - Samsung: smartphoneBrand
-  - Sony: smartphoneBrand
-  - xperia zx1 compact: smartphoneName
-  Events:
-  -
-sp.screen>RAM:
+  - value: testParameter
+  - s9: smartphoneName
+  Events: []
   UserSays:
-  - pantalla pequeña
-  - pantalla mediana
-  - pantalla grande
-  Annotations:
-  - pantalla pequeña: smartphoneScreen
-  - pantalla mediana: smartphoneScreen
-  - pantalla grande: smartphoneScreen
-  Events:
-  -
-sp.question.cheapest:
-  UserSays:
-  - Cuáles son los smartphones más baratos?
-  Annotations:
-  -
-  Events:
-  -
+  - testeando
+  - prueba

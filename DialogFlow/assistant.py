@@ -2,15 +2,15 @@ import logging
 import random
 from flask_assistant import Assistant, ask, context_manager
 from Application.flaskWrapper import FlaskWrapper
-from DataBase.dbController import DbController
-from DataBase.DataModels import *
-from DialogFlow.sessionManager import SessionManager
-from DialogFlow.message import Message
+from DialogFlow.intents.smartphone import filterPath, question, generic
+from DialogFlow.intents.ecommerces import generic as genericEcommerce
 
-
-# Create assistant
+# ----------------------------------------------- ASSISTANT --------------------------------------------
 logging.getLogger('flask_assistant').setLevel(logging.DEBUG)
 Assistant = Assistant(app=FlaskWrapper.App, route='/assistant')
+
+
+# ----------------------------------------------- -ROUTING ---------------------------------------------
 
 @Assistant.action('buy>product.category')
 def askProductCategory():
@@ -24,43 +24,16 @@ def askProductCategory():
 
 @Assistant.action('product.category>sp.range')
 def askRange(productCategory):
-    context_manager.add(productCategory)
-
-    if productCategory == 'Smartphone':
-
-        basicResponses = ['¿Qué categoría de móvil estás buscando?',
-                          '¿Qué rango de SmartPhones te interesa?',
-                          'Elije una de las siguientes gamas para poder empezar',
-                          'Lo primero es elegir la gama de SmartPhones que buscamos. Ten encuenta que de esta decisión depende bastante el precio, por lo que te recomiendo que elijas de acuerdo a tus necesidades reales. No queremos gastar dinero en algo que no necesitamos!']
-        ranges = DbController.instance().getAll(Range)
-        response = ask(random.choice(basicResponses)).build_carousel()
-
-        for range in ranges:
-            response.add_item(title=range.name, key=range.name, description=range.description)
-    else:
-        response = ask('Lo siento, pero ahora mismo solo puedo ayudarte con la categoría de SmartPhones.')
-
-    return response
+    return filterPath.getCategoryAskRange(productCategory)
 
 
 @Assistant.context('Smartphone')
 @Assistant.action('sp.range>screen')
 def askScreen(smartphoneRange):
-    context_manager.add('smartphone')
-
-    basicResponses = [
-        'Vamos a empezar por las dimensiones del SmartPhone, que dependen principalmente del tamaño de pantalla.',
-        'Las dimensiones del SmartPhone determinan su tamaño. ¿Qué tamaño de pantalla estás buscando?']
-    range = DbController.instance().getOneByName(Range, smartphoneRange)
-
-    response = ask(random.choice(basicResponses)).build_carousel()
-    for screen in range.screens:
-        response.add_item(title=screen.name, key=screen.name, description=screen.description)
-
-    return response
+    return filterPath.getRangeAskScreen(smartphoneRange)
 
 
-@Assistant.context('Smartphone')
+@Assistant.context('smartphone')
 @Assistant.action('sp.screen>RAM')
 def askRAM(smartphoneScreen):
     print("IN sp.screen>RAM")
@@ -71,48 +44,34 @@ def askRAM(smartphoneScreen):
     return ask('In sp.screen>RAM')
 
 
-@Assistant.action('smartphoneCard')
-def showSmartphoneCard(smartphoneName, smartphoneBrand=None):
-    # Get contexts
+@Assistant.action('smartphone.selected')
+def showSmartphoneSelected(smartphoneName, smartphoneBrand=None):
+    return generic.getSmartphoneShowCard(smartphoneBrand, smartphoneName)
 
-    # Get products
-    smartphone = DbController.instance().getOneByCompanyAndName(SmartPhone, smartphoneBrand, smartphoneName)
 
-    # Create response message
-    message = Message(['Aquí lo tienes'])
-    message.addCard(smartphone)
-    message.addSuggestions('Más detalles', 'Ver tiendas')
+@Assistant.context('smartphone')
+@Assistant.context('product-selected')
+@Assistant.action('smartphone.selected.ecommerces')
+def showSmartphoneSelectedEcommerces():
+    return genericEcommerce.getSmartphoneShowEcommerces()
 
-    # Set contexts
-    context_manager.add('smartphone')
 
-    return message.response
+@Assistant.action('sp.question.mostPowerful')
+def showMostPowerfulSmartphones(quantity=5):
+    return question.mostPowerful(Assistant, quantity)
 
 
 @Assistant.action('sp.question.cheapest')
-def returnCheapestSmartphones():
+def showCheapestSmartphones(quantity=5):
+    return question.cheapest(Assistant, quantity)
 
-    # Get session ID
-    sessionId = Assistant.request['sessionId']
 
-    # Get products
-    smartphones = DbController.instance().getCheapests(SmartPhone, 3)
+@Assistant.action('sp.question.bestBattery')
+def showBestBatterySmartphones(quantity=5):
+    return question.bestBattery(Assistant, quantity)
 
-    # Create response message
-    message = Message(['Estos son los smartphones más baratos',
-                       'Aquí tienes los móviles con el precio más bajo'])
-    message.addList('Los 3 smartphones más baratos', smartphones)
 
-    # Update products list
-    # SessionManager.updateProductList(sessionId, [sp.id for sp in smartphones])
-
-    # Set contexts
-    context_manager.add('smartphone')
-    context_manager.add('cheapest')
-
-    return message.response
-
-# Prompts
+# ----------------------------------------------- PROMPTS --------------------------------------------
 
 @Assistant.prompt_for('smartphoneName', intent_name='smartphone')
 def promptSmartphoneName(smartphoneName):

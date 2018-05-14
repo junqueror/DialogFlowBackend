@@ -1,43 +1,54 @@
 productCategory:
-  Smartphone:
+- Smartphone:
   - smartphone
   - phone
   - "m\xF3vil"
-  - "terminal m\xF3vil"
+  - terminal
+  - "m\xF3vil"
   - "tel\xE9fono"
   - smartphones
+quantity:
+- 3:
+  - '3'
+- 4:
+  - '4'
+- 1:
+  - el
+  - "cu\xE1l"
+  - '1'
 smartphoneBrand:
-  Google:
-  - google
-  LG:
-  - lg
-  Samsung:
+- Samsung:
   - samsung
-  Sony:
+- LG:
+  - lg
+- Sony:
   - sony
+- Google:
+  - google
 smartphoneName:
-  Pixel 2:
-  - pixel 2
-  S8:
-  - s8
-  S9:
+- S9:
   - s9
-  Xperia XZ1 Compact:
+- S8:
+  - s8
+- Pixel 2:
+  - pixel 2
+- Xperia XZ1 Compact:
   - xperia xz1 compact
 smartphoneRange:
-  Gama alta:
-  - gama alta
-  - alta
-  Gama baja:
+- Gama baja:
   - gama baja
   - baja
-  Gama media:
+- Gama media:
   - gama media
   - media
-  Gama premium:
+- Gama alta:
+  - gama alta
+  - alta
+- Gama premium:
   - gama premium
   - premium
 testParameter:
-  Test Value:
-  - test
-  - testing
+- Test Value:
+  - test testing
+- New value:
+  - value

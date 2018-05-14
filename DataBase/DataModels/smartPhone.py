@@ -8,7 +8,7 @@ from DialogFlow.product import Product
 
 
 # Data model class to represent the smarphones database table
-class SmartPhone(DbController.instance().db.Model, Product):
+class SmartPhone(DbController.instance().db.Model):
     __tablename__ = 'smartphones'
     __table_args__ = Settings.instance().DATABASE_TABLE_ARGS
 
@@ -102,7 +102,6 @@ class SmartPhone(DbController.instance().db.Model, Product):
 
 def getMainField():
     return SmartPhone.name
-
 
 def __repr__(self):
     return '<SmartPhone: {0} {1}>'.format(self.company, self.name)

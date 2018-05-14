@@ -6,7 +6,7 @@ from DialogFlow.product import Product
 
 
 # Data model class to represent the ecommerces database table
-class AffiliateLink(DbController.instance().db.Model, Product):
+class AffiliateLink(DbController.instance().db.Model):
     __tablename__ = 'affiliateLinks'
     __table_args__ = Settings.instance().DATABASE_TABLE_ARGS
 
@@ -21,7 +21,7 @@ class AffiliateLink(DbController.instance().db.Model, Product):
 
     # Children
     smartphone = relationship("SmartPhone", lazy=True)
-    ecommerce = relationship("SmartPhone", lazy=True)
+    ecommerce = relationship("Ecommerce", lazy=True)
 
     # Methods
 
@@ -59,7 +59,7 @@ class AffiliateLink(DbController.instance().db.Model, Product):
 
     @property
     def key(self):
-        return self.name,
+        return self.ecommerce.name,
 
     @property
     def synonyms(self):
