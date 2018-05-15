@@ -66,6 +66,46 @@
                 ],
                 "isTemplate": false,
                 "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "   Quiero hacer una compra",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "  Me gustar\u00eda comprar",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "  Necesito informaci\u00f3n",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "  Busco informaci\u00f3n sobre productos",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
             }
         ],
         "responses": [
@@ -167,6 +207,198 @@
                 ],
                 "isTemplate": false,
                 "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "  un "
+                    },
+                    {
+                        "text": "smartphone",
+                        "meta": "@productCategory",
+                        "alias": "productCategory",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "  smartphones"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "  un "
+                    },
+                    {
+                        "text": "m\u00f3vil",
+                        "meta": "@productCategory",
+                        "alias": "productCategory",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "  quiero comprar un "
+                    },
+                    {
+                        "text": "smartphone",
+                        "meta": "@productCategory",
+                        "alias": "productCategory",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "  quiero un "
+                    },
+                    {
+                        "text": "m\u00f3vil",
+                        "meta": "@productCategory",
+                        "alias": "productCategory",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "gama baja",
+                        "meta": "@smartphoneRange",
+                        "alias": "smartphoneRange",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "  gama "
+                    },
+                    {
+                        "text": "media",
+                        "meta": "@smartphoneRange",
+                        "alias": "smartphoneRange",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "  gama "
+                    },
+                    {
+                        "text": "alta",
+                        "meta": "@smartphoneRange",
+                        "alias": "smartphoneRange",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "  gama "
+                    },
+                    {
+                        "text": "premium",
+                        "meta": "@smartphoneRange",
+                        "alias": "smartphoneRange",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "quiero uno de "
+                    },
+                    {
+                        "text": "gama baja",
+                        "meta": "@smartphoneRange",
+                        "alias": "smartphoneRange",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "quiero un m\u00f3vi de "
+                    },
+                    {
+                        "text": "media",
+                        "meta": "@smartphoneRange",
+                        "alias": "smartphoneRange",
+                        "userDefined": true
+                    },
+                    {
+                        "text": " gama"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "uno de rango alto"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "un "
+                    },
+                    {
+                        "text": "smartphone",
+                        "meta": "@productCategory",
+                        "alias": "productCategory",
+                        "userDefined": true
+                    },
+                    {
+                        "text": " "
+                    },
+                    {
+                        "text": "premium",
+                        "meta": "@smartphoneRange",
+                        "alias": "smartphoneRange",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
             }
         ],
         "responses": [
@@ -200,7 +432,50 @@
         "auto": true,
         "contexts": [],
         "templates": [],
-        "userSays": [],
+        "userSays": [
+            {
+                "data": [
+                    {
+                        "text": "pantalla peque\u00f1a",
+                        "meta": "@smartphoneScreen",
+                        "alias": "smartphoneScreen",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "  pantalla "
+                    },
+                    {
+                        "text": "mediana",
+                        "meta": "@smartphoneScreen",
+                        "alias": "smartphoneScreen",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "  pantalla "
+                    },
+                    {
+                        "text": "grande",
+                        "meta": "@smartphoneScreen",
+                        "alias": "smartphoneScreen",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            }
+        ],
         "responses": [
             {
                 "action": "askScreen",
@@ -264,7 +539,98 @@
         "auto": true,
         "contexts": [],
         "templates": [],
-        "userSays": [],
+        "userSays": [
+            {
+                "data": [
+                    {
+                        "text": "Mu\u00e9strame el "
+                    },
+                    {
+                        "text": "Samsung",
+                        "meta": "@smartphoneBrand",
+                        "alias": "smartphoneBrand",
+                        "userDefined": true
+                    },
+                    {
+                        "text": " "
+                    },
+                    {
+                        "text": "S9",
+                        "meta": "@smartphoneName",
+                        "alias": "smartphoneName",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "  Quiero saber m\u00e1s sobre el "
+                    },
+                    {
+                        "text": "lg",
+                        "meta": "@smartphoneBrand",
+                        "alias": "smartphoneBrand",
+                        "userDefined": true
+                    },
+                    {
+                        "text": " g6"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "  Hablame sobre el "
+                    },
+                    {
+                        "text": "sony",
+                        "meta": "@smartphoneBrand",
+                        "alias": "smartphoneBrand",
+                        "userDefined": true
+                    },
+                    {
+                        "text": " xperia "
+                    },
+                    {
+                        "text": "zx1 compact",
+                        "meta": "@smartphoneName",
+                        "alias": "smartphoneName",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "Quiero el "
+                    },
+                    {
+                        "text": "Google",
+                        "meta": "@smartphoneBrand",
+                        "alias": "smartphoneBrand",
+                        "userDefined": true
+                    },
+                    {
+                        "text": " "
+                    },
+                    {
+                        "text": "Pixel 2",
+                        "meta": "@smartphoneName",
+                        "alias": "smartphoneName",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            }
+        ],
         "responses": [
             {
                 "action": "showSmartphoneSelected",
@@ -301,7 +667,7 @@
         "id": "7e760ddd-3a64-45ae-9309-e7e5a5c716c4"
     },
     {
-        "name": "smartphone.selected.ecommerces",
+        "name": "smartphone.selected.ecommerce",
         "auto": true,
         "contexts": [],
         "templates": [],
@@ -348,7 +714,7 @@
         "webhookUsed": true,
         "webhookForSlotFilling": true,
         "events": [],
-        "id": "82a568e6-9033-4f93-8791-5df01a0ef70e"
+        "id": "40675989-8b36-4b52-95ed-86f0a1db6487"
     },
     {
         "name": "sp.question.mostPowerful",

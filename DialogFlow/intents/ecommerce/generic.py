@@ -18,5 +18,5 @@ def getSmartphoneShowEcommerces():
     message.addCarrousel(smartphone.affiliateLinks)
     # Set contexts
     context_manager.add('smartphone')
-    context_manager.add('smartphone.selected.ecommerces')
+    context_manager.add('smartphone.selected.ecommerce')
     return message.response

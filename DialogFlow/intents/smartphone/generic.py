@@ -8,7 +8,7 @@ from DialogFlow.message import Message
 
 
 @AssistantWrapper.intentException
-def getSmartphoneShowCard(smartphoneBrand, smartphoneName):
+def showSmartphoneCard(smartphoneBrand, smartphoneName):
     # Get products from DB
     smartphone = DbController.instance().getOneByCompanyAndName(SmartPhone, smartphoneBrand, smartphoneName)
     # Create response message

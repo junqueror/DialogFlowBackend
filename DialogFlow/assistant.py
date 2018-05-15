@@ -3,7 +3,8 @@ import random
 from flask_assistant import Assistant, ask, context_manager
 from Application.flaskWrapper import FlaskWrapper
 from DialogFlow.intents.smartphone import filterPath, question, generic
-from DialogFlow.intents.ecommerces import generic as genericEcommerce
+from DialogFlow.intents.ecommerce import generic as genericEcommerce
+from DialogFlow.intents.product import generic as genericProduct
 from DialogFlow.assistantWrapper import AssistantWrapper
 
 # ----------------------------------------------- ASSISTANT --------------------------------------------
@@ -22,12 +23,7 @@ def pushNotification():
 
 @Assistant.action('buy>product.category')
 def askProductCategory():
-    basicResponses = ['¿Qué estás buscando?',
-                      '¿Qué te gustaría comprar?',
-                      '¿Qué tipo de producto te interesa?',
-                      'Dime una categoría de producto para empezar']
-    response = ask(random.choice(basicResponses))
-    return response
+    return genericProduct.askCategory()
 
 
 @Assistant.action('product.category>sp.range')
@@ -35,7 +31,7 @@ def askRange(productCategory):
     return filterPath.getCategoryAskRange(productCategory)
 
 
-@Assistant.context('Smartphone')
+@Assistant.context('smartphone')
 @Assistant.action('sp.range>screen')
 def askScreen(smartphoneRange):
     return filterPath.getRangeAskScreen(smartphoneRange)
@@ -54,12 +50,12 @@ def askRAM(smartphoneScreen):
 
 @Assistant.action('smartphone.selected')
 def showSmartphoneSelected(smartphoneName, smartphoneBrand=None):
-    return generic.getSmartphoneShowCard(smartphoneBrand, smartphoneName)
+    return generic.showSmartphoneCard(smartphoneBrand, smartphoneName)
 
 
 @Assistant.context('smartphone')
 @Assistant.context('product-selected')
-@Assistant.action('smartphone.selected.ecommerces')
+@Assistant.action('smartphone.selected.ecommerce')
 def showSmartphoneSelectedEcommerces():
     return genericEcommerce.getSmartphoneShowEcommerces()
 

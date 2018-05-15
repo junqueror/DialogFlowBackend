@@ -4,9 +4,9 @@ from DataBase.dbController import DbController
 from Application.settings import Settings
 
 
-# Data model class to represent the ecommerces database table
+# Data model class to represent the ecommerce database table
 class Ecommerce(DbController.instance().db.Model):
-    __tablename__ = 'ecommerces'
+    __tablename__ = 'ecommerce'
     __table_args__ = Settings.instance().DATABASE_TABLE_ARGS
 
     # Table fields

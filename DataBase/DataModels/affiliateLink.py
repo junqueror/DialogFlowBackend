@@ -4,7 +4,7 @@ from DataBase.dbController import DbController
 from Application.settings import Settings
 
 
-# Data model class to represent the ecommerces database table
+# Data model class to represent the ecommerce database table
 class AffiliateLink(DbController.instance().db.Model):
     __tablename__ = 'affiliateLinks'
     __table_args__ = Settings.instance().DATABASE_TABLE_ARGS
@@ -16,7 +16,7 @@ class AffiliateLink(DbController.instance().db.Model):
 
     # Relationships
     smartphoneId = Column(Integer, ForeignKey(Settings.instance().DATABASE_SCHEMA + '.smartphones.id', ondelete='CASCADE'), nullable=False)
-    ecommerceId = Column(Integer, ForeignKey(Settings.instance().DATABASE_SCHEMA + '.ecommerces.id', ondelete='CASCADE'), nullable=False)
+    ecommerceId = Column(Integer, ForeignKey(Settings.instance().DATABASE_SCHEMA + '.ecommerce.id', ondelete='CASCADE'), nullable=False)
 
     # Children
     smartphone = relationship("SmartPhone", lazy=True)
