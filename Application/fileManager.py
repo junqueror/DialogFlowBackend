@@ -89,17 +89,20 @@ class FileManager():
 
         newDict = dict()
         for key, row in excelDict.items():
-            intent = row[headers[0]]
+            intent = row['intent']
 
             if not intent in newDict:
                 newDict[intent] = dict(UserSays=[], Annotations=[], Events=[])
 
-            [newDict[intent]['UserSays'].append(phrase) for phrase in row['UserSays'].split('\n') if not phrase in newDict[intent]['UserSays']]
+            if not row['UserSays'] == '':
+                [newDict[intent]['UserSays'].append(phrase) for phrase in row['UserSays'].split('\n') if not phrase in newDict[intent]['UserSays']]
 
-            annotationKeys = []
-            for d in newDict[intent]['Annotations']:
-                [annotationKeys.append(k) for k, v in d.items()]
-            [newDict[intent]['Annotations'].append({str(value): row['AnnotationParam']}) for value in row['AnnotationValue'].split('\n') if not value in annotationKeys]
+            if not row['AnnotationParam'] == '' or not row['AnnotationValue'] == '':
+                annotationKeys = []
+                for d in newDict[intent]['Annotations']:
+                    [annotationKeys.append(k) for k, v in d.items()]
+                [newDict[intent]['Annotations'].append({str(value): row['AnnotationParam']}) for value in row['AnnotationValue'].split('\n') if not value in annotationKeys]
+
             if not row['Events'] == '':
                 [newDict[intent]['Events'].append(event) for event in row['Events'].split('\n') if not event in newDict[intent]['Events']]
 

@@ -1,12 +1,13 @@
-from flask_assistant import context_manager
+from flask_assistant import context_manager, event
 
 from DataBase.dbController import DbController
 from DataBase.DataModels.smartPhone import SmartPhone
-
+from DialogFlow.assistantWrapper import AssistantWrapper
 from DialogFlow.session import Session
 from DialogFlow.message import Message
 
 
+@AssistantWrapper.intentException
 def bestBattery(assistant, quantity):
     # Get session object
     session = Session.getSession(assistant.request['sessionId'])
@@ -16,7 +17,7 @@ def bestBattery(assistant, quantity):
     message = Message(['Listo! Estos son los móviles con batería de larga duración',
                        'Aquí los tienes',
                        'Estos son los que tienen batería de más capacidad'])
-    message.addListOrCarrousel(products)
+    message.addListOrCarrousel('Los {0} smartphones con más batería'.format(len(products)), products)
     # Set contexts and lifespans
     context_manager.add('smartphone')
     context_manager.add('bestBattery').lifespan = 2
@@ -24,6 +25,7 @@ def bestBattery(assistant, quantity):
     return message.response
 
 
+@AssistantWrapper.intentException
 def cheapest(assistant, quantity):
     # Get session object
     session = Session.getSession(assistant.request['sessionId'])
@@ -40,6 +42,7 @@ def cheapest(assistant, quantity):
     return message.response
 
 
+@AssistantWrapper.intentException
 def mostPowerful(assistant, quantity):
     # Get session object
     session = Session.getSession(assistant.request['sessionId'])

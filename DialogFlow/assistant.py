@@ -4,6 +4,7 @@ from flask_assistant import Assistant, ask, context_manager
 from Application.flaskWrapper import FlaskWrapper
 from DialogFlow.intents.smartphone import filterPath, question, generic
 from DialogFlow.intents.ecommerces import generic as genericEcommerce
+from DialogFlow.assistantWrapper import AssistantWrapper
 
 # ----------------------------------------------- ASSISTANT --------------------------------------------
 logging.getLogger('flask_assistant').setLevel(logging.DEBUG)

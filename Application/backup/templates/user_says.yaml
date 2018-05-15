@@ -1,13 +1,24 @@
-Another Intent:
-  Annotations:
-  - prueba: testParameter
-  - probando: testParameter
-  - probanding: testParameter
+buy>product.category:
+  Annotations: []
   Events: []
   UserSays:
-  - quiero hacer una prueba
-  - probar another intent
-  - lanzar intent de prueba
+  - comprar
+  - quiero hacer una compra
+  - estoy buscando
+  - quiero comprar
+product.category>sp.range:
+  Annotations:
+  - smartphone: productCategory
+  - "m\xF3vil": productCategory
+  - moviles: productCategory
+  - movil: productCategory
+  Events: []
+  UserSays:
+  - quiero comprar un smartphone
+  - "estoy buscando un m\xF3vil"
+  - "no s\xE9 que m\xF3vil comprarme"
+  - "me gustar\xEDa comprar un smartphone"
+  - ayudame a elegir un movil
 smartphone.selected.ecommerces:
   Annotations:
   - movil: productCategory
@@ -38,19 +49,3 @@ sp.question.mostPowerful:
   UserSays:
   - "Cu\xE1les son los smartphones m\xE1s potentes? "
   - "qu\xE9 m\xF3viles tienen m\xE1s RAM?"
-testIntent:
-  Annotations:
-  - test: testParameter
-  - value: testParameter
-  Events: []
-  UserSays:
-  - test
-  - testing
-testIntent2:
-  Annotations:
-  - value: testParameter
-  - s9: smartphoneName
-  Events: []
-  UserSays:
-  - testeando
-  - prueba

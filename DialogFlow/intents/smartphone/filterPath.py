@@ -1,12 +1,14 @@
+
 from flask_assistant import context_manager
 
 from DataBase.dbController import DbController
 from DataBase.DataModels import *
-
+from DialogFlow.assistantWrapper import AssistantWrapper
 from DialogFlow.session import Session
 from DialogFlow.message import Message
 
 
+@AssistantWrapper.intentException
 def getCategoryAskRange(productCategory):
     if productCategory == 'Smartphone':
         ranges = DbController.instance().getAll(Range)
@@ -31,6 +33,7 @@ def getCategoryAskRange(productCategory):
     return message.response
 
 
+@AssistantWrapper.intentException
 def getRangeAskScreen(smartphoneRange):
     # Get from DB
     range = DbController.instance().getOneByName(Range, smartphoneRange)

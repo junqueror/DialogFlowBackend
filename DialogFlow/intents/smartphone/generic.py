@@ -2,11 +2,12 @@ from flask_assistant import context_manager
 
 from DataBase.dbController import DbController
 from DataBase.DataModels.smartPhone import SmartPhone
-
+from DialogFlow.assistantWrapper import AssistantWrapper
 from DialogFlow.session import Session
 from DialogFlow.message import Message
 
 
+@AssistantWrapper.intentException
 def getSmartphoneShowCard(smartphoneBrand, smartphoneName):
     # Get products from DB
     smartphone = DbController.instance().getOneByCompanyAndName(SmartPhone, smartphoneBrand, smartphoneName)

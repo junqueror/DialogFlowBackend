@@ -6,23 +6,27 @@ import traceback
 from Application.app import App
 from Application.settings import Settings
 from Application.fileManager import FileManager
-from DialogFlow.dialogFlowWrapper import DialogFlowWrapper
+from DialogFlow.assistantWrapper import AssistantWrapper
 
 
 def getArguments(argv):
     debug = False
+    schema = False
     try:
-        opts, args = getopt.getopt(argv, 'ghf:d', ["debug"])
+        opts, args = getopt.getopt(argv, 'ds', ["debug", "schema"])
     except getopt.GetoptError as e:
         logging.error(traceback.format_exc())
         print('run.py -d')
         sys.exit(2)
 
+
     for opt, arg in opts:
         if opt in ("-d", "--debug"):
             debug = True
+        if opt in ("-s", "--schema"):
+            schema = True
 
-    return debug
+    return debug, schema
 
 
 def configureLogger():
@@ -46,7 +50,7 @@ if __name__ == "__main__":
     sys.path.append(parentdir)
 
     # Command arguments
-    debug = getArguments(sys.argv[1:])
+    debug, updateSchema = getArguments(sys.argv[1:])
 
     # Logger configuration
     configureLogger()
@@ -59,9 +63,12 @@ if __name__ == "__main__":
     os.environ['CLIENT_ACCESS_TOKEN'] = Settings.instance().DIALOGFLOW_CLIENT_TOKEN
 
    # Update DialogFlow Agent schema
-    FileManager.updateYAMLtemplatesFromXLSX()
-    DialogFlowWrapper.buildSchema()
-    FileManager.saveBackupFiles()
+    if updateSchema:
+        FileManager.updateYAMLtemplatesFromXLSX()
+        AssistantWrapper.buildSchema()
+        FileManager.saveBackupFiles()
+    else:
+        from DialogFlow.assistant import Assistant
 
     # Run the application
     Application.run(Settings.instance().FLASK_HOST, Settings.instance().FLASK_PORT)

@@ -3,19 +3,46 @@ productCategory:
   - smartphone
   - phone
   - "m\xF3vil"
-  - terminal
-  - "m\xF3vil"
+  - "terminal m\xF3vil"
   - "tel\xE9fono"
   - smartphones
+  - moviles
+  - telefonos
 quantity:
-- 3:
-  - '3'
-- 4:
-  - '4'
 - 1:
+  - es
   - el
   - "cu\xE1l"
   - '1'
+  - un
+  - uno
+- 2:
+  - '2'
+  - dos
+- 3:
+  - '3'
+  - tres
+- 4:
+  - '4'
+  - cuatro
+- 5:
+  - '5'
+  - cinco
+- 6:
+  - '6'
+  - seis
+- 7:
+  - '7'
+  - siete
+- 8:
+  - '8'
+  - ocho
+- 9:
+  - '9'
+  - nueve
+- 10:
+  - '10'
+  - diez
 smartphoneBrand:
 - Samsung:
   - samsung
@@ -25,6 +52,13 @@ smartphoneBrand:
   - sony
 - Google:
   - google
+- Apple:
+  - apple
+  - iphone
+- Huawei:
+  - huawei
+- Xiaomi:
+  - xiaomi
 smartphoneName:
 - S9:
   - s9
@@ -47,8 +81,3 @@ smartphoneRange:
 - Gama premium:
   - gama premium
   - premium
-testParameter:
-- Test Value:
-  - test testing
-- New value:
-  - value

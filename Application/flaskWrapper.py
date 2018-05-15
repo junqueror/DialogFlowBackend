@@ -1,14 +1,11 @@
-import logging
 from flask import Flask, Blueprint
 from flask_cors import CORS
 from flask_restplus import Api
 from flask_restplus.namespace import Namespace
-from Utils.singleton import Singleton
 
 
 # Class to instantiate the api and its models
 class FlaskWrapper:
-
     # Create api
     Api = Api(version='1.0', title='Flask API', description='API with basic structure')
     # Create a Flask WSGI application
@@ -20,7 +17,6 @@ class FlaskWrapper:
 
     # Initialize the instance of App
     def __init__(self, config_class):
-
         # Set the Flask configuration
         FlaskWrapper.App.config.from_object(config_class)
 
@@ -31,10 +27,8 @@ class FlaskWrapper:
         # CORS
         CORS(FlaskWrapper.App)  # Initialize CORS on the application
 
-
     # API blueprint definition
     def _getApiBlueprint(self):
-
         FlaskWrapper.Api.add_namespace(FlaskWrapper.Namespaces.dialogflow, path='/dialogflow')
 
         # Register blueprints and namespaces in the api
@@ -48,4 +42,3 @@ class FlaskWrapper:
     # Return a Flask client for testing
     def getTestClient(self):
         return FlaskWrapper.App.test_client()
-

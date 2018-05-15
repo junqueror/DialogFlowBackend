@@ -8,10 +8,11 @@
                     "smartphone",
                     "phone",
                     "m\u00f3vil",
-                    "terminal",
-                    "m\u00f3vil",
+                    "terminal m\u00f3vil",
                     "tel\u00e9fono",
-                    "smartphones"
+                    "smartphones",
+                    "moviles",
+                    "telefonos"
                 ]
             }
         ],
@@ -22,23 +23,77 @@
         "name": "quantity",
         "entries": [
             {
+                "value": 1,
+                "synonyms": [
+                    "es",
+                    "el",
+                    "cu\u00e1l",
+                    "1",
+                    "un",
+                    "uno"
+                ]
+            },
+            {
+                "value": 2,
+                "synonyms": [
+                    "2",
+                    "dos"
+                ]
+            },
+            {
                 "value": 3,
                 "synonyms": [
-                    "3"
+                    "3",
+                    "tres"
                 ]
             },
             {
                 "value": 4,
                 "synonyms": [
-                    "4"
+                    "4",
+                    "cuatro"
                 ]
             },
             {
-                "value": 1,
+                "value": 5,
                 "synonyms": [
-                    "el",
-                    "cu\u00e1l",
-                    "1"
+                    "5",
+                    "cinco"
+                ]
+            },
+            {
+                "value": 6,
+                "synonyms": [
+                    "6",
+                    "seis"
+                ]
+            },
+            {
+                "value": 7,
+                "synonyms": [
+                    "7",
+                    "siete"
+                ]
+            },
+            {
+                "value": 8,
+                "synonyms": [
+                    "8",
+                    "ocho"
+                ]
+            },
+            {
+                "value": 9,
+                "synonyms": [
+                    "9",
+                    "nueve"
+                ]
+            },
+            {
+                "value": 10,
+                "synonyms": [
+                    "10",
+                    "diez"
                 ]
             }
         ],
@@ -70,6 +125,25 @@
                 "value": "Google",
                 "synonyms": [
                     "google"
+                ]
+            },
+            {
+                "value": "Apple",
+                "synonyms": [
+                    "apple",
+                    "iphone"
+                ]
+            },
+            {
+                "value": "Huawei",
+                "synonyms": [
+                    "huawei"
+                ]
+            },
+            {
+                "value": "Xiaomi",
+                "synonyms": [
+                    "xiaomi"
                 ]
             }
         ],
@@ -141,24 +215,5 @@
         ],
         "isEnum": null,
         "id": "134958ad-6b95-4e32-bf8d-4fdc6f2ba0e5"
-    },
-    {
-        "name": "testParameter",
-        "entries": [
-            {
-                "value": "Test Value",
-                "synonyms": [
-                    "test testing"
-                ]
-            },
-            {
-                "value": "New value",
-                "synonyms": [
-                    "value"
-                ]
-            }
-        ],
-        "isEnum": null,
-        "id": "fff7bd04-610a-448e-b41a-23dd63b1afd4"
     }
 ]

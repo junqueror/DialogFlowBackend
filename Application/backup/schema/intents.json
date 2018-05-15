@@ -26,7 +26,48 @@
         "auto": true,
         "contexts": [],
         "templates": [],
-        "userSays": [],
+        "userSays": [
+            {
+                "data": [
+                    {
+                        "text": "comprar",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "quiero hacer una compra",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "estoy buscando",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "quiero comprar",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            }
+        ],
         "responses": [
             {
                 "action": "askProductCategory",
@@ -48,7 +89,86 @@
         "auto": true,
         "contexts": [],
         "templates": [],
-        "userSays": [],
+        "userSays": [
+            {
+                "data": [
+                    {
+                        "text": "quiero comprar un "
+                    },
+                    {
+                        "text": "smartphone",
+                        "meta": "@productCategory",
+                        "alias": "productCategory",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "estoy buscando un "
+                    },
+                    {
+                        "text": "m\u00f3vil",
+                        "meta": "@productCategory",
+                        "alias": "productCategory",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "no s\u00e9 que "
+                    },
+                    {
+                        "text": "m\u00f3vil",
+                        "meta": "@productCategory",
+                        "alias": "productCategory",
+                        "userDefined": true
+                    },
+                    {
+                        "text": " comprarme"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "me gustar\u00eda comprar un "
+                    },
+                    {
+                        "text": "smartphone",
+                        "meta": "@productCategory",
+                        "alias": "productCategory",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "ayudame a elegir un "
+                    },
+                    {
+                        "text": "movil",
+                        "meta": "@productCategory",
+                        "alias": "productCategory",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            }
+        ],
         "responses": [
             {
                 "action": "askRange",
