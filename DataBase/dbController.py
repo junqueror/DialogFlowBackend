@@ -1,3 +1,4 @@
+import logging
 import traceback
 from DataBase.dbWrapper import DbWrapper
 from Utils.singleton import Singleton
@@ -7,9 +8,8 @@ from sqlalchemy.dialects.mssql import VARCHAR
 
 
 # Singleton class to make requests to de database
-@Singleton
-class DbController(DbWrapper):
 
+class DbController(DbWrapper, metaclass=Singleton):
     # Builds a new instance of DB if it is necessary
     def __init__(self):
         DbWrapper.__init__(self)
@@ -84,7 +84,7 @@ class DbController(DbWrapper):
         results = self._db.session.query(model).all()
         return results
 
-    def getAllFilterBy(self, model, fields, search, order=None, orderDir=None, query=None):
+    def getAllFilterBy(self, model, search, fields=None, order=None, orderDir=None, query=None):
 
         results = None
         numResults = 0
@@ -95,8 +95,7 @@ class DbController(DbWrapper):
                 query = self._db.session.query(model)
 
             # Filtering
-            filters = self._createFilters(search, fields, model,
-                                          query)  # Build the appropriate filters for the query
+            filters = self._createFilters(search, fields, model, query)  # Build the appropriate filters for the query
             query = query.filter(or_(*filters))  # Apply filters to the query
 
             # Sorting
@@ -114,9 +113,9 @@ class DbController(DbWrapper):
             numResults = query.count()
 
         except Exception as e:
-            self.logger.error("searchFields ({0}): {1}".format(e, traceback.format_exc()))
+            logging.error("searchFields ({0}): {1}".format(e, traceback.format_exc()))
 
-        return results, numResults
+        return results, query
 
     def _createFilters(self, search, fields, model, query):
         # Adjust the parameters for the filtering
@@ -130,7 +129,7 @@ class DbController(DbWrapper):
                                                                              inspect(model).relationships]))
         # Get model fields to search
         modelFields = []
-        if len(fields) == 0:  # If no fields defined
+        if not fields or len(fields) == 0 :  # If no fields defined
             for field in model.__table__.columns:
                 modelFields.append(field)  # Filter in all fields of the table
             for field in related_fields:

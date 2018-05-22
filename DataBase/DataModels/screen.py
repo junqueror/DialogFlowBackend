@@ -6,9 +6,9 @@ from DataBase.RelModels.relTables import RelTables
 
 
 # Data model class to represent the screens database table
-class Screen(DbController.instance().db.Model):
+class Screen(DbController().db.Model):
     __tablename__ = 'screens'
-    __table_args__ = Settings.instance().DATABASE_TABLE_ARGS
+    __table_args__ = Settings().DATABASE_TABLE_ARGS
 
     # Table fields
     id = Column(Integer, primary_key=True, autoincrement=True)

@@ -5,9 +5,9 @@ from Application.settings import Settings
 
 
 # Data model class to represent the ecommerce database table
-class Ecommerce(DbController.instance().db.Model):
+class Ecommerce(DbController().db.Model):
     __tablename__ = 'ecommerce'
-    __table_args__ = Settings.instance().DATABASE_TABLE_ARGS
+    __table_args__ = Settings().DATABASE_TABLE_ARGS
 
     # Table fields
     id = Column(Integer, primary_key=True, autoincrement=True)

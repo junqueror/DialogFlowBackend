@@ -6,9 +6,9 @@ from DataBase.RelModels.relTables import RelTables
 
 
 # Data model class to represent the ranges database table
-class Range(DbController.instance().db.Model):
+class Range(DbController().db.Model):
     __tablename__ = 'ranges'
-    __table_args__ = Settings.instance().DATABASE_TABLE_ARGS
+    __table_args__ = Settings().DATABASE_TABLE_ARGS
 
     # Table fields
     id = Column(Integer, primary_key=True, autoincrement=True)

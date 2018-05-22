@@ -176,6 +176,12 @@
                 "synonyms": [
                     "xperia xz1 compact"
                 ]
+            },
+            {
+                "value": "G6",
+                "synonyms": [
+                    "g6"
+                ]
             }
         ],
         "isEnum": null,

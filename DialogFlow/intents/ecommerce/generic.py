@@ -2,17 +2,17 @@ from flask_assistant import context_manager
 
 from DataBase.dbController import DbController
 from DataBase.DataModels.smartPhone import SmartPhone
-from DialogFlow.assistantWrapper import AssistantWrapper
+from DialogFlow.agent import Agent
 from DialogFlow.session import Session
 from DialogFlow.message import Message
 
 
-@AssistantWrapper.intentException
+@Agent.intentException
 def getSmartphoneShowEcommerces():
     # Get context parameters
     productId = int(context_manager.get_param('product-selected', 'productId'))
     # Get links
-    smartphone = DbController.instance().getOne(SmartPhone, productId)
+    smartphone = DbController().getOne(SmartPhone, productId)
     # Create response message
     message = Message(['Estas son las mejores tiendas', 'Puedes comprarlo aqui'])
     message.addCarrousel(smartphone.affiliateLinks)

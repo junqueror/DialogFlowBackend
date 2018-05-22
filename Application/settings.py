@@ -1,9 +1,9 @@
 import os
 from Utils.singleton import Singleton
 
-@Singleton
+
 # Class to define constant settings
-class Settings:
+class Settings(metaclass=Singleton):
 
     # Build a new instance of Settings
     def __init__(self):
@@ -49,9 +49,9 @@ class Settings:
         ASSIST_ACTIONS_ON_GOOGLE = True
 
         def __init__(self):
-            Settings.instance().FlaskBaseConfig.DEBUG = Settings.instance().FLASK_DEBUG
-            Settings.instance().FlaskBaseConfig.SQLALCHEMY_TRACK_MODIFICATIONS = False
-            Settings.instance().FlaskBaseConfig.SQLALCHEMY_DATABASE_URI = Settings.instance().DATABASE_URI
+            Settings().FlaskBaseConfig.DEBUG = Settings().FLASK_DEBUG
+            Settings().FlaskBaseConfig.SQLALCHEMY_TRACK_MODIFICATIONS = False
+            Settings().FlaskBaseConfig.SQLALCHEMY_DATABASE_URI = Settings().DATABASE_URI
 
     @property
     def FLASK_DEBUG(self):

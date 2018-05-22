@@ -7,9 +7,9 @@ from DataBase.DataModels.affiliateLink import AffiliateLink
 
 
 # Data model class to represent the smarphones database table
-class SmartPhone(DbController.instance().db.Model):
+class SmartPhone(DbController().db.Model):
     __tablename__ = 'smartphones'
-    __table_args__ = Settings.instance().DATABASE_TABLE_ARGS
+    __table_args__ = Settings().DATABASE_TABLE_ARGS
 
     # Table fields
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -32,11 +32,11 @@ class SmartPhone(DbController.instance().db.Model):
     image = Column(String)
 
     # Relationships
-    rangeId = Column(Integer, ForeignKey(Settings.instance().DATABASE_SCHEMA + '.ranges.id', ondelete='CASCADE'),
+    rangeId = Column(Integer, ForeignKey(Settings().DATABASE_SCHEMA + '.ranges.id', ondelete='CASCADE'),
                      nullable=False)
 
     # Children
-    affiliateLinks = relationship("AffiliateLink", uselist=True, lazy=True, passive_deletes=True)
+    affiliateLinks = relationship("AffiliateLink", back_populates="smartphone", uselist=True, lazy=True, passive_deletes=True)
 
     # Properties
     avgPrice = column_property(
@@ -98,9 +98,9 @@ class SmartPhone(DbController.instance().db.Model):
     def synonyms(self):
         return []
 
+    @staticmethod
+    def getMainField():
+        return SmartPhone.name
 
-def getMainField():
-    return SmartPhone.name
-
-def __repr__(self):
-    return '<SmartPhone: {0} {1}>'.format(self.company, self.name)
+    def __repr__(self):
+        return '<SmartPhone: {0} {1}>'.format(self.company, self.name)

@@ -2,17 +2,17 @@ from flask_assistant import context_manager, event
 
 from DataBase.dbController import DbController
 from DataBase.DataModels.smartPhone import SmartPhone
-from DialogFlow.assistantWrapper import AssistantWrapper
+from DialogFlow.agent import Agent
 from DialogFlow.session import Session
 from DialogFlow.message import Message
 
 
-@AssistantWrapper.intentException
-def bestBattery(assistant, quantity):
+@Agent.intentException
+def bestBattery(request, quantity):
     # Get session object
-    session = Session.getSession(assistant.request['sessionId'])
+    session = Session.getSession(request)
     # Get products from DB
-    products = session.appendFilter(DbController.instance().getBestBattery, SmartPhone, quantity)
+    products = session.appendFilter(DbController().getBestBattery, SmartPhone, quantity)
     # Create response message
     message = Message(['Listo! Estos son los móviles con batería de larga duración',
                        'Aquí los tienes',
@@ -25,12 +25,12 @@ def bestBattery(assistant, quantity):
     return message.response
 
 
-@AssistantWrapper.intentException
-def cheapest(assistant, quantity):
+@Agent.intentException
+def cheapest(request, quantity):
     # Get session object
-    session = Session.getSession(assistant.request['sessionId'])
+    session = Session.getSession(request)
     # Get products from DB
-    products = session.appendFilter(DbController.instance().getCheapests, SmartPhone, quantity)
+    products = session.appendFilter(DbController().getCheapests, SmartPhone, quantity)
     # Create response message
     message = Message(['Estos son los smartphones más baratos',
                        'Aquí tienes los móviles con el precio más bajo'])
@@ -42,12 +42,12 @@ def cheapest(assistant, quantity):
     return message.response
 
 
-@AssistantWrapper.intentException
-def mostPowerful(assistant, quantity):
+@Agent.intentException
+def mostPowerful(request, quantity):
     # Get session object
-    session = Session.getSession(assistant.request['sessionId'])
+    session = Session.getSession(request)
     # Get products from DB
-    products = session.appendFilter(DbController.instance().getMostPowerful, SmartPhone, quantity)
+    products = session.appendFilter(DbController().getMostPowerful, SmartPhone, quantity)
     # Create response message
     message = Message(['Listo! Estos son',
                        'Aquí los tienes',

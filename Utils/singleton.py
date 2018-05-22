@@ -1,18 +1,26 @@
 # Class to be used as a decorator to implement singleton pattern
-class Singleton:
+# class Singleton:
+#
+#     def __init__(self, decorated):
+#         self._decorated = decorated
+#
+#     def instance(self):
+#         try:
+#             return self._instance
+#         except AttributeError:
+#             self._instance = self._decorated()
+#             return self._instance
+#
+#     def __call__(self):
+#         raise TypeError('Singletons must be accessed through `instance()`.')
+#
+#     def __instancecheck__(self, inst):
+#         return isinstance(inst, self._decorated)
+#
+class Singleton(type):
+    instance = None
 
-    def __init__(self, decorated):
-        self._decorated = decorated
-
-    def instance(self):
-        try:
-            return self._instance
-        except AttributeError:
-            self._instance = self._decorated()
-            return self._instance
-
-    def __call__(self):
-        raise TypeError('Singletons must be accessed through `instance()`.')
-
-    def __instancecheck__(self, inst):
-        return isinstance(inst, self._decorated)
+    def __call__(cls, *args, **kwargs):
+        if cls.instance is None:
+            cls.instance = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls.instance

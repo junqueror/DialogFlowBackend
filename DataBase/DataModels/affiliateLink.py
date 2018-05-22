@@ -5,9 +5,9 @@ from Application.settings import Settings
 
 
 # Data model class to represent the ecommerce database table
-class AffiliateLink(DbController.instance().db.Model):
+class AffiliateLink(DbController().db.Model):
     __tablename__ = 'affiliateLinks'
-    __table_args__ = Settings.instance().DATABASE_TABLE_ARGS
+    __table_args__ = Settings().DATABASE_TABLE_ARGS
 
     # Table fields
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -15,11 +15,11 @@ class AffiliateLink(DbController.instance().db.Model):
     price = Column(Integer, nullable=False)
 
     # Relationships
-    smartphoneId = Column(Integer, ForeignKey(Settings.instance().DATABASE_SCHEMA + '.smartphones.id', ondelete='CASCADE'), nullable=False)
-    ecommerceId = Column(Integer, ForeignKey(Settings.instance().DATABASE_SCHEMA + '.ecommerce.id', ondelete='CASCADE'), nullable=False)
+    smartphoneId = Column(Integer, ForeignKey(Settings().DATABASE_SCHEMA + '.smartphones.id', ondelete='CASCADE'), nullable=False)
+    ecommerceId = Column(Integer, ForeignKey(Settings().DATABASE_SCHEMA + '.ecommerce.id', ondelete='CASCADE'), nullable=False)
 
     # Children
-    smartphone = relationship("SmartPhone", lazy=True)
+    smartphone = relationship("SmartPhone", back_populates="affiliateLinks", lazy=True)
     ecommerce = relationship("Ecommerce", lazy=True)
 
     # Methods
@@ -66,7 +66,7 @@ class AffiliateLink(DbController.instance().db.Model):
 
     @staticmethod
     def getMainField():
-        return AffiliateLink.link
+        return AffiliateLink.linkUrl
 
     def __repr__(self):
         return '<AffiliateLink: {0}>'.format(self.id)

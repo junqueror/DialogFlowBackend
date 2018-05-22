@@ -6,7 +6,7 @@ import traceback
 from Application.app import App
 from Application.settings import Settings
 from Application.fileManager import FileManager
-from DialogFlow.assistantWrapper import AssistantWrapper
+from DialogFlow.agent import Agent
 
 
 def getArguments(argv):
@@ -59,17 +59,17 @@ if __name__ == "__main__":
     Application = App()
 
     # Built DialogFlow Agent schema
-    os.environ['DEV_ACCESS_TOKEN'] = Settings.instance().DIALOGFLOW_DEV_TOKEN
-    os.environ['CLIENT_ACCESS_TOKEN'] = Settings.instance().DIALOGFLOW_CLIENT_TOKEN
+    os.environ['DEV_ACCESS_TOKEN'] = Settings().DIALOGFLOW_DEV_TOKEN
+    os.environ['CLIENT_ACCESS_TOKEN'] = Settings().DIALOGFLOW_CLIENT_TOKEN
 
    # Update DialogFlow Agent schema
     if updateSchema:
-        FileManager.updateYAMLtemplatesFromXLSX()
-        AssistantWrapper.buildSchema()
-        FileManager.saveBackupFiles()
+        FileManager().updateYAMLtemplatesFromXLSX()
+        Agent().buildSchema()
+        FileManager().saveBackupFiles()
     else:
         from DialogFlow.assistant import Assistant
 
     # Run the application
-    Application.run(Settings.instance().FLASK_HOST, Settings.instance().FLASK_PORT)
+    Application.run(Settings().FLASK_HOST, Settings().FLASK_PORT)
 

@@ -3,10 +3,13 @@ import yaml
 import csv
 import ast
 import pandas
+import copy
 from shutil import copyfile
+from Utils.singleton import Singleton
 
 
 class FileManager():
+    __metaclass__ = Singleton
 
     # Directories
     parentdir = os.path.dirname(os.path.abspath(__file__))
@@ -35,31 +38,38 @@ class FileManager():
     # entitiesCsvPath = os.path.join(templatesPath, 'entities.csv')
     # userSaysCsvPath = os.path.join(templatesPath, 'user_says.csv')
 
-    @staticmethod
-    def saveBackupFiles():
+    def __init__(self):
+        # Agent data
+        self.entities = self._readIntentsXLSXasDict(self.entitiesXlsxPath)
+        self.intents = self._readUserSaysXLSXasDict(self.userSaysXlsxPath)
 
-        copyfile(FileManager.entitiesJsonPath, FileManager.newEntitiesJsonPath)
-        copyfile(FileManager.intentsJsonPath, FileManager.newIntentsJsonPath)
-        copyfile(FileManager.entitiesYamlPath, FileManager.newEntitiesYamlPath)
-        copyfile(FileManager.userSaysYamlPath, FileManager.newUserSaysYamlPath)
+    def saveBackupFiles(self):
 
-    @staticmethod
-    def updateYAMLtemplatesFromXLSX():
-        FileManager._intentsXLSXtoYAML(FileManager.entitiesXlsxPath, FileManager.entitiesYamlPath)
-        FileManager._userSaysXLSXtoYAML(FileManager.userSaysXlsxPath, FileManager.userSaysYamlPath)
+        copyfile(self.entitiesJsonPath, self.newEntitiesJsonPath)
+        copyfile(self.intentsJsonPath, self.newIntentsJsonPath)
+        copyfile(self.entitiesYamlPath, self.newEntitiesYamlPath)
+        copyfile(self.userSaysYamlPath, self.newUserSaysYamlPath)
 
-    @staticmethod
-    def _intentsXLSXtoYAML(xlsxPath, yamlPath):
-        newDict = FileManager._readIntentsXLSXasDict(xlsxPath)
-        FileManager._saveDictInYAML(newDict, yamlPath)
 
-    @staticmethod
-    def _userSaysXLSXtoYAML(xlsxPath, yamlPath):
-        newDict = FileManager._readUserSaysXLSXasDict(xlsxPath)
-        FileManager._saveDictInYAML(newDict, yamlPath)
+    def updateYAMLtemplatesFromXLSX(self):
+        self._intentsXLSXtoYAML(self.entitiesXlsxPath, self.entitiesYamlPath)
+        self._userSaysXLSXtoYAML(self.userSaysXlsxPath, self.userSaysYamlPath)
 
-    @staticmethod
-    def _readIntentsXLSXasDict(xlsxPath):
+
+    def _intentsXLSXtoYAML(self, xlsxPath, yamlPath):
+        newDict = self.entities
+        self._saveDictInYAML(newDict, yamlPath)
+        return newDict
+
+
+    def _userSaysXLSXtoYAML(self, xlsxPath, yamlPath):
+        newDict = copy.deepcopy(self.intents)
+        [value.pop('AgentSays') for key, value in newDict.items()]
+        self._saveDictInYAML(newDict, yamlPath)
+        return newDict
+
+
+    def _readIntentsXLSXasDict(self, xlsxPath):
         data = pandas.read_excel(xlsxPath)
         headers = list(data.to_dict())
         data = data.fillna(method='pad')
@@ -77,8 +87,7 @@ class FileManager():
 
         return newDict
 
-    @staticmethod
-    def _readUserSaysXLSXasDict(xlsxPath):
+    def _readUserSaysXLSXasDict(self, xlsxPath):
         data = pandas.read_excel(xlsxPath)
         headers = list(data.to_dict())
         data = data.fillna(method='pad')
@@ -89,46 +98,48 @@ class FileManager():
 
         newDict = dict()
         for key, row in excelDict.items():
-            intent = row['intent']
+            intent = row['Intent']
 
             if not intent in newDict:
-                newDict[intent] = dict(UserSays=[], Annotations=[], Events=[])
+                newDict[intent] = dict(UserSays=[], Annotations=[], Events=[], AgentSays=[])
 
             if not row['UserSays'] == '':
-                [newDict[intent]['UserSays'].append(phrase) for phrase in row['UserSays'].split('\n') if not phrase in newDict[intent]['UserSays']]
+                [newDict[intent]['UserSays'].append(phrase.strip()) for phrase in row['UserSays'].split('\n') if not phrase in newDict[intent]['UserSays']]
 
             if not row['AnnotationParam'] == '' or not row['AnnotationValue'] == '':
                 annotationKeys = []
                 for d in newDict[intent]['Annotations']:
                     [annotationKeys.append(k) for k, v in d.items()]
-                [newDict[intent]['Annotations'].append({str(value): row['AnnotationParam']}) for value in row['AnnotationValue'].split('\n') if not value in annotationKeys]
+                [newDict[intent]['Annotations'].append({str(value).strip(): row['AnnotationParam']}) for value in row['AnnotationValue'].split('\n') if not value in annotationKeys]
 
             if not row['Events'] == '':
                 [newDict[intent]['Events'].append(event) for event in row['Events'].split('\n') if not event in newDict[intent]['Events']]
 
+            if not row['AgentSays'] == '':
+                [newDict[intent]['AgentSays'].append(phrase.strip()) for phrase in row['AgentSays'].split('\n') if not phrase in newDict[intent]['AgentSays']]
         return newDict
 
-    @staticmethod
-    def _saveDictInYAML(newDict, yamlPath):
+
+    def _saveDictInYAML(self, newDict, yamlPath):
         with open(yamlPath, 'w') as y:
             yaml.dump(newDict, y, default_flow_style=False)
 
-    # @staticmethod
-    # def updateYAMLtemplatesFromCSV():
-    #     FileManager._intentsCSVtoYAML(FileManager.entitiesCsvPath, FileManager.entitiesYamlPath)
-    #     FileManager._userSaysCSVtoYAML(FileManager.userSaysCsvPath, FileManager.userSaysYamlPath)
-
-    # @staticmethod
-    # def _intentsCSVtoYAML(csvPath, yamlPath):
-    #     newDict = FileManager._readIntentsCSVasDict(csvPath, ['entity', 'value', 'synonyms'])
-    #     FileManager._saveDictInYAML(newDict, yamlPath)
     #
-    # @staticmethod
-    # def _userSaysCSVtoYAML(csvPath, yamlPath):
-    #     newDict = FileManager._readUserSaysCSVasDict(csvPath, ['intent', 'UserSays', 'Annotations', 'Events'])
-    #     FileManager._saveDictInYAML(newDict, yamlPath)
+    # def updateYAMLtemplatesFromCSV():
+    #     self._intentsCSVtoYAML(self.entitiesCsvPath, self.entitiesYamlPath)
+    #     self._userSaysCSVtoYAML(self.userSaysCsvPath, self.userSaysYamlPath)
 
-    # @staticmethod
+    #
+    # def _intentsCSVtoYAML(csvPath, yamlPath):
+    #     newDict = self._readIntentsCSVasDict(csvPath, ['entity', 'value', 'synonyms'])
+    #     self._saveDictInYAML(newDict, yamlPath)
+    #
+    #
+    # def _userSaysCSVtoYAML(csvPath, yamlPath):
+    #     newDict = self._readUserSaysCSVasDict(csvPath, ['intent', 'UserSays', 'Annotations', 'Events'])
+    #     self._saveDictInYAML(newDict, yamlPath)
+
+    #
     # def _readIntentsCSVasDict(csv_file, headers):
     #
     #     newDict = dict()
@@ -145,7 +156,7 @@ class FileManager():
     #         logging.error("I/O error: {0}".format(e))
     #     return newDict
     #
-    # @staticmethod
+    #
     # def _readUserSaysCSVasDict(csv_file, headers):
     #
     #     newDict = dict()
@@ -162,17 +173,17 @@ class FileManager():
     #         logging.error("I/O error: {0}".format(e))
     #     return newDict
 
-    # @staticmethod
+    #
     # def SaveTemplatesCSV():
-    #     entitiesYamlPath = os.path.join(FileManager.templatesPath, 'entities.yaml')
-    #     entitiesCsvPath = os.path.join(FileManager.templatesPath, 'entities.csv')
-    #     # userSaysYamlPath = os.path.join(FileManager.templatesPath, 'user_says.yaml')
-    #     # userSaysCsvPath = os.path.join(FileManager.templatesPath, 'user_says.csv')
-    #     FileManager._EntitiesYaml2csv(entitiesYamlPath, entitiesCsvPath)
-    #     # FileManager._UserSaysYaml2csv(userSaysYamlPath, userSaysCsvPath)
+    #     entitiesYamlPath = os.path.join(self.templatesPath, 'entities.yaml')
+    #     entitiesCsvPath = os.path.join(self.templatesPath, 'entities.csv')
+    #     # userSaysYamlPath = os.path.join(self.templatesPath, 'user_says.yaml')
+    #     # userSaysCsvPath = os.path.join(self.templatesPath, 'user_says.csv')
+    #     self._EntitiesYaml2csv(entitiesYamlPath, entitiesCsvPath)
+    #     # self._UserSaysYaml2csv(userSaysYamlPath, userSaysCsvPath)
 
     #
-    # @staticmethod
+    #
     # def _EntitiesYaml2csv(yamlPath, csvPath):
     #
     #     with open(yamlPath, 'rb') as y:
@@ -184,9 +195,9 @@ class FileManager():
     #                     entitiesDict.append(dict(entity=entityName,
     #                                              value=valueName,
     #                                              synonyms=valuesContent))
-    #         FileManager._writeDictToCSV(csvPath, ['entity', 'value', 'synonyms'], entitiesDict)
+    #         self._writeDictToCSV(csvPath, ['entity', 'value', 'synonyms'], entitiesDict)
     #
-    # @staticmethod
+    #
     # def _writeDictToCSV(csv_file, csv_columns, dict_data):
     #     try:
     #         with open(csv_file, 'w') as csvfile:

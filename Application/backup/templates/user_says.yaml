@@ -6,24 +6,16 @@ buy>product.category:
   - quiero hacer una compra
   - estoy buscando
   - quiero comprar
-  - '   Quiero hacer una compra'
-  - "  Me gustar\xEDa comprar"
-  - "  Necesito informaci\xF3n"
-  - "  Busco informaci\xF3n sobre productos"
+  - Quiero hacer una compra
+  - "Me gustar\xEDa comprar"
+  - "Necesito informaci\xF3n"
+  - "Busco informaci\xF3n sobre productos"
 product.category>sp.range:
   Annotations:
   - smartphone: productCategory
   - "m\xF3vil": productCategory
   - moviles: productCategory
   - movil: productCategory
-  - gama baja: smartphoneRange
-  - '  gama media': smartphoneRange
-  - '  gama alta': smartphoneRange
-  - '  gama premium': smartphoneRange
-  - baja: smartphoneRange
-  - media: smartphoneRange
-  - alta: smartphoneRange
-  - premium: smartphoneRange
   Events: []
   UserSays:
   - quiero comprar un smartphone
@@ -31,59 +23,11 @@ product.category>sp.range:
   - "no s\xE9 que m\xF3vil comprarme"
   - "me gustar\xEDa comprar un smartphone"
   - ayudame a elegir un movil
-  - '  un smartphone'
-  - '  smartphones'
-  - "  un m\xF3vil"
-  - '  quiero comprar un smartphone'
-  - "  quiero un m\xF3vil"
-  - gama baja
-  - '  gama media'
-  - '  gama alta'
-  - '  gama premium'
-  - quiero uno de gama baja
-  - "quiero un m\xF3vi de media gama"
-  - uno de rango alto
-  - un smartphone premium
-smartphone.selected:
-  Annotations:
-  - Samsung: smartphoneBrand
-  - LG: smartphoneBrand
-  - lg: smartphoneBrand
-  - sony: smartphoneBrand
-  - Google: smartphoneBrand
-  - Apple: smartphoneBrand
-  - huawei: smartphoneBrand
-  - S9: smartphoneName
-  - S8: smartphoneName
-  - zx1 compact: smartphoneName
-  - Pixel 2: smartphoneName
-  - G6: smartphoneName
-  Events: []
-  UserSays:
-  - "Mu\xE9strame el Samsung S9"
-  - "  Quiero saber m\xE1s sobre el lg g6"
-  - '  Hablame sobre el sony xperia zx1 compact'
-  - Quiero el Google Pixel 2
-smartphone.selected.ecommerce:
-  Annotations:
-  - S9: smartphoneName
-  - S8: smartphoneName
-  - zx1 compact: smartphoneName
-  - Pixel 2: smartphoneName
-  - G6: smartphoneName
-  Events: []
-  UserSays:
-  - Ver tiendas
-  - "D\xF3nde lo puedo comprar?"
-  - Tiendas
-smartphone.selected.ecommerces:
-  Annotations:
-  - movil: productCategory
-  Events: []
-  UserSays:
-  - Ver tiendas
-  - "D\xF3nde lo puedo comprar?"
-  - Tiendas
+  - un smartphone
+  - smartphones
+  - "un m\xF3vil"
+  - quiero comprar un smartphone
+  - "quiero un m\xF3vil"
 sp.question.bestBattery:
   Annotations:
   - '3': quantity
@@ -104,18 +48,106 @@ sp.question.mostPowerful:
   - movil: productCategory
   Events: []
   UserSays:
-  - "Cu\xE1les son los smartphones m\xE1s potentes? "
+  - "Cu\xE1les son los smartphones m\xE1s potentes?"
   - "qu\xE9 m\xF3viles tienen m\xE1s RAM?"
+  - "Cu\xE1les son los smartphones m\xE1s potentes?"
+  - "Cu\xE1les son los smartphones m\xE1s potentes?"
 sp.range>screen:
   Annotations:
+  - gama baja: smartphoneRange
+  - gama media: smartphoneRange
+  - gama alta: smartphoneRange
+  - gama premium: smartphoneRange
+  - baja: smartphoneRange
+  - media: smartphoneRange
+  - alta: smartphoneRange
+  - premium: smartphoneRange
+  Events: []
+  UserSays:
+  - gama baja
+  - gama media
+  - gama alta
+  - gama premium
+  - quiero uno de gama baja
+  - "quiero un m\xF3vi de media gama"
+  - uno de rango alto
+  - un smartphone premium
+sp.screen>RAM:
+  Annotations:
   - "pantalla peque\xF1a": smartphoneScreen
-  - '  pantalla mediana': smartphoneScreen
-  - '  pantalla grande': smartphoneScreen
+  - pantalla mediana: smartphoneScreen
+  - pantalla grande: smartphoneScreen
   - "peque\xF1a": smartphoneScreen
   - mediana: smartphoneScreen
   - grande: smartphoneScreen
+  - pantalla mediana: smartphoneScreen
+  - pantalla grande: smartphoneScreen
   Events: []
   UserSays:
   - "pantalla peque\xF1a"
-  - '  pantalla mediana'
-  - '  pantalla grande'
+  - pantalla mediana
+  - pantalla grande
+  - pantalla mediana
+  - pantalla grande
+sp.search.generic:
+  Annotations:
+  - '3': quantity
+  - cual: quantity
+  - "cu\xE1l": quantity
+  - el: quantity
+  - '5': quantity
+  Events: []
+  UserSays:
+  - busco un smartphone de gama alta con 6gb de ram
+sp.selected:
+  Annotations:
+  - Samsung: smartphoneBrand
+  - LG: smartphoneBrand
+  - lg: smartphoneBrand
+  - sony: smartphoneBrand
+  - Google: smartphoneBrand
+  - Apple: smartphoneBrand
+  - huawei: smartphoneBrand
+  - S9: smartphoneName
+  - S8: smartphoneName
+  - zx1 compact: smartphoneName
+  - Pixel 2: smartphoneName
+  - G6: smartphoneName
+  Events: []
+  UserSays:
+  - "Mu\xE9strame el Samsung S9"
+  - "Quiero saber m\xE1s sobre el lg g6"
+  - Hablame sobre el sony xperia zx1 compact
+  - Quiero el Google Pixel 2
+  - "Quiero saber m\xE1s sobre el lg g6"
+  - Hablame sobre el sony xperia zx1 compact
+sp.selected.differences:
+  Annotations:
+  - Samsung: smartphoneBrand
+  - LG: smartphoneBrand
+  - lg: smartphoneBrand
+  - sony: smartphoneBrand
+  - Google: smartphoneBrand
+  - Apple: smartphoneBrand
+  - huawei: smartphoneBrand
+  - S9: smartphoneName
+  - S8: smartphoneName
+  - zx1 compact: smartphoneName
+  - Pixel 2: smartphoneName
+  - G6: smartphoneName
+  Events: []
+  UserSays:
+  - que diferencias hay con el samsung  s8
+  - dime las diferencias entre el google pixel 2
+sp.selected.ecommerce:
+  Annotations:
+  - S9: smartphoneName
+  - S8: smartphoneName
+  - zx1 compact: smartphoneName
+  - Pixel 2: smartphoneName
+  - G6: smartphoneName
+  Events: []
+  UserSays:
+  - Ver tiendas
+  - "D\xF3nde lo puedo comprar?"
+  - Tiendas
