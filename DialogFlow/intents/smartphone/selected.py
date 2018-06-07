@@ -25,7 +25,6 @@ def showSmartphoneCard(smartphoneBrand, smartphoneName):
 
 @Agent.intentException
 def showDifferencesCarousel(request, smartphoneBrand, smartphoneName):
-
     productSelectedId = int(context_manager.get_param('product-selected', 'productId'))
 
     # Get products from DB
@@ -67,6 +66,5 @@ def _getDifferences(smartphone1, smartphone2):
             if getattr(smartphone1, key) != getattr(smartphone2, key):
                 differences.append(key)
     text1 = ''.join(['{0}: {1}\n'.format(attr, getattr(smartphone1, attr)) for attr in differences])
-    text2 = ''.join(['{0}: {1}\n'.format(attr, getattr(smartphone2, attr))  for attr in differences])
+    text2 = ''.join(['{0}: {1}\n'.format(attr, getattr(smartphone2, attr)) for attr in differences])
     return text1, text2
-

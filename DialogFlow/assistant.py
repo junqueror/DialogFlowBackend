@@ -47,10 +47,10 @@ def askRAM(smartphoneScreen):
 
     return ask('In sp.screen>RAM')
 
-
 @Assistant.action('sp.selected')
 def showSmartphoneSelected(smartphoneName, smartphoneBrand=None):
     return selected.showSmartphoneCard(smartphoneBrand, smartphoneName)
+
 
 @Assistant.context('smartphone')
 @Assistant.context('product-selected')
@@ -58,10 +58,12 @@ def showSmartphoneSelected(smartphoneName, smartphoneBrand=None):
 def showSmartphoneSelectedEcommerces():
     return genericEcommerce.getSmartphoneShowEcommerces()
 
+
 @Assistant.context('product-selected')
 @Assistant.action('sp.selected.differences')
 def showSmartphonesDifferences(smartphoneName, smartphoneBrand):
     return selected.showDifferencesCarousel(Assistant.request, smartphoneBrand, smartphoneName)
+
 
 @Assistant.action('sp.question.mostPowerful')
 def showMostPowerfulSmartphones(quantity=5):
@@ -77,6 +79,15 @@ def showCheapestSmartphones(quantity=5):
 def showBestBatterySmartphones(quantity=5):
     return question.bestBattery(Assistant.request, quantity)
 
+@Assistant.action('sp.question.qualityPrice')
+def questionQualityPrice():
+    return question.qualityPrice(Assistant.request)
+
+@Assistant.action('sp.question.qualityPriceUsers')
+def questionQualityPriceUsers():
+    return question.qualityPriceUsers(Assistant.request)
+
+
 @Assistant.action('sp.search.generic')
 def showSmartphonesSearched(quantity=5):
     return search.generic(Assistant.request, quantity)
@@ -88,6 +99,7 @@ def showSmartphonesSearched(quantity=5):
 def promptSmartphoneName(smartphoneName):
     response = "¿Podrías decirme el nombre del teléfono que estás buscando?"
     return ask(response)
+
 
 # @Assistant.prompt_for('smartphoneBrand', intent_name='smartphone')
 # def promptSmartphoneBrand(smartphoneBrand):
@@ -110,6 +122,3 @@ def promptSmartphoneBrand(smartphoneBrand):
 def promptSmartphoneName(smartphoneName):
     response = "¿Podrías decirme el nombre del SmartPhone que quieres comparar?"
     return ask(response)
-
-
-

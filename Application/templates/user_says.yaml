@@ -52,6 +52,31 @@ sp.question.mostPowerful:
   - "qu\xE9 m\xF3viles tienen m\xE1s RAM?"
   - "Cu\xE1les son los smartphones m\xE1s potentes?"
   - "Cu\xE1les son los smartphones m\xE1s potentes?"
+sp.question.qualityPrice:
+  Annotations:
+  - S9: smartphoneName
+  - S8: smartphoneName
+  - zx1 compact: smartphoneName
+  - Pixel 2: smartphoneName
+  - G6: smartphoneName
+  Events: []
+  UserSays:
+  - "cu\xE1l es el mejor m\xF3vil calidad precio"
+  - "cuales son los mejores m\xF3viles calidad precio?"
+  - "qu\xE9 m\xF3vil me recomiendas por caldiad-precio?"
+sp.question.qualityPriceUsers:
+  Annotations:
+  - S9: smartphoneName
+  - S8: smartphoneName
+  - zx1 compact: smartphoneName
+  - Pixel 2: smartphoneName
+  - G6: smartphoneName
+  Events: []
+  UserSays:
+  - "cu\xE1l es el mejor m\xF3vil calidad precio para los usuarios"
+  - "seg\xFAn los uduarioscuales son los mejores m\xF3viles calidad precio?"
+  - "qu\xE9 m\xF3vil me recomiendan los uduarios por caldiad-precio?"
+  - "Calidad-precio seg\xFAn los usuarios"
 sp.range>screen:
   Annotations:
   - gama baja: smartphoneRange
