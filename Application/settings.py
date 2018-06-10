@@ -1,4 +1,5 @@
 import os
+import time
 from Utils.singleton import Singleton
 
 
@@ -42,7 +43,7 @@ class Settings(metaclass=Singleton):
         # Charts
         self.charts_fileName = "tempChart.png"
         self.charts_filePath = os.path.join(os.pardir, self.charts_fileName)
-        self.charts_endpoint = "{0}/api/dialogflow/chart".format(os.getenv('HOST', 'http://localhost:5000'))
+
 
     # Class to load the configuration for flask from settings
     class FlaskBaseConfig:
@@ -111,3 +112,9 @@ class Settings(metaclass=Singleton):
     @property
     def DIALOGFLOW_CLIENT_TOKEN(self):
         return self.dialogflow_client_token
+
+    # Charts
+
+    @property
+    def CHARTS_ENDPOINT(self):
+        return "{0}/api/dialogflow/chart?{1}".format(os.getenv('HOST', 'http://localhost:5000'), time.time())

@@ -49,17 +49,17 @@ def showSmartphonesDifferences(request, smartphoneBrand, smartphoneName):
         if chartCompleted:
             message = Message(Agent().getAgentSays(request))
             message.response = message.response.build_carousel()
+            message.response.add_item(title='{0} {1} vs {2} {3}'.format(smartphone1.company, smartphone1.name,
+                                                                        smartphone2.company, smartphone2.name),
+                                      img_url=Settings().CHARTS_ENDPOINT,
+                                      key = '{0} {1} vs {2} {3}'.format(smartphone1.company, smartphone1.name,
+                                                                        smartphone2.company, smartphone2.name))
             message.response.add_item(title='{0} {1}'.format(smartphone1.company, smartphone1.name),
                                       description=differences1,
                                       key='{0} {1}'.format(smartphone1.company, smartphone1.name))
             message.response.add_item(title='{0} {1}'.format(smartphone2.company, smartphone2.name),
                                       description=differences2,
                                       key='{0} {1}'.format(smartphone2.company, smartphone2.name))
-            message.response.add_item(title='{0} {1} vs {2} {3}'.format(smartphone1.company, smartphone1.name,
-                                                                        smartphone2.company, smartphone2.name),
-                                      img_url=Settings().charts_endpoint,
-                                      key = '{0} {1} vs {2} {3}'.format(smartphone1.company, smartphone1.name,
-                                                                        smartphone2.company, smartphone2.name))
 
             # Set contexts and lifespans
             context_manager.add('smartphone')
@@ -87,7 +87,7 @@ def showSmartphonesRates(request):
         # Create response message
         message.response.card(text='Valoración media: {0}'.format(smartphone.rate),
                               title="{0} {1}".format(smartphone.company, smartphone.name),
-                              img_url=Settings().charts_endpoint)
+                              img_url=Settings().CHARTS_ENDPOINT)
 
         # Set contexts and lifespans
         context_manager.add('smartphone')
