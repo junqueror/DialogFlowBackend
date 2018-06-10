@@ -41,7 +41,7 @@ class Settings(metaclass=Singleton):
 
         # Charts
         self.charts_fileName = "tempChart.png"
-        self.charts_filePath = os.path.join(os.pardir, "Graphics", self.charts_fileName)
+        self.charts_filePath = os.path.join(os.pardir, self.charts_fileName)
         self.charts_endpoint = "{0}/api/dialogflow/chart".format(os.getenv('HOST', 'http://localhost:5000'))
 
     # Class to load the configuration for flask from settings
