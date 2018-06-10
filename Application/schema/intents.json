@@ -640,6 +640,27 @@
             {
                 "data": [
                     {
+                        "text": "one plus",
+                        "meta": "@smartphoneBrand",
+                        "alias": "smartphoneBrand",
+                        "userDefined": true
+                    },
+                    {
+                        "text": " "
+                    },
+                    {
+                        "text": "6",
+                        "meta": "@smartphoneName",
+                        "alias": "smartphoneName",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
                         "text": "Quiero saber m\u00e1s sobre el "
                     },
                     {
@@ -824,6 +845,30 @@
                 ],
                 "isTemplate": false,
                 "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "comparar con el "
+                    },
+                    {
+                        "text": "one plus",
+                        "meta": "@smartphoneBrand",
+                        "alias": "smartphoneBrand",
+                        "userDefined": true
+                    },
+                    {
+                        "text": " "
+                    },
+                    {
+                        "text": "6",
+                        "meta": "@smartphoneName",
+                        "alias": "smartphoneName",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
             }
         ],
         "responses": [
@@ -860,6 +905,53 @@
         "webhookForSlotFilling": true,
         "events": [],
         "id": "e1d674b7-fa94-47f4-8669-39089f2bbffa"
+    },
+    {
+        "name": "sp.selected.rates",
+        "auto": true,
+        "contexts": [],
+        "templates": [],
+        "userSays": [
+            {
+                "data": [
+                    {
+                        "text": "valoraciones"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "muestrame las valoraciones del samsung "
+                    },
+                    {
+                        "text": "s9",
+                        "meta": "@smartphoneName",
+                        "alias": "smartphoneName",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            }
+        ],
+        "responses": [
+            {
+                "action": "showSmartphonesRates",
+                "resetContexts": false,
+                "affectedContexts": [],
+                "parameters": [],
+                "messages": []
+            }
+        ],
+        "priority": 500000,
+        "fallbackIntent": false,
+        "webhookUsed": true,
+        "webhookForSlotFilling": true,
+        "events": [],
+        "id": "4ca250e0-3801-4751-8fc9-009c791b37ca"
     },
     {
         "name": "sp.question.mostPowerful",

@@ -31,14 +31,24 @@ class SmartPhone(DbController().db.Model):
     officialURL = Column(String)
     image = Column(String)
 
+    ratePerformance = Column(Integer)
+    rateBattery = Column(Integer)
+    rateCamera = Column(Integer)
+    rateScreen = Column(Integer)
+    rateSoftware = Column(Integer)
+
     # Relationships
     rangeId = Column(Integer, ForeignKey(Settings().DATABASE_SCHEMA + '.ranges.id', ondelete='CASCADE'),
                      nullable=False)
 
     # Children
-    affiliateLinks = relationship("AffiliateLink", back_populates="smartphone", uselist=True, lazy=True, passive_deletes=True)
+    affiliateLinks = relationship("AffiliateLink", back_populates="smartphone", uselist=True, lazy=True,
+                                  passive_deletes=True)
 
     # Properties
+
+    rate = column_property((rateBattery + rateCamera + ratePerformance + rateScreen + rateSoftware) / 5)
+    # cast(func.coalesce(select([func.avg(rateBattery, rateCamera, ratePerformance, rateScreen, rateSoftware)]).as_scalar(), 0), Integer))
     avgPrice = column_property(
         cast(func.coalesce(select([func.avg(AffiliateLink.price)]).where(AffiliateLink.smartphoneId == id)
                            .correlate_except(AffiliateLink).as_scalar(), 0), Integer))
@@ -97,6 +107,10 @@ class SmartPhone(DbController().db.Model):
     @property
     def synonyms(self):
         return []
+
+    @property
+    def rates(self):
+        return [self.ratePerformance, self.rateCamera, self.rateBattery, self.rateScreen, self.rateSoftware]
 
     @staticmethod
     def getMainField():

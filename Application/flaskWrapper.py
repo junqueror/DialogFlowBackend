@@ -29,6 +29,7 @@ class FlaskWrapper:
 
     # API blueprint definition
     def _getApiBlueprint(self):
+        from API.Resources.DialogFlow.chart import ChartResource
         FlaskWrapper.Api.add_namespace(FlaskWrapper.Namespaces.dialogflow, path='/dialogflow')
 
         # Register blueprints and namespaces in the api

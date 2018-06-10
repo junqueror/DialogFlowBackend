@@ -36,6 +36,14 @@ class Settings(metaclass=Singleton):
         self.dialogflow_dev_token = 'c87709891561448daca17fda76f1e491'
         self.dialogflow_client_token = 'ceaf6b97fe074b359dabdc6e8fcc0428 '
 
+        # Frontend
+        self.frontend_mainColor = "#FF614B"
+
+        # Charts
+        self.charts_fileName = "tempChart.png"
+        self.charts_filePath = os.path.join(os.pardir, "Graphics", self.charts_fileName)
+        self.charts_endpoint = "{0}:{1}/api/dialogflow/chart".format(os.getenv('HOST', 'http://localhost'), int(os.getenv('PORT', 5000)))
+
     # Class to load the configuration for flask from settings
     class FlaskBaseConfig:
         DEBUG = None

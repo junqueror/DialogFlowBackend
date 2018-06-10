@@ -59,6 +59,7 @@ sp.question.qualityPrice:
   - zx1 compact: smartphoneName
   - Pixel 2: smartphoneName
   - G6: smartphoneName
+  - '6': smartphoneName
   Events: []
   UserSays:
   - "cu\xE1l es el mejor m\xF3vil calidad precio"
@@ -71,6 +72,7 @@ sp.question.qualityPriceUsers:
   - zx1 compact: smartphoneName
   - Pixel 2: smartphoneName
   - G6: smartphoneName
+  - '6': smartphoneName
   Events: []
   UserSays:
   - "cu\xE1l es el mejor m\xF3vil calidad precio para los usuarios"
@@ -133,17 +135,20 @@ sp.selected:
   - Google: smartphoneBrand
   - Apple: smartphoneBrand
   - huawei: smartphoneBrand
+  - one plus: smartphoneBrand
   - S9: smartphoneName
   - S8: smartphoneName
   - zx1 compact: smartphoneName
   - Pixel 2: smartphoneName
   - G6: smartphoneName
+  - '6': smartphoneName
   Events: []
   UserSays:
   - "Mu\xE9strame el Samsung S9"
   - "Quiero saber m\xE1s sobre el lg g6"
   - Hablame sobre el sony xperia zx1 compact
   - Quiero el Google Pixel 2
+  - one plus 6
   - "Quiero saber m\xE1s sobre el lg g6"
   - Hablame sobre el sony xperia zx1 compact
 sp.selected.differences:
@@ -155,15 +160,18 @@ sp.selected.differences:
   - Google: smartphoneBrand
   - Apple: smartphoneBrand
   - huawei: smartphoneBrand
+  - one plus: smartphoneBrand
   - S9: smartphoneName
   - S8: smartphoneName
   - zx1 compact: smartphoneName
   - Pixel 2: smartphoneName
   - G6: smartphoneName
+  - '6': smartphoneName
   Events: []
   UserSays:
   - que diferencias hay con el samsung  s8
   - dime las diferencias entre el google pixel 2
+  - comparar con el one plus 6
 sp.selected.ecommerce:
   Annotations:
   - S9: smartphoneName
@@ -171,8 +179,21 @@ sp.selected.ecommerce:
   - zx1 compact: smartphoneName
   - Pixel 2: smartphoneName
   - G6: smartphoneName
+  - '6': smartphoneName
   Events: []
   UserSays:
   - Ver tiendas
   - "D\xF3nde lo puedo comprar?"
   - Tiendas
+sp.selected.rates:
+  Annotations:
+  - S9: smartphoneName
+  - S8: smartphoneName
+  - zx1 compact: smartphoneName
+  - Pixel 2: smartphoneName
+  - G6: smartphoneName
+  - '6': smartphoneName
+  Events: []
+  UserSays:
+  - valoraciones
+  - muestrame las valoraciones del samsung s9

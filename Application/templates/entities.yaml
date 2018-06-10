@@ -59,6 +59,9 @@ smartphoneBrand:
   - huawei
 - Xiaomi:
   - xiaomi
+- One Plus:
+  - one plus
+  - oneplus
 smartphoneName:
 - S9:
   - s9
@@ -70,6 +73,9 @@ smartphoneName:
   - xperia xz1 compact
 - G6:
   - g6
+- 6:
+  - '6'
+  - plus 6
 smartphoneRange:
 - Gama baja:
   - gama baja

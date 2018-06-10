@@ -49,7 +49,7 @@ def askRAM(smartphoneScreen):
 
 @Assistant.action('sp.selected')
 def showSmartphoneSelected(smartphoneName, smartphoneBrand=None):
-    return selected.showSmartphoneCard(smartphoneBrand, smartphoneName)
+    return selected.showSmartphoneSelected(smartphoneBrand, smartphoneName)
 
 
 @Assistant.context('smartphone')
@@ -62,8 +62,12 @@ def showSmartphoneSelectedEcommerces():
 @Assistant.context('product-selected')
 @Assistant.action('sp.selected.differences')
 def showSmartphonesDifferences(smartphoneName, smartphoneBrand):
-    return selected.showDifferencesCarousel(Assistant.request, smartphoneBrand, smartphoneName)
+    return selected.showSmartphonesDifferences(Assistant.request, smartphoneBrand, smartphoneName)
 
+@Assistant.context('product-selected')
+@Assistant.action('sp.selected.rates')
+def showSmartphonesRates():
+    return selected.showSmartphonesRates(Assistant.request)
 
 @Assistant.action('sp.question.mostPowerful')
 def showMostPowerfulSmartphones(quantity=5):

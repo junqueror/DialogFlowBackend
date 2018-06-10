@@ -145,6 +145,13 @@
                 "synonyms": [
                     "xiaomi"
                 ]
+            },
+            {
+                "value": "One Plus",
+                "synonyms": [
+                    "one plus",
+                    "oneplus"
+                ]
             }
         ],
         "isEnum": null,
@@ -181,6 +188,13 @@
                 "value": "G6",
                 "synonyms": [
                     "g6"
+                ]
+            },
+            {
+                "value": 6,
+                "synonyms": [
+                    "6",
+                    "plus 6"
                 ]
             }
         ],

@@ -26,11 +26,14 @@ class DbController(DbWrapper, metaclass=Singleton):
         return result
 
     def getOneByCompanyAndName(self, model, company, name):
-        if company:
-            result = self._db.session.query(model).filter(model.company.ilike(company)).filter(
-                model.name.ilike(name)).one()
-        else:
-            result = self._db.session.query(model).filter(model.name.ilike(name)).one()
+        try:
+            if company:
+                result = self._db.session.query(model).filter(model.company.ilike(company)).filter(
+                    model.name.ilike(name)).one()
+            else:
+                result = self._db.session.query(model).filter(model.name.ilike(name)).one()
+        except:
+            result = None
         return result
 
     def getCheapestOne(self, model, query=None):
@@ -129,7 +132,7 @@ class DbController(DbWrapper, metaclass=Singleton):
                                                                              inspect(model).relationships]))
         # Get model fields to search
         modelFields = []
-        if not fields or len(fields) == 0 :  # If no fields defined
+        if not fields or len(fields) == 0:  # If no fields defined
             for field in model.__table__.columns:
                 modelFields.append(field)  # Filter in all fields of the table
             for field in related_fields:
