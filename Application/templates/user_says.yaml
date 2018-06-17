@@ -11,23 +11,30 @@ buy>product.category:
   - "Necesito informaci\xF3n"
   - "Busco informaci\xF3n sobre productos"
 product.category>sp.range:
+  Annotations: []
+  Events: []
+  UserSays:
+  - ayudame a elegir un movil
+  - ayudame
+  - "mejor ay\xFAdame"
+  - "gu\xEDame"
+  - "ay\xFAdame a elegir caracter\xEDsticas"
+sp.firstQuestion:
   Annotations:
   - smartphone: productCategory
   - "m\xF3vil": productCategory
   - moviles: productCategory
   - movil: productCategory
-  Events: []
+  Events:
+  - sp.question.withQuickCharge
   UserSays:
   - quiero comprar un smartphone
   - "estoy buscando un m\xF3vil"
   - "no s\xE9 que m\xF3vil comprarme"
   - "me gustar\xEDa comprar un smartphone"
-  - ayudame a elegir un movil
-  - un smartphone
-  - smartphones
-  - "un m\xF3vil"
   - quiero comprar un smartphone
   - "quiero un m\xF3vil"
+  - "quiero comprar un m\xF3vil"
 sp.question.bestBattery:
   Annotations:
   - '3': quantity
@@ -42,6 +49,20 @@ sp.question.bestBattery:
   - "Mu\xE9strame los 3 con m\xE1s bater\xEDa"
   - "Dime los 5 con mejor bater\xEDa"
   - "Mu\xE9strame el de mejor bater\xEDa"
+sp.question.cheapest:
+  Annotations:
+  - '4': quantity
+  - cual: quantity
+  - "cu\xE1l": quantity
+  - el: quantity
+  - '8': quantity
+  Events: []
+  UserSays:
+  - "Cu\xE1es son los m\xF3viles m\xE1s baratos"
+  - "Mu\xE9strame los 4 con el precio m\xE1s bajo"
+  - "Dime los 8 m\xE1s baratos"
+  - "Mu\xE9strame el m\xE1s barato"
+  - "Cu\xE1l es el telef\xF3no m\xE1s barato?"
 sp.question.mostPowerful:
   Annotations:
   - smartphone: productCategory
@@ -79,6 +100,15 @@ sp.question.qualityPriceUsers:
   - "seg\xFAn los uduarioscuales son los mejores m\xF3viles calidad precio?"
   - "qu\xE9 m\xF3vil me recomiendan los uduarios por caldiad-precio?"
   - "Calidad-precio seg\xFAn los usuarios"
+sp.question.withQuickCharge:
+  Annotations:
+  - '3': quantity
+  - '5': quantity
+  Events: []
+  UserSays:
+  - "cu\xE1les son los m\xF3viles con carga r\xE1pida"
+  - "muestrame m\xF3viles con carga r\xE1pida"
+  - "dime los 3 mejores m\xF3viles con carga r\xE1pida"
 sp.range>screen:
   Annotations:
   - gama baja: smartphoneRange
@@ -118,11 +148,11 @@ sp.screen>RAM:
   - pantalla grande
 sp.search.generic:
   Annotations:
-  - '3': quantity
+  - '4': quantity
   - cual: quantity
   - "cu\xE1l": quantity
   - el: quantity
-  - '5': quantity
+  - '8': quantity
   Events: []
   UserSays:
   - busco un smartphone de gama alta con 6gb de ram
@@ -185,6 +215,15 @@ sp.selected.ecommerce:
   - Ver tiendas
   - "D\xF3nde lo puedo comprar?"
   - Tiendas
+sp.selected.hasQuickCharge:
+  Annotations:
+  - xiaomi: smartphoneBrand
+  - mi8: smartphoneName
+  Events: []
+  UserSays:
+  - "tiene carga r\xE1pida?"
+  - "Cuenta con carga r\xE1pida?"
+  - "El xiaomi mi 8 tiene carga r\xE1pida?"
 sp.selected.rates:
   Annotations:
   - S9: smartphoneName
@@ -197,3 +236,12 @@ sp.selected.rates:
   UserSays:
   - valoraciones
   - muestrame las valoraciones del samsung s9
+sp.selected.searchQuickCharge.yes:
+  Annotations:
+  - mi8: smartphoneName
+  Events:
+  - sp.question.withQuickCharge
+  UserSays:
+  - "S\xED"
+  - vale
+  - de acuerdo

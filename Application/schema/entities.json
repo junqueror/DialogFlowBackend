@@ -196,6 +196,20 @@
                     "6",
                     "plus 6"
                 ]
+            },
+            {
+                "value": "Mi 8",
+                "synonyms": [
+                    "mi 8",
+                    "mi8"
+                ]
+            },
+            {
+                "value": "Galaxy A8",
+                "synonyms": [
+                    "a8",
+                    "galaxy a8"
+                ]
             }
         ],
         "isEnum": null,

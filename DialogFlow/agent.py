@@ -42,3 +42,8 @@ class Agent(metaclass=Singleton):
     def getAgentSays(self, request):
         intent = request['result']['metadata']['intentName']
         return self.intents[intent]['AgentSays']
+
+    def getEvent(self, request):
+        intent = request['result']['metadata']['intentName']
+        return self.intents[intent]['Events']
+

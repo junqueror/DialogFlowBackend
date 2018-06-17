@@ -1,5 +1,5 @@
 import copy
-from flask_assistant import context_manager
+from flask_assistant import context_manager, event
 
 from DataBase.dbController import DbController
 from DataBase.DataModels.smartPhone import SmartPhone
@@ -71,7 +71,7 @@ def showSmartphonesDifferences(request, smartphoneBrand, smartphoneName):
 
 
 @Agent.intentException
-def showSmartphonesRates(request):
+def showSmartphoneRates(request):
     productSelectedId = int(context_manager.get_param('product-selected', 'productId'))
 
     # Get products from DB
@@ -94,6 +94,34 @@ def showSmartphonesRates(request):
         context_manager.add('product-selected')
 
     return message.response
+
+@Agent.intentException
+def hasQuickCharge(request, smartphoneName = None, smartphoneBrand = None):
+    if context_manager.get_param('product-selected', 'productId'):
+        productSelectedId = int(context_manager.get_param('product-selected', 'productId'))
+        smartphone = DbController().getOne(SmartPhone, productSelectedId)
+    else:
+        smartphone = DbController().getOneByCompanyAndName(SmartPhone, smartphoneBrand, smartphoneName)
+
+    # Get products from DB
+    products, query = DbController().getAllFilterBy(SmartPhone, 'carga rápida')
+
+    # Create response message
+    if smartphone in products:
+        message = Message(Agent().getAgentSays(request))
+    else:
+        message = Message(['No, no incluye carga rápida. ¿Quieres que te busque móviles con carga rápida?',
+                           'No, solo carga básica. ¿Te busco alguno parecido que sí la tenga?'])
+
+    # Set contexts and lifespans
+    context_manager.add('smartphone')
+    context_manager.add('has-quick-charge')
+
+    return message.response
+
+@Agent.intentException
+def searchQuickChargeYes(request):
+    event(Agent().getEvent(request))
 
 
 def _getDifferences(smartphone1, smartphone2):

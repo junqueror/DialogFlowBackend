@@ -1,4 +1,3 @@
-import random
 from flask_assistant import context_manager, event
 
 from DataBase.dbController import DbController
@@ -15,13 +14,11 @@ def bestBattery(request, quantity):
     # Get products from DB
     products = session.appendFilter(DbController().getBestBattery, SmartPhone, quantity)
     # Create response message
-    message = Message(['Listo! Estos son los móviles con batería de larga duración',
-                       'Aquí los tienes',
-                       'Estos son los que tienen batería de más capacidad'])
+    message = Message(Agent().getAgentSays(request))
     message.addListOrCarrousel('Los {0} smartphones con más batería'.format(len(products)), products)
     # Set contexts and lifespans
     context_manager.add('smartphone')
-    context_manager.add('bestBattery').lifespan = 2
+    context_manager.add('filter').lifespan = 2
 
     return message.response
 
@@ -33,12 +30,11 @@ def cheapest(request, quantity):
     # Get products from DB
     products = session.appendFilter(DbController().getCheapests, SmartPhone, quantity)
     # Create response message
-    message = Message(['Estos son los smartphones más baratos',
-                       'Aquí tienes los móviles con el precio más bajo'])
+    message = Message(Agent().getAgentSays(request))
     message.addListOrCarrousel('Los {0} smartphones más baratos'.format(len(products)), products)
     # Set contexts and lifespans
     context_manager.add('smartphone')
-    context_manager.add('cheapest')
+    context_manager.add('filter').lifespan = 2
 
     return message.response
 
@@ -50,14 +46,12 @@ def mostPowerful(request, quantity):
     # Get products from DB
     products = session.appendFilter(DbController().getMostPowerful, SmartPhone, quantity)
     # Create response message
-    message = Message(['Listo! Estos son',
-                       'Aquí los tienes',
-                       'Los smartphones más potentes son los que tienen más cantidad de memoria RAM, y son los '
-                       'siguientes'])
+    message = Message(Agent().getAgentSays(request))
     message.addListOrCarrousel('Los {0} smartphones más potentes'.format(len(products)), products)
     # Set contexts and lifespans
     context_manager.add('smartphone')
-    context_manager.add('mostPowerful').lifespan = 2
+    context_manager.add('filter').lifespan = 2
+
     return message.response
 
 
@@ -79,10 +73,9 @@ def qualityPrice(request):
 
     # Set contexts and lifespans
     context_manager.add('smartphone')
-    context_manager.add('qualityPrice').lifespan = 2
+    context_manager.add('filter').lifespan = 2
 
     return message.response
-
 
 @Agent.intentException
 def qualityPriceUsers(request):
@@ -90,7 +83,7 @@ def qualityPriceUsers(request):
     session = Session.getSession(request)
 
     # Get products from DB
-    products, query = DbController().getAllFilterBy(SmartPhone, 'Samsung', ['company'], 'avgPrice')
+    products, query = DbController().getAllFilterBy(SmartPhone, 'Xiaomi', ['company'])
 
     # Create response message
     message = Message(Agent().getAgentSays(request))
@@ -101,3 +94,22 @@ def qualityPriceUsers(request):
     context_manager.add('qualityPriceUser').lifespan = 2
 
     return message.response
+
+@Agent.intentException
+def withQuickCharge(request, quantity):
+    # Get session object
+    session = Session.getSession(request)
+    # Get products from DB
+    products = session.appendFilter(DbController().getAllFilterBy, SmartPhone, 'carga rápida')
+    # Create response message
+    message = Message(Agent().getAgentSays(request))
+    message.addListOrCarrousel('Los smartphones que cuentan con carga rápida', products)
+    # Set contexts and lifespans
+    context_manager.add('smartphone')
+    context_manager.add('filter').lifespan = 2
+
+    return message.response
+
+
+
+

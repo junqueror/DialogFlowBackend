@@ -87,7 +87,7 @@ class DbController(DbWrapper, metaclass=Singleton):
         results = self._db.session.query(model).all()
         return results
 
-    def getAllFilterBy(self, model, search, fields=None, order=None, orderDir=None, query=None):
+    def getAllFilterBy(self, model, search, fields=None, order=None, orderDir=None, query=None, number=None):
 
         results = None
         numResults = 0
@@ -108,6 +108,9 @@ class DbController(DbWrapper, metaclass=Singleton):
                 query = query.order_by(desc(getattr(model, order)))
             else:
                 query = query.order_by(getattr(model, order))
+
+            # In number of results specified
+            query = query.limit(number)
 
             # Apply query and get the results
             results = query.all()

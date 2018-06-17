@@ -76,6 +76,12 @@ smartphoneName:
 - 6:
   - '6'
   - plus 6
+- Mi 8:
+  - mi 8
+  - mi8
+- Galaxy A8:
+  - a8
+  - galaxy a8
 smartphoneRange:
 - Gama baja:
   - gama baja

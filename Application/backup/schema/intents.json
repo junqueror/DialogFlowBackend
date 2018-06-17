@@ -1,27 +1,5 @@
 [
     {
-        "name": "push.notification",
-        "auto": true,
-        "contexts": [],
-        "templates": [],
-        "userSays": [],
-        "responses": [
-            {
-                "action": "pushNotification",
-                "resetContexts": false,
-                "affectedContexts": [],
-                "parameters": [],
-                "messages": []
-            }
-        ],
-        "priority": 500000,
-        "fallbackIntent": false,
-        "webhookUsed": true,
-        "webhookForSlotFilling": true,
-        "events": [],
-        "id": "f3d07736-f375-4549-a93d-4583b49409e1"
-    },
-    {
         "name": "buy>product.category",
         "auto": true,
         "contexts": [],
@@ -125,7 +103,7 @@
         "id": "02f81cdf-da40-4637-b252-049e56a10645"
     },
     {
-        "name": "product.category>sp.range",
+        "name": "sp.firstQuestion",
         "auto": true,
         "contexts": [],
         "templates": [],
@@ -196,60 +174,6 @@
             {
                 "data": [
                     {
-                        "text": "ayudame a elegir un "
-                    },
-                    {
-                        "text": "movil",
-                        "meta": "@productCategory",
-                        "alias": "productCategory",
-                        "userDefined": true
-                    }
-                ],
-                "isTemplate": false,
-                "count": 0
-            },
-            {
-                "data": [
-                    {
-                        "text": "un "
-                    },
-                    {
-                        "text": "smartphone",
-                        "meta": "@productCategory",
-                        "alias": "productCategory",
-                        "userDefined": true
-                    }
-                ],
-                "isTemplate": false,
-                "count": 0
-            },
-            {
-                "data": [
-                    {
-                        "text": "smartphones"
-                    }
-                ],
-                "isTemplate": false,
-                "count": 0
-            },
-            {
-                "data": [
-                    {
-                        "text": "un "
-                    },
-                    {
-                        "text": "m\u00f3vil",
-                        "meta": "@productCategory",
-                        "alias": "productCategory",
-                        "userDefined": true
-                    }
-                ],
-                "isTemplate": false,
-                "count": 0
-            },
-            {
-                "data": [
-                    {
                         "text": "quiero comprar un "
                     },
                     {
@@ -276,11 +200,26 @@
                 ],
                 "isTemplate": false,
                 "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "quiero comprar un "
+                    },
+                    {
+                        "text": "m\u00f3vil",
+                        "meta": "@productCategory",
+                        "alias": "productCategory",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
             }
         ],
         "responses": [
             {
-                "action": "askRange",
+                "action": "questionOrHelp",
                 "resetContexts": false,
                 "affectedContexts": [],
                 "parameters": [
@@ -294,6 +233,83 @@
                         "defaultValue": ""
                     }
                 ],
+                "messages": []
+            }
+        ],
+        "priority": 500000,
+        "fallbackIntent": false,
+        "webhookUsed": true,
+        "webhookForSlotFilling": true,
+        "events": [
+            {
+                "name": "sp.question.withQuickCharge"
+            }
+        ],
+        "id": null
+    },
+    {
+        "name": "product.category>sp.range",
+        "auto": true,
+        "contexts": [],
+        "templates": [],
+        "userSays": [
+            {
+                "data": [
+                    {
+                        "text": "ayudame a elegir un movil",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "ayudame",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "mejor ay\u00fadame",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "gu\u00edame",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "ay\u00fadame a elegir caracter\u00edsticas",
+                        "userDefined": false
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            }
+        ],
+        "responses": [
+            {
+                "action": "askRange",
+                "resetContexts": false,
+                "affectedContexts": [],
+                "parameters": [],
                 "messages": []
             }
         ],
@@ -954,6 +970,119 @@
         "id": "4ca250e0-3801-4751-8fc9-009c791b37ca"
     },
     {
+        "name": "sp.selected.hasQuickCharge",
+        "auto": true,
+        "contexts": [],
+        "templates": [],
+        "userSays": [
+            {
+                "data": [
+                    {
+                        "text": "tiene carga r\u00e1pida?"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "Cuenta con carga r\u00e1pida?"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "El "
+                    },
+                    {
+                        "text": "xiaomi",
+                        "meta": "@smartphoneBrand",
+                        "alias": "smartphoneBrand",
+                        "userDefined": true
+                    },
+                    {
+                        "text": " mi 8 tiene carga r\u00e1pida?"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            }
+        ],
+        "responses": [
+            {
+                "action": "hasQuickCharge",
+                "resetContexts": false,
+                "affectedContexts": [],
+                "parameters": [],
+                "messages": []
+            }
+        ],
+        "priority": 500000,
+        "fallbackIntent": false,
+        "webhookUsed": true,
+        "webhookForSlotFilling": true,
+        "events": [],
+        "id": "d5ac2058-e7cf-4ac6-927a-266060116331"
+    },
+    {
+        "name": "sp.selected.searchQuickCharge.yes",
+        "auto": true,
+        "contexts": [],
+        "templates": [],
+        "userSays": [
+            {
+                "data": [
+                    {
+                        "text": "S\u00ed"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "vale"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "de acuerdo"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            }
+        ],
+        "responses": [
+            {
+                "action": "searchQuickCharge",
+                "resetContexts": false,
+                "affectedContexts": [],
+                "parameters": [],
+                "messages": []
+            }
+        ],
+        "priority": 500000,
+        "fallbackIntent": false,
+        "webhookUsed": true,
+        "webhookForSlotFilling": true,
+        "events": [
+            {
+                "name": "sp.question.withQuickCharge"
+            }
+        ],
+        "id": null
+    },
+    {
         "name": "sp.question.mostPowerful",
         "auto": true,
         "contexts": [],
@@ -1027,7 +1156,98 @@
         "auto": true,
         "contexts": [],
         "templates": [],
-        "userSays": [],
+        "userSays": [
+            {
+                "data": [
+                    {
+                        "text": "Cu\u00e1es son los m\u00f3viles m\u00e1s baratos"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "Mu\u00e9strame los "
+                    },
+                    {
+                        "text": "4",
+                        "meta": "@quantity",
+                        "alias": "quantity",
+                        "userDefined": true
+                    },
+                    {
+                        "text": " con "
+                    },
+                    {
+                        "text": "el",
+                        "meta": "@quantity",
+                        "alias": "quantity",
+                        "userDefined": true
+                    },
+                    {
+                        "text": " precio m\u00e1s bajo"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "Dime los "
+                    },
+                    {
+                        "text": "8",
+                        "meta": "@quantity",
+                        "alias": "quantity",
+                        "userDefined": true
+                    },
+                    {
+                        "text": " m\u00e1s baratos"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "Mu\u00e9strame "
+                    },
+                    {
+                        "text": "el",
+                        "meta": "@quantity",
+                        "alias": "quantity",
+                        "userDefined": true
+                    },
+                    {
+                        "text": " m\u00e1s barato"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "Cu\u00e1l es "
+                    },
+                    {
+                        "text": "el",
+                        "meta": "@quantity",
+                        "alias": "quantity",
+                        "userDefined": true
+                    },
+                    {
+                        "text": " telef\u00f3no m\u00e1s barato?"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            }
+        ],
         "responses": [
             {
                 "action": "showCheapestSmartphones",
@@ -1267,6 +1487,75 @@
         "webhookForSlotFilling": true,
         "events": [],
         "id": "1985292d-97cb-447f-bcee-3ed8ff892c31"
+    },
+    {
+        "name": "sp.question.withQuickCharge",
+        "auto": true,
+        "contexts": [],
+        "templates": [],
+        "userSays": [
+            {
+                "data": [
+                    {
+                        "text": "cu\u00e1les son los m\u00f3viles con carga r\u00e1pida"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "muestrame m\u00f3viles con carga r\u00e1pida"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "dime los "
+                    },
+                    {
+                        "text": "3",
+                        "meta": "@quantity",
+                        "alias": "quantity",
+                        "userDefined": true
+                    },
+                    {
+                        "text": " mejores m\u00f3viles con carga r\u00e1pida"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            }
+        ],
+        "responses": [
+            {
+                "action": "questionWithQuickCharge",
+                "resetContexts": false,
+                "affectedContexts": [],
+                "parameters": [
+                    {
+                        "name": "quantity",
+                        "value": "$quantity",
+                        "dataType": "@quantity",
+                        "prompts": [],
+                        "required": false,
+                        "isList": false,
+                        "defaultValue": 10
+                    }
+                ],
+                "messages": []
+            }
+        ],
+        "priority": 500000,
+        "fallbackIntent": false,
+        "webhookUsed": true,
+        "webhookForSlotFilling": true,
+        "events": [],
+        "id": "6e7ea58d-01f5-4dc2-b935-42e6b6baacd6"
     },
     {
         "name": "sp.search.generic",

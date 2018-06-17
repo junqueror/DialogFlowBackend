@@ -260,7 +260,7 @@ class DbData:
             db.session.add(s8)
             db.session.commit()
 
-            RedmiNote4 = SmartPhone(name='Redmi Note 4',
+            redmiNote4 = SmartPhone(name='Redmi Note 4',
                                     company='Xiaomi',
                                     rangeId=2,
                                     size='151 x 76 x 8.5 mm',
@@ -279,12 +279,12 @@ class DbData:
                                     officialURL='https://www.mi.com/es/note4/',
                                     image='https://d2giyh01gjb6fi.cloudfront.net/default/0001/58/thumb_57689_default_big.jpeg'
                                     )
-            db.session.add(RedmiNote4)
+            db.session.add(redmiNote4)
             db.session.commit()
             redmiNote4amazon = AffiliateLink(
                 linkUrl='https://www.amazon.es/Xiaomi-Redmi-Note-Smartphone-Android/dp/B074KRKGPD/ref=sr_1_2?ie=UTF8&qid=1528562645&sr=8-2&keywords=xiaomi+mi+note+4',
                 price=159.90,
-                smartphoneId=RedmiNote4.id,
+                smartphoneId=redmiNote4.id,
                 ecommerceId=3)
             db.session.add(redmiNote4amazon)
 
@@ -326,7 +326,73 @@ class DbData:
                 ecommerceId=aliexpress.id)
             db.session.add(onePlus6eliexpress)
 
-            # Add to Database
-
+            mi8 = SmartPhone(name='Mi 8',
+                             company='Xiaomi',
+                             rangeId=3,
+                             size='154.9 x 74.8 x 7.6 mm',
+                             weight='172g',
+                             screenSize='6"',
+                             screenType='AMOLED',
+                             screenRes='2248 × 1080 px',
+                             processor='Snapdragon 845 ',
+                             RAM='6 GB',
+                             memory='64/128/256  GB',
+                             battery='3300 mAh',
+                             backCameraRes='Dual 12/12 Mpx',
+                             frontCameraRes='20 Mpx',
+                             OS='Android 8.0 Oreo + MIUI 9.5',
+                             extras='''LTE, WiFi 4x4 MIMO, Dual nano SIM, NFC, Bluetooth 5.0, GPS, USB-C, carga rápida''',
+                             officialURL='https://www.mi.com/es/note4/',
+                             image='https://www.mediaelectronica.com/77726-large_default/xiaomi-mi8-64gb.jpg',
+                             rateCamera=82,
+                             rateScreen=88,
+                             rateSoftware=76,
+                             ratePerformance=97,
+                             rateBattery=83)
+            db.session.add(mi8)
             db.session.commit()
+            mi8gearbest = AffiliateLink(
+                linkUrl='https://www.gearbest.com/cell-phones/pp_009477908547.html?wid=1733065',
+                price=599.44,
+                smartphoneId=mi8.id,
+                ecommerceId=gearbest.id)
+            db.session.add(mi8gearbest)
 
+            galaxyA8 = SmartPhone(name='Galaxy A8',
+                                  company='Samsung',
+                                  rangeId=2,
+                                  size='149,2 x 70,6 x 8,4 mm',
+                                  weight='169 g',
+                                  screenSize='5.6"',
+                                  screenType='Super AMOLED',
+                                  screenRes='2220 × 1080 px',
+                                  processor='Exynos 7885',
+                                  RAM='4 GB',
+                                  memory='32 GB',
+                                  battery='3050 mAh',
+                                  backCameraRes='16Mpx',
+                                  frontCameraRes='Dual 16/8 Mpx',
+                                  OS='Android 7.0',
+                                  extras='''NFC, carga rápida, lector de huellas, USB tipo C''',
+                                  officialURL='',
+                                  image='https://images-na.ssl-images-amazon.com/images/I/41h7-N4-z0L.jpg',
+                                  rateCamera=73,
+                                  rateScreen=85,
+                                  rateSoftware=90,
+                                  ratePerformance=69,
+                                  rateBattery=73)
+            db.session.add(galaxyA8)
+            db.session.commit()
+            galaxyA8amazon = AffiliateLink(
+                linkUrl='https://www.amazon.es/Samsung-Galaxy-A8-Smartphone-memoria/dp/B078TZ9WRW/ref=sr_1_1?ie=UTF8&qid=1529269357&sr=8-1&keywords=samsung+galaxy+a8',
+                price=399,
+                smartphoneId=galaxyA8.id,
+                ecommerceId=amazon.id)
+            db.session.add(galaxyA8amazon)
+            galaxyA8mediamarkt = AffiliateLink(
+                linkUrl='https://tiendas.mediamarkt.es/p/samsung-galaxy-a8-5.6-32gb-dorado-1391170?gclid=CjwKCAjwjZjZBRAZEiwAPeLSKwOErTkTkBKaWxy7u8lPgv1gKMs2x6uP2tzlTK6L-FkeIfVaC5DqSxoCy1gQAvD_BwE&gclsrc=aw.ds&dclid=COzZhKjM29sCFSYk0wodTGALJg',
+                price=399,
+                smartphoneId=galaxyA8.id,
+                ecommerceId=mediamarkt.id)
+            db.session.add(galaxyA8mediamarkt)
+            db.session.commit()
