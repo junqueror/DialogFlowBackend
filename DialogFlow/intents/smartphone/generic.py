@@ -16,6 +16,6 @@ def questionOrHelp(request, productCategory):
         message = Message(['Lo siento, pero ahora mismo solo puedo ayudarte con la categoría de SmartPhones.'])
 
     # Set contexts and lifespans
-    context_manager.add('smartphone-firstQuestion')
+    context_manager.add('help')
 
     return message.response

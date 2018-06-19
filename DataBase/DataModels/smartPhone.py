@@ -65,24 +65,25 @@ class SmartPhone(DbController().db.Model):
 
     @property
     def text(self):
-        return "{0}, \nRAM: {1}, {2}, {3}/{4}".format(self.OS,
-                                                      self.RAM,
-                                                      self.processor,
-                                                      self.frontCameraRes,
-                                                      self.backCameraRes)
+        return "OS: {0}\n RAM: {1}\nProcesador: {2}\nCámaras: {3}/{4}\nBatería: {5}".format(self.OS,
+                                                    self.RAM,
+                                                    self.processor,
+                                                    self.frontCameraRes,
+                                                    self.backCameraRes,
+                                                    self.battery)
 
     @property
     def description(self):
-        return "{0}, {1}, {2}, {3} {4} {5}, {6}/{7}, {8}, {9} ".format(self.OS,
-                                                                       self.RAM,
-                                                                       self.processor,
-                                                                       self.screenSize,
-                                                                       self.screenSize,
-                                                                       self.screenType,
-                                                                       self.frontCameraRes,
-                                                                       self.backCameraRes,
-                                                                       self.battery,
-                                                                       self.extras)
+        return "OS: {0}\n RAM: {1}\nProcesador: {2}\nPantalla: {3}{4}{5}\nCámaras: {6}-{7}\nBatería: {8}\n Otros: {9}".format(self.OS,
+                                                                     self.RAM,
+                                                                     self.processor,
+                                                                     self.screenSize,
+                                                                     self.screenRes,
+                                                                     self.screenType,
+                                                                     self.frontCameraRes,
+                                                                     self.backCameraRes,
+                                                                     self.battery,
+                                                                     self.extras)
 
     @property
     def imgUrl(self):

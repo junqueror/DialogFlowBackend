@@ -373,7 +373,7 @@ class DbData:
                                   backCameraRes='16Mpx',
                                   frontCameraRes='Dual 16/8 Mpx',
                                   OS='Android 7.0',
-                                  extras='''NFC, carga rápida, lector de huellas, USB tipo C''',
+                                  extras='''NFC, lector de huellas, USB tipo C''',
                                   officialURL='',
                                   image='https://images-na.ssl-images-amazon.com/images/I/41h7-N4-z0L.jpg',
                                   rateCamera=73,

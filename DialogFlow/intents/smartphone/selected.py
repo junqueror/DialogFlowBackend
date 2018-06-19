@@ -11,16 +11,16 @@ from Graphics.chartBuilder import ChartBuilder
 
 
 @Agent.intentException
-def showSmartphoneSelected(smartphoneBrand, smartphoneName):
+def showSmartphoneSelected(request, smartphoneBrand, smartphoneName):
     # Get products from DB
     smartphone = DbController().getOneByCompanyAndName(SmartPhone, smartphoneBrand, smartphoneName)
     # Create response message
-    message = Message(['Aquí lo tienes'])
+    message = Message(Agent().getAgentSays(request))
     message.addCard(smartphone)
-    message.addSuggestions('Más detalles', 'Opiniones', 'Tiendas', 'Valoraciones')
+    message.addSuggestions('Opiniones', 'Tiendas', 'Valoraciones')
     # Set contexts and lifespans
     context_manager.add('smartphone')
-    context_manager.add('product-selected').lifespan = 2
+    context_manager.add('product-selected').lifespan = 5
     context_manager.set('product-selected', 'productId', smartphone.id)
     return message.response
 
@@ -119,11 +119,6 @@ def hasQuickCharge(request, smartphoneName = None, smartphoneBrand = None):
 
     return message.response
 
-@Agent.intentException
-def searchQuickChargeYes(request):
-    event(Agent().getEvent(request))
-
-
 def _getDifferences(smartphone1, smartphone2):
     attributes1 = copy.deepcopy(smartphone1.__dict__)
     attributes1.pop('id')
@@ -141,3 +136,4 @@ def _getDifferences(smartphone1, smartphone2):
     text1 = ''.join(['{0}: {1}\n'.format(attr, getattr(smartphone1, attr)) for attr in differences])
     text2 = ''.join(['{0}: {1}\n'.format(attr, getattr(smartphone2, attr)) for attr in differences])
     return text1, text2
+

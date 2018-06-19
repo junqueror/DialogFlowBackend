@@ -96,11 +96,11 @@ def qualityPriceUsers(request):
     return message.response
 
 @Agent.intentException
-def withQuickCharge(request, quantity):
+def withQuickCharge(request, quantity = 3):
     # Get session object
     session = Session.getSession(request)
     # Get products from DB
-    products = session.appendFilter(DbController().getAllFilterBy, SmartPhone, 'carga rápida')
+    products = session.appendFilter(DbController().getAllFilterBy, SmartPhone, 'carga rápida', number=quantity)
     # Create response message
     message = Message(Agent().getAgentSays(request))
     message.addListOrCarrousel('Los smartphones que cuentan con carga rápida', products)

@@ -103,7 +103,7 @@
         "id": "02f81cdf-da40-4637-b252-049e56a10645"
     },
     {
-        "name": "sp.firstQuestion",
+        "name": "product.category>askOrHelp",
         "auto": true,
         "contexts": [],
         "templates": [],
@@ -242,13 +242,13 @@
         "webhookForSlotFilling": true,
         "events": [
             {
-                "name": "sp.question.withQuickCharge"
+                "name": "questionWithQuickCharge"
             }
         ],
-        "id": null
+        "id": "b263efff-c91a-4269-88bd-992172b0e0a6"
     },
     {
-        "name": "product.category>sp.range",
+        "name": "help>sp.range",
         "auto": true,
         "contexts": [],
         "templates": [],
@@ -318,7 +318,7 @@
         "webhookUsed": true,
         "webhookForSlotFilling": true,
         "events": [],
-        "id": "ed51bad0-f5e0-487a-af9f-4a0047489c0f"
+        "id": "e719d714-f567-4179-a40e-87da34bde3a7"
     },
     {
         "name": "sp.range>screen",
@@ -1077,10 +1077,10 @@
         "webhookForSlotFilling": true,
         "events": [
             {
-                "name": "sp.question.withQuickCharge"
+                "name": "questionWithQuickCharge"
             }
         ],
-        "id": null
+        "id": "33b41532-2113-4f26-82e6-0a537c77196d"
     },
     {
         "name": "sp.question.mostPowerful",
@@ -1525,6 +1525,15 @@
                     },
                     {
                         "text": " mejores m\u00f3viles con carga r\u00e1pida"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "quiero un smartphone con carga r\u00e1pida"
                     }
                 ],
                 "isTemplate": false,

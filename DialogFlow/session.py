@@ -27,13 +27,13 @@ class Session():
             self.products.append(product)
         return self.products
 
-    def newFilter(self, function, *kwargs):
-        self.products, self.query = function(query=None, *kwargs)
+    def newFilter(self, function, *args, **kwargs):
+        self.products, self.query = function(query=None, *args, **kwargs)
         return self.products
 
-    def appendFilter(self, function, *kwargs):
+    def appendFilter(self, function, *args, **kwargs):
         if not self.query:
-            return self.newFilter(function, *kwargs)
+            return self.newFilter(function, *args, **kwargs)
         else:
-            self.products, self.query = function(query=self.query, *kwargs)
+            self.products, self.query = function(*args, **kwargs, query=self.query)
         return self.products

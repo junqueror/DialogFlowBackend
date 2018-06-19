@@ -12,7 +12,7 @@ class Message():
         self.response.card(title=element.title,
                            link=element.link,
                            linkTitle=element.linkTitle,
-                           text=element.text,
+                           text=element.description,
                            img_url=element.imgUrl)
 
     def addCarrousel(self, elements):
@@ -20,7 +20,7 @@ class Message():
         for element in elements:
             self.response.add_item(title=element.title,
                                    key=element.key,
-                                   description=element.description,
+                                   description=element.text,
                                    img_url=element.imgUrl,
                                    synonyms=element.synonyms)
 
@@ -29,7 +29,7 @@ class Message():
         for element in elements:
             self.response.add_item(title=element.title,
                                    key=element.key,
-                                   description=element.description,
+                                   description=element.text,
                                    img_url=element.imgUrl,
                                    synonyms=element.synonyms)
 

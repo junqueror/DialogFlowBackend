@@ -210,6 +210,26 @@
                     "a8",
                     "galaxy a8"
                 ]
+            },
+            {
+                "value": "Redmi Note 4",
+                "synonyms": [
+                    "Note 4",
+                    "redmi 4",
+                    "redmi note 4"
+                ]
+            },
+            {
+                "value": "P20",
+                "synonyms": [
+                    "p 20"
+                ]
+            },
+            {
+                "value": "P20 lite",
+                "synonyms": [
+                    "p 20 lite"
+                ]
             }
         ],
         "isEnum": null,

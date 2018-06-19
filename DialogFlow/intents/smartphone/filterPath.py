@@ -30,7 +30,7 @@ def getRangeAskScreen(request, smartphoneRange):
     range = DbController().getOneByName(Range, smartphoneRange)
     # Create response message
     message = Message(Agent().getAgentSays(request))
-    message.response.build_carousel()
+    message.response = message.response.build_carousel()
     for screen in range.screens:
         message.response.add_item(title=screen.name, key=screen.name, description=screen.description)
 

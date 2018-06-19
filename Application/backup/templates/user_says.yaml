@@ -10,7 +10,7 @@ buy>product.category:
   - "Me gustar\xEDa comprar"
   - "Necesito informaci\xF3n"
   - "Busco informaci\xF3n sobre productos"
-product.category>sp.range:
+help>sp.range:
   Annotations: []
   Events: []
   UserSays:
@@ -19,14 +19,14 @@ product.category>sp.range:
   - "mejor ay\xFAdame"
   - "gu\xEDame"
   - "ay\xFAdame a elegir caracter\xEDsticas"
-sp.firstQuestion:
+product.category>askOrHelp:
   Annotations:
   - smartphone: productCategory
   - "m\xF3vil": productCategory
   - moviles: productCategory
   - movil: productCategory
   Events:
-  - sp.question.withQuickCharge
+  - questionWithQuickCharge
   UserSays:
   - quiero comprar un smartphone
   - "estoy buscando un m\xF3vil"
@@ -109,6 +109,7 @@ sp.question.withQuickCharge:
   - "cu\xE1les son los m\xF3viles con carga r\xE1pida"
   - "muestrame m\xF3viles con carga r\xE1pida"
   - "dime los 3 mejores m\xF3viles con carga r\xE1pida"
+  - "quiero un smartphone con carga r\xE1pida"
 sp.range>screen:
   Annotations:
   - gama baja: smartphoneRange
@@ -240,7 +241,7 @@ sp.selected.searchQuickCharge.yes:
   Annotations:
   - mi8: smartphoneName
   Events:
-  - sp.question.withQuickCharge
+  - questionWithQuickCharge
   UserSays:
   - "S\xED"
   - vale

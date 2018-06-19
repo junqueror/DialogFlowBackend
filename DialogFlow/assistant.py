@@ -19,18 +19,17 @@ Assistant = Assistant(app=FlaskWrapper.App, route='/assistant')
 def askProductCategory():
     return genericProduct.askCategory(Assistant.request)
 
-@Assistant.action('sp.firstQuestion')
+@Assistant.action('product.category>askOrHelp')
 def questionOrHelp(productCategory):
     return genericSmartPhone.questionOrHelp(Assistant.request, productCategory)
 
-@Assistant.context('smartphone-firstQuestion')
-@Assistant.action('product.category>sp.range')
+@Assistant.context('help')
+@Assistant.action('help>sp.range')
 def askRange():
     return filterPath.getCategoryAskRange(Assistant.request)
 
-
 @Assistant.context('smartphone')
-@Assistant.context('product.category>sp.range')
+@Assistant.context('help>sp.range')
 @Assistant.action('sp.range>screen')
 def askScreen(smartphoneRange):
     return filterPath.getRangeAskScreen(Assistant.request, smartphoneRange)
@@ -46,7 +45,17 @@ def askRAM(smartphoneScreen):
 
 @Assistant.action('sp.selected')
 def showSmartphoneSelected(smartphoneName, smartphoneBrand=None):
-    return selected.showSmartphoneSelected(smartphoneBrand, smartphoneName)
+    return selected.showSmartphoneSelected(Assistant.request, smartphoneBrand, smartphoneName)
+
+@Assistant.prompt_for('smartphoneBrand', intent_name='sp.selected')
+def promptSmartphoneBrand(smartphoneBrand):
+    return ask("¿Cuál es la marca del SmartPhone?")
+
+
+@Assistant.prompt_for('smartphoneName', intent_name='sp.selected')
+def promptSmartphoneName(smartphoneName):
+    return ask("¿Podrías decirme el nombre del móvil que quieres ver?")
+
 
 @Assistant.context('smartphone')
 @Assistant.context('product-selected')
@@ -67,6 +76,7 @@ def showSmartphonesRates():
     return selected.showSmartphoneRates(Assistant.request)
 
 @Assistant.context('smartphone')
+@Assistant.context('product-selected')
 @Assistant.action('sp.selected.hasQuickCharge')
 def hasQuickCharge():
     return selected.hasQuickCharge(Assistant.request)
@@ -75,7 +85,7 @@ def hasQuickCharge():
 @Assistant.context('has-quick-charge')
 @Assistant.action('sp.selected.searchQuickCharge.yes')
 def searchQuickCharge():
-    return selected.searchQuickChargeYes(Assistant.request)
+    return question.withQuickCharge(Assistant.request)
 
 @Assistant.action('sp.question.mostPowerful')
 def showMostPowerfulSmartphones(quantity=5):
