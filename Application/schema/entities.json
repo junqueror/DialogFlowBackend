@@ -1,5 +1,38 @@
 [
     {
+        "name": "eCommerceName",
+        "entries": [
+            {
+                "value": "Amazon",
+                "synonyms": [
+                    "amazon"
+                ]
+            },
+            {
+                "value": "MediaMarkt",
+                "synonyms": [
+                    "mediamarkt"
+                ]
+            },
+            {
+                "value": "AliExpress",
+                "synonyms": [
+                    "aliexpres",
+                    "ali express"
+                ]
+            },
+            {
+                "value": "GearBest",
+                "synonyms": [
+                    "gearbest",
+                    "gear best"
+                ]
+            }
+        ],
+        "isEnum": null,
+        "id": "0780259f-3b86-44cb-b1af-06ffa6c1697f"
+    },
+    {
         "name": "productCategory",
         "entries": [
             {

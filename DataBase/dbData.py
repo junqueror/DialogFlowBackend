@@ -63,7 +63,7 @@ class DbData:
             # Ecommerces
             amazon = Ecommerce(name='Amazon',
                                URL='www.amazon.es',
-                               image='https://t2.uc.ltmcdn.com/images/5/2/0/img_como_comprar_en_amazon_desde_espana_24025_600.jpg',
+                               image='https://pmcdeadline2.files.wordpress.com/2015/08/amazon-featured-image.jpg?w=446&h=299&crop=1',
                                description='Mejor velocidad de envío y garantías de devolución',
                                rate=94)
             gearbest = Ecommerce(name='Gearbest',
@@ -315,16 +315,27 @@ class DbData:
             db.session.commit()
             onePlus6amazon = AffiliateLink(
                 linkUrl='https://www.amazon.es/OnePlus-Smartphone-Pantalla-Qualcomm-Snapgradon/dp/B07CK7KB95/ref=sr_1_4?s=electronics&ie=UTF8&qid=1528565948&sr=1-4&keywords=oneplus+6',
-                price=619,
+                price=569,
+                shippingTime="1 día",
+                shippingPrice="4.99€ / 0€ (Prime)",
                 smartphoneId=onePlus6.id,
                 ecommerceId=amazon.id)
             db.session.add(onePlus6amazon)
-            onePlus6eliexpress = AffiliateLink(
+            onePlus6aliexpress = AffiliateLink(
                 linkUrl='https://es.aliexpress.com/store/product/Oneplus-6-4G-LTE-tel-fono-m-vil-6-28-6-GB-8-GB-RAM-64/2206089_32873918004.html?spm=a219c.search0204.3.6.354df373DLSwgJ&s=p&ws_ab_test=searchweb0_0,searchweb201602_2_10152_10151_10065_10344_10068_5722815_10342_10547_10343_10340_5722915_10548_10341_5722615_10696_10084_10083_10618_10307_10820_10301_10821_10303_5722715_10059_100031_10103_10624_10623_10622_5722515_10621_10620,searchweb201603_25,ppcSwitch_7_ppcChannel&priceBeautifyAB=0',
                 price=486,
+                shippingTime="1-2 semanas",
+                shippingPrice="7.85€",
                 smartphoneId=onePlus6.id,
                 ecommerceId=aliexpress.id)
-            db.session.add(onePlus6eliexpress)
+            db.session.add(onePlus6aliexpress)
+            onePlus6mediaMarkt = AffiliateLink(
+                linkUrl='https://www.gearbest.com/cell-phones/pp_1690317.html?wid=1433363',
+                price=608.99,
+                shippingPrice="0 €",
+                smartphoneId=onePlus6.id,
+                ecommerceId=mediamarkt.id)
+            db.session.add(onePlus6mediaMarkt)
 
             mi8 = SmartPhone(name='Mi 8',
                              company='Xiaomi',

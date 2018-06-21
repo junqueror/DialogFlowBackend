@@ -6,7 +6,6 @@ from DialogFlow.intents.smartphone import filterPath, question, selected, search
 from DialogFlow.intents.ecommerce import generic as genericEcommerce
 from DialogFlow.intents.product import generic as genericProduct
 
-
 # ----------------------------------------------- ASSISTANT --------------------------------------------
 logging.getLogger('flask_assistant').setLevel(logging.DEBUG)
 Assistant = Assistant(app=FlaskWrapper.App, route='/assistant')
@@ -19,14 +18,17 @@ Assistant = Assistant(app=FlaskWrapper.App, route='/assistant')
 def askProductCategory():
     return genericProduct.askCategory(Assistant.request)
 
+
 @Assistant.action('product.category>askOrHelp')
 def questionOrHelp(productCategory):
     return genericSmartPhone.questionOrHelp(Assistant.request, productCategory)
+
 
 @Assistant.context('help')
 @Assistant.action('help>sp.range')
 def askRange():
     return filterPath.getCategoryAskRange(Assistant.request)
+
 
 @Assistant.context('smartphone')
 @Assistant.context('help>sp.range')
@@ -43,9 +45,11 @@ def askRAM(smartphoneScreen):
 
     return ask('In sp.screen>RAM')
 
+
 @Assistant.action('sp.selected')
 def showSmartphoneSelected(smartphoneName, smartphoneBrand=None):
     return selected.showSmartphoneSelected(Assistant.request, smartphoneBrand, smartphoneName)
+
 
 @Assistant.prompt_for('smartphoneBrand', intent_name='sp.selected')
 def promptSmartphoneBrand(smartphoneBrand):
@@ -61,7 +65,15 @@ def promptSmartphoneName(smartphoneName):
 @Assistant.context('product-selected')
 @Assistant.action('sp.selected.ecommerce')
 def showSmartphoneSelectedEcommerces():
-    return genericEcommerce.getSmartphoneShowEcommerces()
+    return genericEcommerce.getSmartphoneShowEcommerces(Assistant.request)\
+
+@Assistant.context('smartphone')
+@Assistant.context('product-selected')
+@Assistant.context('product-ecommerces')
+@Assistant.action('sp.selected.ecommerce.selected')
+def showEcommerceSelected(eCommerceName):
+    return genericEcommerce.showEcommerceSelected(Assistant.request, eCommerceName)
+
 
 @Assistant.context('smartphone')
 @Assistant.context('product-selected')
@@ -69,11 +81,23 @@ def showSmartphoneSelectedEcommerces():
 def showSmartphonesDifferences(smartphoneName, smartphoneBrand):
     return selected.showSmartphonesDifferences(Assistant.request, smartphoneBrand, smartphoneName)
 
+
+@Assistant.prompt_for('smartphoneBrand', intent_name='sp.selected.differences')
+def promptSmartphoneBrand(smartphoneBrand):
+    return ask("¿Cuál la marca del SmartPhone con el que quieres comparar?")
+
+
+@Assistant.prompt_for('smartphoneName', intent_name='sp.selected.differences')
+def promptSmartphoneName(smartphoneName):
+    return ask("¿Podrías decirme el nombre del SmartPhone que quieres comparar?")
+
+
 @Assistant.context('smartphone')
 @Assistant.context('product-selected')
 @Assistant.action('sp.selected.rates')
 def showSmartphonesRates():
     return selected.showSmartphoneRates(Assistant.request)
+
 
 @Assistant.context('smartphone')
 @Assistant.context('product-selected')
@@ -81,11 +105,13 @@ def showSmartphonesRates():
 def hasQuickCharge():
     return selected.hasQuickCharge(Assistant.request)
 
+
 @Assistant.context('smartphone')
 @Assistant.context('has-quick-charge')
 @Assistant.action('sp.selected.searchQuickCharge.yes')
 def searchQuickCharge():
     return question.withQuickCharge(Assistant.request)
+
 
 @Assistant.action('sp.question.mostPowerful')
 def showMostPowerfulSmartphones(quantity=5):
@@ -101,13 +127,16 @@ def showCheapestSmartphones(quantity=5):
 def showBestBatterySmartphones(quantity=5):
     return question.bestBattery(Assistant.request, quantity)
 
+
 @Assistant.action('sp.question.qualityPrice')
 def questionQualityPrice():
     return question.qualityPrice(Assistant.request)
 
+
 @Assistant.action('sp.question.qualityPriceUsers')
 def questionQualityPriceUsers():
     return question.qualityPriceUsers(Assistant.request)
+
 
 @Assistant.action('sp.question.withQuickCharge')
 def questionWithQuickCharge(quantity=10):
@@ -124,27 +153,4 @@ def showSmartphonesSearched(quantity=5):
 @Assistant.prompt_for('smartphoneName', intent_name='smartphone')
 def promptSmartphoneName(smartphoneName):
     response = "¿Podrías decirme el nombre del teléfono que estás buscando?"
-    return ask(response)
-
-
-# @Assistant.prompt_for('smartphoneBrand', intent_name='smartphone')
-# def promptSmartphoneBrand(smartphoneBrand):
-#     response = "¿Cuál la marca del smartphone que estás buscando?"
-#     return ask(response)
-#
-#
-# @Assistant.prompt_for('smartphoneRange', intent_name='sp.range>screen')
-# def promptSmartphoneRange(smartphoneRange):
-#     response = "¿Podrías decirme la gama de SmartPhone en la que estás interesado?"
-#     return ask(response)
-
-@Assistant.prompt_for('smartphoneBrand', intent_name='sp.selected.differences')
-def promptSmartphoneBrand(smartphoneBrand):
-    response = "¿Cuál la marca del SmartPhone con el que quieres comparar?"
-    return ask(response)
-
-
-@Assistant.prompt_for('smartphoneName', intent_name='sp.selected.differences')
-def promptSmartphoneName(smartphoneName):
-    response = "¿Podrías decirme el nombre del SmartPhone que quieres comparar?"
     return ask(response)

@@ -10,7 +10,8 @@ from DialogFlow.message import Message
 @Agent.intentException
 def questionOrHelp(request, productCategory):
     if productCategory == 'Smartphone':
-        message = Message(Agent().getAgentSays(request))
+        message = Message(
+            ['Casualmente soy un experto en SmartPhones... 😎.' + message for message in Agent().getAgentSays(request)])
     else:
         # Create response message
         message = Message(['Lo siento, pero ahora mismo solo puedo ayudarte con la categoría de SmartPhones.'])

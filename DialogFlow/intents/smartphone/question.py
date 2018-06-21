@@ -83,7 +83,7 @@ def qualityPriceUsers(request):
     session = Session.getSession(request)
 
     # Get products from DB
-    products, query = DbController().getAllFilterBy(SmartPhone, 'Xiaomi', ['company'])
+    products = session.appendFilter(DbController().getAllFilterBy, SmartPhone, 'Xiaomi', ['company'])
 
     # Create response message
     message = Message(Agent().getAgentSays(request))

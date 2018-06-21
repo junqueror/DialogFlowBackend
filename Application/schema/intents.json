@@ -809,6 +809,91 @@
         "id": "40675989-8b36-4b52-95ed-86f0a1db6487"
     },
     {
+        "name": "sp.selected.ecommerce.selected",
+        "auto": true,
+        "contexts": [],
+        "templates": [],
+        "userSays": [
+            {
+                "data": [
+                    {
+                        "text": "Amazon",
+                        "meta": "@eCommerceName",
+                        "alias": "eCommerceName",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "MediaMarkt",
+                        "meta": "@eCommerceName",
+                        "alias": "eCommerceName",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "AliExpress",
+                        "meta": "@eCommerceName",
+                        "alias": "eCommerceName",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "GearBest",
+                        "meta": "@eCommerceName",
+                        "alias": "eCommerceName",
+                        "userDefined": true
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            }
+        ],
+        "responses": [
+            {
+                "action": "showEcommerceSelected",
+                "resetContexts": false,
+                "affectedContexts": [],
+                "parameters": [
+                    {
+                        "name": "eCommerceName",
+                        "value": "$eCommerceName",
+                        "dataType": "@eCommerceName",
+                        "prompts": [],
+                        "required": true,
+                        "isList": false,
+                        "defaultValue": ""
+                    }
+                ],
+                "messages": []
+            }
+        ],
+        "priority": 500000,
+        "fallbackIntent": false,
+        "webhookUsed": true,
+        "webhookForSlotFilling": true,
+        "events": [
+            {
+                "name": "questionWithQuickCharge"
+            }
+        ],
+        "id": "537b82a5-9d14-480c-9d65-7545b0a4c3af"
+    },
+    {
         "name": "sp.selected.differences",
         "auto": true,
         "contexts": [],

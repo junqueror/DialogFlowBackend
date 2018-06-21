@@ -216,6 +216,19 @@ sp.selected.ecommerce:
   - Ver tiendas
   - "D\xF3nde lo puedo comprar?"
   - Tiendas
+sp.selected.ecommerce.selected:
+  Annotations:
+  - Amazon: eCommerceName
+  - MediaMarkt: eCommerceName
+  - AliExpress: eCommerceName
+  - GearBest: eCommerceName
+  Events:
+  - questionWithQuickCharge
+  UserSays:
+  - Amazon
+  - MediaMarkt
+  - AliExpress
+  - GearBest
 sp.selected.hasQuickCharge:
   Annotations:
   - xiaomi: smartphoneBrand

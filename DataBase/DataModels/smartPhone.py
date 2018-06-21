@@ -61,7 +61,7 @@ class SmartPhone(DbController().db.Model):
 
     @property
     def subtitle(self):
-        return "Precio medio: s{0}".format(self.avgPrice)
+        return "Precio medio: {0}€".format(self.avgPrice)
 
     @property
     def text(self):
@@ -99,11 +99,11 @@ class SmartPhone(DbController().db.Model):
 
     @property
     def linkTitle(self):
-        return 'Web oficial',
+        return 'Web oficial'
 
     @property
     def key(self):
-        return self.name,
+        return "{0} {1}".format(self.company, self.name)
 
     @property
     def synonyms(self):

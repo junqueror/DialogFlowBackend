@@ -1,3 +1,14 @@
+eCommerceName:
+- Amazon:
+  - amazon
+- MediaMarkt:
+  - mediamarkt
+- AliExpress:
+  - aliexpres
+  - ali express
+- GearBest:
+  - gearbest
+  - gear best
 productCategory:
 - Smartphone:
   - smartphone

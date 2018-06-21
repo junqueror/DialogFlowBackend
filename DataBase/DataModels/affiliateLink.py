@@ -13,6 +13,8 @@ class AffiliateLink(DbController().db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
     linkUrl = Column(String, nullable=False)
     price = Column(Integer, nullable=False)
+    shippingTime = Column(String, nullable=False, default="2 días")
+    shippingPrice = Column(String, nullable=False, default="4.99€")
 
     # Relationships
     smartphoneId = Column(Integer, ForeignKey(Settings().DATABASE_SCHEMA + '.smartphones.id', ondelete='CASCADE'), nullable=False)
@@ -26,19 +28,19 @@ class AffiliateLink(DbController().db.Model):
 
     @property
     def title(self):
-        return self.ecommerce.name
+        return "Precio: {0}€".format(self.price)
 
     @property
     def subtitle(self):
-        return "Precio: s{0}".format(self.price)
+        return "Precio: {0}€".format(self.price)
 
     @property
     def text(self):
-        return "Valoración: {0}".format(self.ecommerce.rate)
+        return "Valoración general de la tienda: {0}\nDescripción: {1}".format(self.ecommerce.rate,self.description)
 
     @property
     def description(self):
-        return self.ecommerce.description
+        return "Tiempo de envío: {0}\nCostes de envío: {1}".format(self.shippingTime, self.shippingPrice)
 
     @property
     def imgUrl(self):
@@ -54,7 +56,7 @@ class AffiliateLink(DbController().db.Model):
 
     @property
     def linkTitle(self):
-        return 'Comprar',
+        return 'Comprar: {0}€'.format(self.price)
 
     @property
     def key(self):
