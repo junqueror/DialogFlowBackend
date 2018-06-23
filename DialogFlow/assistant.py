@@ -2,8 +2,8 @@ import logging
 import random
 from flask_assistant import Assistant, ask, context_manager
 from Application.flaskWrapper import FlaskWrapper
-from DialogFlow.intents.smartphone import filterPath, question, selected, search, generic as genericSmartPhone
-from DialogFlow.intents.ecommerce import generic as genericEcommerce
+from DialogFlow.intents.smartphone import filterPath, question, selected, search, generic as smartphone
+from DialogFlow.intents.ecommerce import selected as eCommerceSelected, generic as eCommerce
 from DialogFlow.intents.product import generic as genericProduct
 
 # ----------------------------------------------- ASSISTANT --------------------------------------------
@@ -21,7 +21,7 @@ def askProductCategory():
 
 @Assistant.action('product.category>askOrHelp')
 def questionOrHelp(productCategory):
-    return genericSmartPhone.questionOrHelp(Assistant.request, productCategory)
+    return smartphone.questionOrHelp(Assistant.request, productCategory)
 
 
 @Assistant.context('help')
@@ -53,7 +53,7 @@ def showSmartphoneSelected(smartphoneName, smartphoneBrand=None):
 
 @Assistant.prompt_for('smartphoneBrand', intent_name='sp.selected')
 def promptSmartphoneBrand(smartphoneBrand):
-    return ask("¿Cuál es la marca del SmartPhone?")
+    return ask("¿Cuál es la marca del móvil?")
 
 
 @Assistant.prompt_for('smartphoneName', intent_name='sp.selected')
@@ -65,14 +65,21 @@ def promptSmartphoneName(smartphoneName):
 @Assistant.context('product-selected')
 @Assistant.action('sp.selected.ecommerce')
 def showSmartphoneSelectedEcommerces():
-    return genericEcommerce.getSmartphoneShowEcommerces(Assistant.request)\
+    return eCommerce.getSmartphoneShowEcommerces(Assistant.request)\
 
 @Assistant.context('smartphone')
 @Assistant.context('product-selected')
 @Assistant.context('product-ecommerces')
-@Assistant.action('sp.selected.ecommerce.selected')
+@Assistant.action('ecommerce.selected')
 def showEcommerceSelected(eCommerceName):
-    return genericEcommerce.showEcommerceSelected(Assistant.request, eCommerceName)
+    return eCommerceSelected.showEcommerceSelected(Assistant.request, eCommerceName)
+
+@Assistant.context('smartphone')
+@Assistant.context('product-selected')
+@Assistant.context('ecommerce-selected')
+@Assistant.action('ecommerce.selected.priceTracker')
+def showEcommerceSelected():
+    return eCommerceSelected.showPriceTrack(Assistant.request)
 
 
 @Assistant.context('smartphone')

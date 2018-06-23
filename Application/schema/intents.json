@@ -809,7 +809,7 @@
         "id": "40675989-8b36-4b52-95ed-86f0a1db6487"
     },
     {
-        "name": "sp.selected.ecommerce.selected",
+        "name": "ecommerce.selected",
         "auto": true,
         "contexts": [],
         "templates": [],
@@ -891,7 +891,70 @@
                 "name": "questionWithQuickCharge"
             }
         ],
-        "id": "537b82a5-9d14-480c-9d65-7545b0a4c3af"
+        "id": "db60cf0d-d297-4b7d-a96d-190b423df338"
+    },
+    {
+        "name": "ecommerce.selected.priceTracker",
+        "auto": true,
+        "contexts": [],
+        "templates": [],
+        "userSays": [
+            {
+                "data": [
+                    {
+                        "text": "Historial de precios"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "gr\u00e1fica de precios"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "ver los \u00faltimos precios"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            },
+            {
+                "data": [
+                    {
+                        "text": "ver el historial de precios"
+                    }
+                ],
+                "isTemplate": false,
+                "count": 0
+            }
+        ],
+        "responses": [
+            {
+                "action": "showEcommerceSelected",
+                "resetContexts": false,
+                "affectedContexts": [],
+                "parameters": [],
+                "messages": []
+            }
+        ],
+        "priority": 500000,
+        "fallbackIntent": false,
+        "webhookUsed": true,
+        "webhookForSlotFilling": true,
+        "events": [
+            {
+                "name": "questionWithQuickCharge"
+            }
+        ],
+        "id": "647199f3-4772-46bb-9e0c-61f4362be167"
     },
     {
         "name": "sp.selected.differences",

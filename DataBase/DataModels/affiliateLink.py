@@ -36,7 +36,7 @@ class AffiliateLink(DbController().db.Model):
 
     @property
     def text(self):
-        return "Valoración general de la tienda: {0}\nDescripción: {1}".format(self.ecommerce.rate,self.description)
+        return "Valoración general de la tienda: {0}\n{1}".format(self.ecommerce.rate, self.ecommerce.description)
 
     @property
     def description(self):

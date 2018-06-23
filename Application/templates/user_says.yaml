@@ -10,6 +10,32 @@ buy>product.category:
   - "Me gustar\xEDa comprar"
   - "Necesito informaci\xF3n"
   - "Busco informaci\xF3n sobre productos"
+ecommerce.selected:
+  Annotations:
+  - Amazon: eCommerceName
+  - MediaMarkt: eCommerceName
+  - AliExpress: eCommerceName
+  - GearBest: eCommerceName
+  Events:
+  - questionWithQuickCharge
+  UserSays:
+  - Amazon
+  - MediaMarkt
+  - AliExpress
+  - GearBest
+ecommerce.selected.priceTracker:
+  Annotations:
+  - Amazon: eCommerceName
+  - MediaMarkt: eCommerceName
+  - AliExpress: eCommerceName
+  - GearBest: eCommerceName
+  Events:
+  - questionWithQuickCharge
+  UserSays:
+  - Historial de precios
+  - "gr\xE1fica de precios"
+  - "ver los \xFAltimos precios"
+  - ver el historial de precios
 help>sp.range:
   Annotations: []
   Events: []
@@ -216,19 +242,6 @@ sp.selected.ecommerce:
   - Ver tiendas
   - "D\xF3nde lo puedo comprar?"
   - Tiendas
-sp.selected.ecommerce.selected:
-  Annotations:
-  - Amazon: eCommerceName
-  - MediaMarkt: eCommerceName
-  - AliExpress: eCommerceName
-  - GearBest: eCommerceName
-  Events:
-  - questionWithQuickCharge
-  UserSays:
-  - Amazon
-  - MediaMarkt
-  - AliExpress
-  - GearBest
 sp.selected.hasQuickCharge:
   Annotations:
   - xiaomi: smartphoneBrand
